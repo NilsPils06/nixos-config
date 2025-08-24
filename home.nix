@@ -78,7 +78,8 @@
   	shellAliases = {
   		ll = "ls -l";
   		".." = "cd ..";
-  		topgrade ="nix flake update --flake $HOME/.dotfiles && sudo nixos-rebuild switch --flake $HOME/.dotfiles && home-manager switch --flake $HOME/.dotfiles";
+  		topgrade = "nix flake update --flake $HOME/.dotfiles && sudo nixos-rebuild switch --flake $HOME/.dotfiles && home-manager switch --flake $HOME/.dotfiles";
+		"switch-all" = "sudo nixos-rebuild switch --flake $HOME/.dotfiles && home-manager switch --flake $HOME/.dotfiles"; 
   	};
   };
 
