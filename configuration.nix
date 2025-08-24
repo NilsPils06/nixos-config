@@ -56,7 +56,7 @@
   };
 
   # Configure console keymap
-  console.keyMap = "dvorak";
+  console.keyMap = "qwerty";
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -91,7 +91,7 @@
   };
 
   # Install firefox.
-  programs.firefox.enable = true;
+  # programs.firefox.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -103,6 +103,7 @@
     wget
     micro
     git
+    floorp
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
