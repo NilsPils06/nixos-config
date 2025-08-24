@@ -56,7 +56,7 @@
   };
 
   # Configure console keymap
-  console.keyMap = "qwerty";
+  console.keyMap = "dvorak";
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
