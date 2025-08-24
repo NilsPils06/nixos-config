@@ -91,6 +91,21 @@
   		init.defaultBranch = "main";
   	};
   };
+
+  gtk = {
+    enable = true;
+    # Set the GTK theme name
+    theme = {
+      name = "WhiteSur-Dark"; # Or "WhiteSur" for the light version
+      package = pkgs.whitesur-gtk-theme;
+    };
+    # Set the GTK icon theme name
+    iconTheme = {
+      name = "WhiteSur";
+      package = pkgs.whitesur-icon-theme;
+    };
+  };
+
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 }

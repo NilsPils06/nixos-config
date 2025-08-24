@@ -83,7 +83,7 @@
   };
 
   # Install firefox.
-  # programs.firefox.enable = true;
+  programs.firefox.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -94,7 +94,6 @@
     wget
     micro
     git
-    floorp
   ];
 
   # Do not change me unless you know what you are doing!! Check documentation first!!
