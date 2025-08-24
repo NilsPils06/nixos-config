@@ -94,18 +94,24 @@
 
   gtk = {
     enable = true;
-    # Set the GTK theme name
+
     theme = {
-      name = "WhiteSur-Dark"; # Or "WhiteSur" for the light version
+      name = "WhiteSur-Dark";
       package = pkgs.whitesur-gtk-theme;
     };
-    # Set the GTK icon theme name
+    
     iconTheme = {
-      name = "WhiteSur";
-      package = pkgs.whitesur-icon-theme;
+      name = "Kora";
+      package = pkgs.kora-icon-theme;
     };
   };
 
+  home.file.".config/gtk-4.0/settings.ini".text = ''
+    [Settings]
+    gtk-theme-name=WhiteSur-Dark
+    gtk-icon-theme-name=Kora
+  '';
+  
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 }
