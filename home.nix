@@ -105,12 +105,6 @@
       package = pkgs.kora-icon-theme;
     };
   };
-
-  home.file.".config/gtk-4.0/settings.ini".text = ''
-    [Settings]
-    gtk-theme-name=WhiteSur-Dark
-    gtk-icon-theme-name=Kora
-  '';
   
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
