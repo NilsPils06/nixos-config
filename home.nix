@@ -1,5 +1,12 @@
 { config, pkgs, ... }:
 
+let
+  # The icon file needs to be made available in the Nix store.
+  mars-mips-icon-file = pkgs.runCommand "mars-mips-icon-file" { } ''
+    mkdir -p $out/
+    cp ${./images/mars-mips.png} $out/mars-mips.png
+  '';
+in
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -7,114 +14,94 @@
   home.homeDirectory = "/home/mathijs";
 
   # This value determines the Home Manager release that your configuration is
-  # compatible with. This helps avoid breakage when a new Home Manager release
-  # introduces backwards incompatible changes.
-  #
-  # You should not change this value, even if you update Home Manager. If you do
-  # want to update the value, then make sure to first check the Home Manager
-  # release notes.
-  home.stateVersion = "25.05"; # Please read the comment before changing.
+  # compatible with.
+  home.stateVersion = "25.05";
 
-  # The home.packages option allows you to install Nix packages into your
-  # environment.
+  # This is where we install all the necessary packages.
+  # The `mars-mips` package is now included here.
   home.packages = [
-    # # Adds the 'hello' command to your environment. It prints a friendly
-    # # "Hello, world!" when run.
-    # pkgs.hello
+    # Theming
+    pkgs.whitesur-gtk-theme
+    pkgs.kora-icon-theme
 
-    # # It is sometimes useful to fine-tune packages, for example, by applying
-    # # overrides. You can do that directly here, just don't forget the
-    # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
-    # # fonts?
-    # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
+    # Extensions
+    pkgs.gnomeExtensions.hot-edge
+    pkgs.gnomeExtensions.alphabetical-app-grid
+    pkgs.gnomeExtensions.maximize-to-empty-workspace
 
-    # # You can also create simple shell scripts directly inside your
-    # # configuration. For example, this adds a command 'my-hello' to your
-    # # environment:
-    # (pkgs.writeShellScriptBin "my-hello" ''
-    #   echo "Hello, ${config.home.username}!"
-    # '')
+    # The mars-mips package is now included.
+    pkgs.mars-mips
   ];
 
-  # Home Manager is pretty good at managing dotfiles. The primary way to manage
-  # plain files is through 'home.file'.
-  home.file = {
-    # # Building this configuration will create a copy of 'dotfiles/screenrc' in
-    # # the Nix store. Activating the configuration will then make '~/.screenrc' a
-    # # symlink to the Nix store copy.
-    # ".screenrc".source = dotfiles/screenrc;
+  # The correct way to enable the dconf service.
+  dconf.enable = true;
+  dconf.settings = {
+    # The redundant gtk and icon theme settings have been removed,
+    # as the `gtk` module handles this.
+    
+    # Configure enabled GNOME Shell extensions via their UUIDs.
+    # All three extensions are now correctly enabled.
+    "org/gnome/shell" = {
+      disable-user-extensions = false;
+      enabled-extensions = [
+        "hot-edge@jonas-smedegaard.dk"
+        "alphabetical-app-grid@stu-d-o.com"
+        "maximize-to-empty-workspace@dergudebube.github.com"
+      ];
+    };
 
-    # # You can also set the file content immediately.
-    # ".gradle/gradle.properties".text = ''
-    #   org.gradle.console=verbose
-    #   org.gradle.daemon.idletimeout=3600000
-    # '';
+    # Set specific dconf settings for the Hot Edge extension.
+    "org/gnome/shell/extensions/hot-edge" = {
+      enable-hot-edge = true;
+    };
   };
 
-  # Home Manager can also manage your environment variables through
-  # 'home.sessionVariables'. These will be explicitly sourced when using a
-  # shell provided by Home Manager. If you don't want to manage your shell
-  # through Home Manager then you have to manually source 'hm-session-vars.sh'
-  # located at either
-  #
-  #  ~/.nix-profile/etc/profile.d/hm-session-vars.sh
-  #
-  # or
-  #
-  #  ~/.local/state/nix/profiles/profile/etc/profile.d/hm-session-vars.sh
-  #
-  # or
-  #
-  #  /etc/profiles/per-user/mathijs/etc/profile.d/hm-session-vars.sh
-  #
-
-  home.sessionVariables = {
-    # EDITOR = "emacs";
-  };
-
-  
-  programs.bash = {
-  	enable = true;
-  	shellAliases = {
-  		ll = "ls -l";
-  		".." = "cd ..";
-  		"switch-nix" = "sudo nixos-rebuild switch --flake $HOME/.dotfiles";
-  		"switch-home" = "home-manager switch --flake $HOME/.dotfiles";
-  		"flake-update" = "nix flake update --flake $HOME/.dotfiles";
-  		topgrade = "nix flake update --flake $HOME/.dotfiles && sudo nixos-rebuild switch --flake $HOME/.dotfiles && home-manager switch --flake $HOME/.dotfiles";
-		"switch-all" = "sudo nixos-rebuild switch --flake $HOME/.dotfiles && home-manager switch --flake $HOME/.dotfiles"; 
-  	};
-  };
-
-  programs.git = {
-  	enable = true;
-  	userName = "Mathijs";
-  	userEmail = "79464596+CouldBeMathijs@users.noreply.github.com";
-  	extraConfig = {
-  		init.defaultBranch = "main";
-  	};
-  };
-
+  # The `gtk` module manages GTK themes and icons for your user environment
+  # and sets up necessary configuration files.
   gtk = {
     enable = true;
-
     theme = {
       name = "WhiteSur-Dark";
       package = pkgs.whitesur-gtk-theme;
     };
-    
     iconTheme = {
       name = "kora";
       package = pkgs.kora-icon-theme;
     };
   };
-
+  
+  # The XDG desktop entry for your Mars MIPS application.
+  # The icon path now correctly points to the file in the Nix store.
   xdg.desktopEntries."mars-mips" = {
     name = "Mars MIPS";
     genericName = "MIPS Editor";
     exec = "mars-mips";
     type = "Application";
-    icon = "${config.home.homeDirectory}/.dotfiles/images/mars-mips.png";
+    icon = "${mars-mips-icon-file}/mars-mips.png";
+  };
+
+  # Your shell configuration
+  programs.bash = {
+    enable = true;
+    shellAliases = {
+      ll = "ls -l";
+      ".." = "cd ..";
+      "switch-nix" = "sudo nixos-rebuild switch --flake $HOME/.dotfiles";
+      "switch-home" = "home-manager switch --flake $HOME/.dotfiles";
+      "flake-update" = "nix flake update --flake $HOME/.dotfiles";
+      topgrade = "nix flake update --flake $HOME/.dotfiles && sudo nixos-rebuild switch --flake $HOME/.dotfiles && home-manager switch --flake $HOME/.dotfiles";
+      "switch-all" = "sudo nixos-rebuild switch --flake $HOME/.dotfiles && home-manager switch --flake $HOME/.dotfiles";
+    };
+  };
+
+  # Your git configuration
+  programs.git = {
+    enable = true;
+    userName = "Mathijs";
+    userEmail = "79464596+CouldBeMathijs@users.noreply.github.com";
+    extraConfig = {
+      init.defaultBranch = "main";
+    };
   };
   
   # Let Home Manager install and manage itself.

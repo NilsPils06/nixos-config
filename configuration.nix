@@ -91,16 +91,44 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    wget
-    micro
+	#Command Line tools
 	fastfetch
-    git
+	git
+	libdvdcss
+	micro
+	trash-cli
+	wget
+
+	#Communication
+	fractal
+	signal-desktop
+	vesktop
+
+    #Development
+    devtoolbox
     jetbrains.clion
     jetbrains.pycharm-professional
-    mars-mips
     logisim
+    mars-mips
+    whatip
+
+    #Media
+    amberol
+    drawing
+    gimp
+    gramps
+    handbrake
+    impression
+    makemkv
+    pitivi
+
+    #Documents
+    epsonscan2
+    libreoffice
+    setzer
   ];
 
+  
   # Do not change me unless you know what you are doing!! Check documentation first!!
   system.stateVersion = "25.05"; # Did you read the comment?
 
