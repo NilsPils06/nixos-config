@@ -78,6 +78,9 @@
   	shellAliases = {
   		ll = "ls -l";
   		".." = "cd ..";
+  		"switch-nix" = "sudo nixos-rebuild switch --flake $HOME/.dotfiles";
+  		"switch-home" = "home-manager switch --flake $HOME/.dotfiles";
+  		"flake-update" = "nix flake update --flake $HOME/.dotfiles";
   		topgrade = "nix flake update --flake $HOME/.dotfiles && sudo nixos-rebuild switch --flake $HOME/.dotfiles && home-manager switch --flake $HOME/.dotfiles";
 		"switch-all" = "sudo nixos-rebuild switch --flake $HOME/.dotfiles && home-manager switch --flake $HOME/.dotfiles"; 
   	};
@@ -104,6 +107,14 @@
       name = "kora";
       package = pkgs.kora-icon-theme;
     };
+  };
+
+  xdg.desktopEntries."mars-mips" = {
+    name = "Mars MIPS";
+    genericName = "MIPS Editor";
+    exec = "mars-mips";
+    type = "Application";
+    icon = "${config.home.homeDirectory}/.dotfiles/images/mars-mips.png";
   };
   
   # Let Home Manager install and manage itself.
