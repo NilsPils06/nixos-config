@@ -93,7 +93,12 @@
   environment.systemPackages = with pkgs; [
     wget
     micro
+	fastfetch
     git
+    jetbrains.clion
+    jetbrains.pycharm-professional
+    mars-mips
+    logisim
   ];
 
   # Do not change me unless you know what you are doing!! Check documentation first!!
