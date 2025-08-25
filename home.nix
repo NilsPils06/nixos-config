@@ -101,7 +101,7 @@
     };
     
     iconTheme = {
-      name = "Kora";
+      name = "kora";
       package = pkgs.kora-icon-theme;
     };
   };
