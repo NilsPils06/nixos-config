@@ -92,11 +92,13 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
 	#Command Line tools
-	fastfetch
+    fastfetch
 	git
 	libdvdcss
 	micro
+	nh
 	trash-cli
+	tldr
 	wget
 
 	#Communication
@@ -126,8 +128,19 @@
     epsonscan2
     libreoffice
     setzer
+
+    #Customization
+    gnome-tweaks
   ];
 
+  nix.gc = {
+  	automatic = true;
+  	dates = "daily";
+  	options = "--delete-older-than 14d";
+  };
+  nix.optimise.automatic = true;
+  nix.settings.auto-optimise-store = true;
+  
   
   # Do not change me unless you know what you are doing!! Check documentation first!!
   system.stateVersion = "25.05"; # Did you read the comment?
