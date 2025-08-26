@@ -24,16 +24,17 @@ in
   # This is where we install all the necessary packages.
   # The `mars-mips` package is now included here.
   home.packages = [
-    # Theming
-    pkgs.whitesur-gtk-theme
+    # Themes
+    pkgs.adw-gtk3
     pkgs.kora-icon-theme
 
     # Extensions
-    pkgs.gnomeExtensions.hot-edge
     pkgs.gnomeExtensions.alphabetical-app-grid
+	pkgs.gnomeExtensions.blur-my-shell
+    pkgs.gnomeExtensions.hot-edge
     pkgs.gnomeExtensions.maximize-to-empty-workspace
+    pkgs.gnomeExtensions.user-themes
 
-    # The mars-mips package is now included.
     pkgs.mars-mips
   ];
 
@@ -48,9 +49,11 @@ in
     "org/gnome/shell" = {
       disable-user-extensions = false;
       enabled-extensions = [
-        "hot-edge@jonas-smedegaard.dk"
-        "alphabetical-app-grid@stu-d-o.com"
-        "maximize-to-empty-workspace@dergudebube.github.com"
+        "AlphabeticalAppGrid@stuarthayhurst"
+		"blur-my-shell@aunetx"
+        "hotedge@jonathan.jdoda.ca"
+        "MaximizeToEmptyWorkspace-extension@kaisersite.de"
+        "user-theme@gnome-shell-extensions.gcampax.github.com"
       ];
     };
 
@@ -65,8 +68,8 @@ in
   gtk = {
     enable = true;
     theme = {
-      name = "WhiteSur-Dark";
-      package = pkgs.whitesur-gtk-theme;
+      name = "Adw-gtk3-dark";
+      package = pkgs.adw-gtk3;
     };
     iconTheme = {
       name = "kora";
@@ -93,8 +96,8 @@ in
       "switch-nix" = "sudo nh os switch ${flake}";
       "switch-home" = "nh home switch ${flake}";
       "flake-update" = "nix flake update --flake ${flake}";
-      topgrade = "nix flake update --flake ${flake} && sudo nh os switch ${flake} && nh home switch ${flake} && nh clean --home --keep-since 7d --keep 3";
-      "switch-all" = "sudo nh os switch ${flake} && nh home switch ${flake} && nh clean --home --keep-since 7d --keep 3";
+      "topgrade" = "nix flake update --flake ${flake} && sudo nh os switch ${flake} && nh home switch ${flake} && nh clean --home --keep-since 7d --keep 3";
+      "switch-all" = "nh os switch ${flake} && nh home switch ${flake} && nh clean --home --keep-since 7d --keep 3";
     };
   };
 
