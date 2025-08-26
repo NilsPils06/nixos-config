@@ -6,8 +6,10 @@ let
     mkdir -p $out/
     cp ${./images/mars-mips.png} $out/mars-mips.png
   '';
-
+  
+  # Define the FLAKE variable here.
   flake = "${config.home.homeDirectory}/.dotfiles";
+
 in
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -88,11 +90,11 @@ in
     shellAliases = {
       ll = "ls -l";
       ".." = "cd ..";
-      "switch-nix" = "sudo nh os switch --flake ${flake}";
-      "switch-home" = "nh home switch --flake ${flake}";
-      "flake-update" = "nh update --flake ${flake}";
-      topgrade = "nh update --flake ${flake} && sudo nh os switch --flake ${flake} && nh home switch --flake ${flake} && nh clean --home --keep-since 7d --keep 3";
-      "switch-all" = "sudo nh os switch --flake ${flake} && nh home switch --flake ${flake} && nh clean --home --keep-since 7d --keep 3";
+      "switch-nix" = "sudo nh os switch ${flake}";
+      "switch-home" = "nh home switch ${flake}";
+      "flake-update" = "nix flake update --flake ${flake}";
+      topgrade = "nix flake update --flake ${flake} && sudo nh os switch ${flake} && nh home switch ${flake} && nh clean --home --keep-since 7d --keep 3";
+      "switch-all" = "sudo nh os switch ${flake} && nh home switch ${flake} && nh clean --home --keep-since 7d --keep 3";
     };
   };
 
