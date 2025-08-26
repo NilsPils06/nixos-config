@@ -91,20 +91,20 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-	#Command Line tools
+    #Command Line tools
     fastfetch
-	git
-	libdvdcss
-	micro
-	nh
-	trash-cli
-	tldr
-	wget
+    git
+    libdvdcss
+    micro
+    nh
+    trash-cli
+    tldr
+    wget
 
-	#Communication
-	fractal
-	signal-desktop
-	vesktop
+    #Communication
+    fractal
+    signal-desktop
+    vesktop
 
     #Development
     devtoolbox
@@ -133,14 +133,14 @@
     gnome-tweaks
   ];
 
-  nix.gc = {
-  	automatic = true;
-  	dates = "daily";
-  	options = "--delete-older-than 14d";
+  # New `nh` module-based configuration for clean-up
+  programs.nh = {
+    enable = true;
+    clean.enable = true;
+    # Clean up old generations by keeping the last 7 days and at least 3 generations.
+    clean.extraArgs = "--keep-since 7d --keep 3";
+    flake = "/home/mathijs/.dotfiles"; 
   };
-  nix.optimise.automatic = true;
-  nix.settings.auto-optimise-store = true;
-  
   
   # Do not change me unless you know what you are doing!! Check documentation first!!
   system.stateVersion = "25.05"; # Did you read the comment?

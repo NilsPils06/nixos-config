@@ -6,6 +6,8 @@ let
     mkdir -p $out/
     cp ${./images/mars-mips.png} $out/mars-mips.png
   '';
+
+  flake = "${config.home.homeDirectory}/.dotfiles";
 in
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -86,11 +88,11 @@ in
     shellAliases = {
       ll = "ls -l";
       ".." = "cd ..";
-      "switch-nix" = "sudo nixos-rebuild switch --flake $HOME/.dotfiles";
-      "switch-home" = "home-manager switch --flake $HOME/.dotfiles";
-      "flake-update" = "nix flake update --flake $HOME/.dotfiles";
-      topgrade = "nix flake update --flake $HOME/.dotfiles && sudo nixos-rebuild switch --flake $HOME/.dotfiles && home-manager switch --flake $HOME/.dotfiles";
-      "switch-all" = "sudo nixos-rebuild switch --flake $HOME/.dotfiles && home-manager switch --flake $HOME/.dotfiles";
+      "switch-nix" = "sudo nh os switch --flake ${flake}";
+      "switch-home" = "nh home switch --flake ${flake}";
+      "flake-update" = "nh update --flake ${flake}";
+      topgrade = "nh update --flake ${flake} && sudo nh os switch --flake ${flake} && nh home switch --flake ${flake} && nh clean --home --keep-since 7d --keep 3";
+      "switch-all" = "sudo nh os switch --flake ${flake} && nh home switch --flake ${flake} && nh clean --home --keep-since 7d --keep 3";
     };
   };
 
