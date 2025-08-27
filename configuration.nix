@@ -46,8 +46,9 @@
   services.xserver.enable = true;
 
   # Enable the GNOME Desktop Environment.
-  services.displayManager.gdm.enable = true;
-  services.desktopManager.gnome.enable = true;
+  services.xserver.displayManager.gdm.enable = true;
+  services.xserver.desktopManager.gnome.enable = true;
+
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -95,7 +96,7 @@
     fastfetch
     git
     libdvdcss
-    micro
+    micro-with-wl-clipboard
     nh
     trash-cli
     tldr
@@ -131,6 +132,7 @@
 
     #Customization
     gnome-tweaks
+    dconf-editor
   ];
 
   # New `nh` module-based configuration for clean-up

@@ -93,10 +93,10 @@ in
     shellAliases = {
       ll = "ls -l";
       ".." = "cd ..";
-      "switch-nix" = "sudo nh os switch ${flake}";
+      "switch-nix" = "nh os switch ${flake}";
       "switch-home" = "nh home switch ${flake}";
       "flake-update" = "nix flake update --flake ${flake}";
-      "topgrade" = "nix flake update --flake ${flake} && sudo nh os switch ${flake} && nh home switch ${flake} && nh clean --home --keep-since 7d --keep 3";
+      "topgrade" = "nix flake update --flake ${flake} && nh os switch ${flake} && nh home switch ${flake} && nh clean --home --keep-since 7d --keep 3";
       "switch-all" = "nh os switch ${flake} && nh home switch ${flake} && nh clean --home --keep-since 7d --keep 3";
     };
   };
