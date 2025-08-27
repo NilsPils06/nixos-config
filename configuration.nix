@@ -133,6 +133,9 @@
     #Customization
     gnome-tweaks
     dconf-editor
+
+    #Back-ups
+    deja-dup
   ];
 
   # New `nh` module-based configuration for clean-up

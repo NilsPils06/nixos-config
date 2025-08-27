@@ -1,13 +1,11 @@
 { config, pkgs, ... }:
 
 let
-  # The icon file needs to be made available in the Nix store.
   mars-mips-icon-file = pkgs.runCommand "mars-mips-icon-file" { } ''
     mkdir -p $out/
     cp ${./images/mars-mips.png} $out/mars-mips.png
   '';
   
-  # Define the FLAKE variable here.
   flake = "${config.home.homeDirectory}/.dotfiles";
 
 in
@@ -19,7 +17,7 @@ in
 
   # This value determines the Home Manager release that your configuration is
   # compatible with.
-  home.stateVersion = "25.05";
+  home.stateVersion = "25.05"; # Do not change unless you know what you are doing!
 
   # This is where we install all the necessary packages.
   # The `mars-mips` package is now included here.
@@ -30,36 +28,41 @@ in
 
     # Extensions
     pkgs.gnomeExtensions.alphabetical-app-grid
-	pkgs.gnomeExtensions.blur-my-shell
+    pkgs.gnomeExtensions.blur-my-shell
+    pkgs.gnomeExtensions.caffeine
     pkgs.gnomeExtensions.hot-edge
     pkgs.gnomeExtensions.maximize-to-empty-workspace
     pkgs.gnomeExtensions.user-themes
 
     pkgs.mars-mips
+    
+    # Add jq for parsing JSON
+    pkgs.jq
   ];
 
   # The correct way to enable the dconf service.
   dconf.enable = true;
-  dconf.settings = {
-    # The redundant gtk and icon theme settings have been removed,
-    # as the `gtk` module handles this.
-    
+  dconf.settings = {    
     # Configure enabled GNOME Shell extensions via their UUIDs.
-    # All three extensions are now correctly enabled.
     "org/gnome/shell" = {
       disable-user-extensions = false;
       enabled-extensions = [
         "AlphabeticalAppGrid@stuarthayhurst"
-		"blur-my-shell@aunetx"
+        "blur-my-shell@aunetx"
+        "caffeine@patapon.info"
         "hotedge@jonathan.jdoda.ca"
         "MaximizeToEmptyWorkspace-extension@kaisersite.de"
         "user-theme@gnome-shell-extensions.gcampax.github.com"
       ];
     };
-
-    # Set specific dconf settings for the Hot Edge extension.
+    
+	# Extensions settings
     "org/gnome/shell/extensions/hot-edge" = {
       enable-hot-edge = true;
+    };
+
+    "org/gnome/shell/extensions/blur-my-shell/panel" = {
+      override-background-dynamically = true;
     };
   };
 
@@ -101,7 +104,7 @@ in
     };
   };
 
-  # Your git configuration
+    # Your git configuration
   programs.git = {
     enable = true;
     userName = "Mathijs";
