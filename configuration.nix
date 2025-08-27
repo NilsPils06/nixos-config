@@ -112,7 +112,6 @@
     jetbrains.clion
     jetbrains.pycharm-professional
     logisim
-    mars-mips
     whatip
 
     #Media
@@ -133,12 +132,14 @@
     #Customization
     gnome-tweaks
     dconf-editor
+
     # Extensions
     gnomeExtensions.alphabetical-app-grid
     gnomeExtensions.blur-my-shell
    	gnomeExtensions.caffeine
     gnomeExtensions.hot-edge
     gnomeExtensions.maximize-to-empty-workspace
+	gnomeExtensions.rounded-window-corners-reborn
     gnomeExtensions.user-themes
 	
     #Back-ups

@@ -42,6 +42,7 @@ in
         "blur-my-shell@aunetx"
         "caffeine@patapon.info"
         "hotedge@jonathan.jdoda.ca"
+		"rounded-window-corners@fxgn"
         "MaximizeToEmptyWorkspace-extension@kaisersite.de"
         "user-theme@gnome-shell-extensions.gcampax.github.com"
       ];
