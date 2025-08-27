@@ -25,15 +25,6 @@ in
     # Themes
     pkgs.adw-gtk3
     pkgs.kora-icon-theme
-
-    # Extensions
-    pkgs.gnomeExtensions.alphabetical-app-grid
-    pkgs.gnomeExtensions.blur-my-shell
-    pkgs.gnomeExtensions.caffeine
-    pkgs.gnomeExtensions.hot-edge
-    pkgs.gnomeExtensions.maximize-to-empty-workspace
-    pkgs.gnomeExtensions.user-themes
-
     pkgs.mars-mips
     
     # Add jq for parsing JSON
@@ -54,6 +45,7 @@ in
         "MaximizeToEmptyWorkspace-extension@kaisersite.de"
         "user-theme@gnome-shell-extensions.gcampax.github.com"
       ];
+      disable-extension-version-validation = true;
     };
     
 	# Extensions settings
@@ -63,6 +55,10 @@ in
 
     "org/gnome/shell/extensions/blur-my-shell/panel" = {
       override-background-dynamically = true;
+    };
+
+    "/org/gnome/desktop/wm/preferences/" = {
+    	button-layout = "close,minimize,maximize:appmenu";
     };
   };
 

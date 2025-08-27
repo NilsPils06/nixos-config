@@ -133,7 +133,14 @@
     #Customization
     gnome-tweaks
     dconf-editor
-
+    # Extensions
+    gnomeExtensions.alphabetical-app-grid
+    gnomeExtensions.blur-my-shell
+   	gnomeExtensions.caffeine
+    gnomeExtensions.hot-edge
+    gnomeExtensions.maximize-to-empty-workspace
+    gnomeExtensions.user-themes
+	
     #Back-ups
     deja-dup
   ];
