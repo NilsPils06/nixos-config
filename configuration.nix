@@ -100,6 +100,7 @@
     nh
     trash-cli
     tldr
+	xdg-utils
     wget
 
     #Communication
@@ -112,6 +113,7 @@
     jetbrains.clion
     jetbrains.pycharm-professional
     logisim
+	mars-mips
     whatip
 
     #Media
@@ -126,6 +128,7 @@
 
     #Documents
     epsonscan2
+	evince
     libreoffice
     setzer
 
@@ -133,12 +136,17 @@
     gnome-tweaks
     dconf-editor
 
+	#Themes
+	adw-gtk3
+	kora-icon-theme
+	
     # Extensions
     gnomeExtensions.alphabetical-app-grid
     gnomeExtensions.blur-my-shell
    	gnomeExtensions.caffeine
     gnomeExtensions.hot-edge
     gnomeExtensions.maximize-to-empty-workspace
+	gnomeExtensions.open-desktop-file-location
 	gnomeExtensions.rounded-window-corners-reborn
     gnomeExtensions.user-themes
 	

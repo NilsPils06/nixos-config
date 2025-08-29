@@ -19,16 +19,8 @@ in
   # compatible with.
   home.stateVersion = "25.05"; # Do not change unless you know what you are doing!
 
-  # This is where we install all the necessary packages.
-  # The `mars-mips` package is now included here.
   home.packages = [
-    # Themes
-    pkgs.adw-gtk3
-    pkgs.kora-icon-theme
-    pkgs.mars-mips
-    
-    # Add jq for parsing JSON
-    pkgs.jq
+	#I prefer system-wide packages
   ];
 
   # The correct way to enable the dconf service.
@@ -44,6 +36,7 @@ in
         "hotedge@jonathan.jdoda.ca"
 		"rounded-window-corners@fxgn"
         "MaximizeToEmptyWorkspace-extension@kaisersite.de"
+        "open-desktop-location@laura.media"
         "user-theme@gnome-shell-extensions.gcampax.github.com"
       ];
       disable-extension-version-validation = true;
@@ -77,9 +70,7 @@ in
     };
   };
   
-  # The XDG desktop entry for your Mars MIPS application.
-  # The icon path now correctly points to the file in the Nix store.
-  xdg.desktopEntries."mars-mips" = {
+  xdg.desktopEntries."mars" = {
     name = "Mars MIPS";
     genericName = "MIPS Editor";
     exec = "mars-mips";
@@ -94,10 +85,8 @@ in
       ll = "ls -l";
       ".." = "cd ..";
       "switch-nix" = "nh os switch ${flake}";
-      "switch-home" = "nh home switch ${flake}";
+      "switch-home" = "nh home switch ${flake} && nh clean --home --keep-since 3d --keep 5";
       "flake-update" = "nix flake update --flake ${flake}";
-      "topgrade" = "nix flake update --flake ${flake} && nh os switch ${flake} && nh home switch ${flake} && nh clean --home --keep-since 7d --keep 3";
-      "switch-all" = "nh os switch ${flake} && nh home switch ${flake} && nh clean --home --keep-since 7d --keep 3";
     };
   };
 
