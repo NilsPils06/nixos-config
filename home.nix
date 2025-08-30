@@ -69,15 +69,22 @@ in
       package = pkgs.kora-icon-theme;
     };
   };
-  
-  xdg.desktopEntries."mars" = {
-    name = "Mars MIPS";
-    genericName = "MIPS Editor";
-    exec = "mars-mips";
-    type = "Application";
-    icon = "${mars-mips-icon-file}/mars-mips.png";
-  };
 
+  xdg = {
+	enable = true;
+	desktopEntries = {
+		"mars" = {
+		    name = "Mars MIPS";
+			categories = [ "Development" "IDE" ];
+			comment = "IDE for programming in MIPS assembly language intended for educational-level use";
+		    genericName = "MIPS Editor";
+		    exec = "Mars";
+		    type = "Application";
+		    icon = "${mars-mips-icon-file}/mars-mips.png";
+		};
+	};
+  };
+  
   # Your shell configuration
   programs.bash = {
     enable = true;
