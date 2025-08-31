@@ -86,6 +86,14 @@ in
 		    type = "Application";
 		    icon = "${mars-mips-icon-file}/mars-mips.png";
 		};
+		"vesktop" = {
+			name = "Vesktop";
+			comment = "A Discord client";
+			genericName = "Discord Client";
+			exec = "vesktop";
+			type = "Application";
+			icon = "discord";
+		};
 	};
   };
   
