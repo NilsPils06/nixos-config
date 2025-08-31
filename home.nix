@@ -27,6 +27,8 @@ in
   dconf.enable = true;
   dconf.settings = {    
     # Configure enabled GNOME Shell extensions via their UUIDs.
+    # Command: 
+    # cat $(nix eval --raw nixpkgs#gnomeExtensions.EXTENSION)/share/gnome-shell/extensions/*/metadata.json
     "org/gnome/shell" = {
       disable-user-extensions = false;
       enabled-extensions = [
@@ -38,6 +40,7 @@ in
         "MaximizeToEmptyWorkspace-extension@kaisersite.de"
         "open-desktop-location@laura.media"
         "user-theme@gnome-shell-extensions.gcampax.github.com"
+        "Vitals@CoreCoding.com"
       ];
       disable-extension-version-validation = true;
     };
@@ -50,7 +53,8 @@ in
     "org/gnome/shell/extensions/blur-my-shell/panel" = {
       override-background-dynamically = true;
     };
-
+    
+	# Change button layout
     "/org/gnome/desktop/wm/preferences/" = {
     	button-layout = "close,minimize,maximize:appmenu";
     };
@@ -91,7 +95,6 @@ in
     shellAliases = {
       ll = "ls -l";
       ".." = "cd ..";
-      "switch-nix" = "nh os switch ${flake}";
       "switch-home" = "nh home switch ${flake} && nh clean --home --keep-since 3d --keep 5";
       "flake-update" = "nix flake update --flake ${flake}";
     };

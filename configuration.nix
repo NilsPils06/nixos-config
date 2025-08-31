@@ -149,6 +149,7 @@
 	gnomeExtensions.open-desktop-file-location
 	gnomeExtensions.rounded-window-corners-reborn
     gnomeExtensions.user-themes
+	gnomeExtensions.vitals
 	
     #Back-ups
     deja-dup
