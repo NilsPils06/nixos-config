@@ -131,6 +131,7 @@
     #Customization
     gnome-tweaks
     dconf-editor
+    home-manager
 
 	#Themes
 	adw-gtk3

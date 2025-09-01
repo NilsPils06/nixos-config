@@ -60,7 +60,7 @@ in
     };
     
 	# Change button layout
-    "/org/gnome/desktop/wm/preferences/" = {
+    "org/gnome/desktop/wm/preferences" = {
     	button-layout = "close,minimize,maximize:appmenu";
     };
   };
