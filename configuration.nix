@@ -62,6 +62,7 @@
   	    alsa.support32Bit = true;
   	    pulse.enable = true;
   	};
+  	envfs.enable = true;
   };
   security.rtkit.enable = true;
 
@@ -149,6 +150,12 @@
     #Back-ups
     deja-dup
   ];
+
+  # Set nerd-fonts and ms-fonts
+  fonts.packages = with pkgs; [ 
+  	vista-fonts 
+  	corefonts
+   ] ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
 
   # `nh` module-based configuration for clean-up
   programs.nh = {
