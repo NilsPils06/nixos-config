@@ -106,10 +106,12 @@ in
   programs.bash = {
     enable = true;
     shellAliases = {
-      ll = "ls -l";
+      "ll" = "ls -l";
       ".." = "cd ..";
-      "switch-home" = "nh home switch ${flake} && nh clean --home --keep-since 3d --keep 5";
+      "switch-home" = "nh home switch ${flake} && nh clean user --keep-since 3d --keep 5";
       "flake-update" = "nix flake update --flake ${flake}";
+	  "switch-all" = "nh os switch ${flake} && nh home switch ${flake} && nh clean user --keep-since 3d --keep 5";
+	  "topgrade" = "nix flake update --flake ${flake} && nh os switch ${flake} && nh home switch ${flake} && nh clean user --keep-since 3d --keep 5";
     };
   };
 
