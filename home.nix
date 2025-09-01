@@ -53,6 +53,11 @@ in
     "org/gnome/shell/extensions/blur-my-shell/panel" = {
       override-background-dynamically = true;
     };
+
+    "org/gnome/shell/extensions/vitals" = {
+    	icon-style = 1; # GNOME-style icons
+    	position-in-panel = 2; # Right, left of system menu	
+    };
     
 	# Change button layout
     "/org/gnome/desktop/wm/preferences/" = {

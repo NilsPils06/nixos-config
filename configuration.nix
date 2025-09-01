@@ -42,36 +42,31 @@
     LC_TIME = "en_IE.UTF-8";
   };
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-
-  # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-
-
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "alt-intl";
+  services = {
+  	xserver ={
+  		enable = true;
+		# Enable GNOME
+  		displayManager.gdm.enable = true;
+  		desktopManager.gnome.enable = true;
+		# Set keyboard layout
+  		xkb = {
+  			layout = "us";
+  			variant = "alt-intl";
+  		};
+  	};
+  	printing.enable = true;
+  	pulseaudio.enable = false;
+  	pipewire = {
+  	    enable = true;
+  	    alsa.enable = true;
+  	    alsa.support32Bit = true;
+  	    pulse.enable = true;
+  	};
   };
+  security.rtkit.enable = true;
 
   # Configure console keymap
-  console.keyMap = "dvorak";
-
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
-
-  # Enable sound with pipewire.
-  services.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-  };
-
+  console.keyMap = "us";
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.mathijs = {
@@ -155,7 +150,7 @@
     deja-dup
   ];
 
-  # New `nh` module-based configuration for clean-up
+  # `nh` module-based configuration for clean-up
   programs.nh = {
     enable = true;
     clean.enable = true;
