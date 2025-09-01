@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ asus-numberpad-driver, inputs, config, pkgs, ... }:
 
 {
   imports =
@@ -63,6 +63,18 @@
   	    pulse.enable = true;
   	};
   	envfs.enable = true;
+  	asus-numberpad-driver = {
+  	    enable = true;
+  	    layout = "up5401ea";
+  	    wayland = true;
+  	    runtimeDir = "/run/user/1000/";
+  	    waylandDisplay = "wayland-0";
+  	    ignoreWaylandDisplayEnv = false;
+  	    config = {
+  	      # e.g. "activation_time" = "0.5";
+  	      # More Configuration Options
+  	    };
+  	};
   };
   security.rtkit.enable = true;
 
