@@ -102,6 +102,7 @@
   environment.systemPackages = with pkgs; [
     #Command Line tools (CLI)
 	bat
+	btop
     eza
     fastfetch
     git
