@@ -100,7 +100,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    #Command Line tools
+    #Command Line tools (CLI)
 	bat
     eza
     fastfetch
@@ -129,6 +129,7 @@
 
     #Media
     amberol
+    celluloid
     drawing
     gimp
     gramps
@@ -167,6 +168,14 @@
     #Back-ups
     deja-dup
   ];
+
+  # Disable some applications
+  environment.gnome.excludePackages = (with pkgs; [
+    geary # email reader
+    gnome-characters
+    gnome-tour
+    totem # video player
+  ]);
 
   # Set nerd-fonts and ms-fonts
   fonts.packages = with pkgs; [ 
