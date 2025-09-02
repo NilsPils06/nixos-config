@@ -11,10 +11,14 @@
 		asus-numberpad-driver = {
 			url = "github:asus-linux-drivers/asus-numberpad-driver";
 			inputs.nixpkgs.follows = "nixpkgs";
-		}; 
+		};
+		nix-index-database = {
+			url = "github:nix-community/nix-index-database";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
 	};
 
-	outputs = { self, nixpkgs, home-manager, asus-numberpad-driver, ... }:
+	outputs = { self, nixpkgs, home-manager, asus-numberpad-driver, nix-index-database, ... }:
 	let
 		lib = nixpkgs.lib;
 		system = "x86_64-linux";
@@ -26,6 +30,8 @@
 				modules = [
 					asus-numberpad-driver.nixosModules.default 
 					./configuration.nix
+					nix-index-database.nixosModules.nix-index
+				    { programs.nix-index-database.comma.enable = true; }
 				];
 			};
 		};

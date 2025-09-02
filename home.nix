@@ -108,7 +108,10 @@ in
   programs.bash = {
     enable = true;
     shellAliases = {
-      "ll" = "ls -l";
+      "z" = "zoxide";
+      "cat" = "bat";
+      "ls" = "eza";
+      "ll" = "eza -l";
       ".." = "cd ..";
       "switch-home" = "nh home switch ${flake} && nh clean user --keep-since 3d --keep 5";
       "flake-update" = "nix flake update --flake ${flake}";

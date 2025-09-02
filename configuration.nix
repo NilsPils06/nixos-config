@@ -101,6 +101,8 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     #Command Line tools
+	bat
+    eza
     fastfetch
     git
     libdvdcss
@@ -110,6 +112,7 @@
     tldr
 	xdg-utils
     wget
+    zoxide
 
     #Communication
     fractal
