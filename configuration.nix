@@ -151,6 +151,7 @@
 	
     # Extensions
     gnomeExtensions.alphabetical-app-grid
+	gnomeExtensions.appindicator
     gnomeExtensions.blur-my-shell
    	gnomeExtensions.caffeine
     gnomeExtensions.hot-edge

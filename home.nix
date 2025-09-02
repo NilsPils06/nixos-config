@@ -33,6 +33,7 @@ in
       disable-user-extensions = false;
       enabled-extensions = [
         "AlphabeticalAppGrid@stuarthayhurst"
+		"appindicatorsupport@rgcjonas.gmail.com"
         "blur-my-shell@aunetx"
         "caffeine@patapon.info"
         "hotedge@jonathan.jdoda.ca"
@@ -78,6 +79,7 @@ in
       package = pkgs.kora-icon-theme;
     };
   };
+  programs.gnome-shell.theme.name = "Adwaita";
 
   xdg = {
 	enable = true;
