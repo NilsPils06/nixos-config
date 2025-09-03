@@ -100,7 +100,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    #Command Line tools (CLI)
+    # Command Line tools (CLI)
 	bat
 	btop
     eza
@@ -116,12 +116,12 @@
     wget
     zoxide
 
-    #Communication
+    # Communication
     fractal
     signal-desktop
     vesktop
 
-    #Development
+    # Development
     devtoolbox
     jetbrains.clion
     jetbrains.pycharm-professional
@@ -129,7 +129,7 @@
 	mars-mips
     whatip
 
-    #Media
+    # Media
     amberol
     celluloid
     drawing
@@ -138,20 +138,23 @@
     handbrake
     impression
     makemkv
+    musescore
+    muse-sounds-manager
+    parabolic
     pitivi
 
-    #Documents
+    # Documents
     epsonscan2
 	evince
     libreoffice
     setzer
 
-    #Customization
+    # Customization
     gnome-tweaks
     dconf-editor
     home-manager
 
-	#Themes
+	# Themes
 	adw-gtk3
 	kora-icon-theme
 	
@@ -167,8 +170,11 @@
     gnomeExtensions.user-themes
 	gnomeExtensions.vitals
 	
-    #Back-ups
+    # Back-ups
     deja-dup
+
+    # Drivers
+    epson-escpr
   ];
 
   # Disable some applications
@@ -178,6 +184,7 @@
     gnome-console
     gnome-tour
     totem # video player
+    yelp
   ]);
   services.xserver.excludePackages = with pkgs; [
     xterm
