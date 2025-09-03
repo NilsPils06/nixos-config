@@ -179,6 +179,9 @@
     gnome-tour
     totem # video player
   ]);
+  services.xserver.excludePackages = with pkgs; [
+    xterm
+  ];
 
   # Set nerd-fonts and ms-fonts
   fonts.packages = with pkgs; [ 
@@ -194,9 +197,9 @@
     clean.extraArgs = "--keep-since 7d --keep 3";
     flake = "/home/mathijs/.dotfiles"; 
   };
-
-   boot = {
-
+  
+  # Enable plymouth
+  boot = {
     plymouth = {
       enable = true;
       theme = "rings";
@@ -207,7 +210,6 @@
         })
       ];
     };
-
     # Enable "Silent boot"
     consoleLogLevel = 3;
     initrd.verbose = false;
@@ -222,7 +224,6 @@
     # It's still possible to open the bootloader list by pressing any key
     # It will just not appear on screen unless a key is pressed
     loader.timeout = 0;
-
   };
   
   # Do not change me unless you know what you are doing!! Check documentation first!!
