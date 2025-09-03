@@ -7,7 +7,6 @@ let
   '';
   
   flake = "${config.home.homeDirectory}/.dotfiles";
-
 in
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -87,7 +86,7 @@ in
       package = pkgs.kora-icon-theme;
     };
   };
-  programs.gnome-shell.theme.name = "Adwaita";
+  # programs.gnome-shell.theme.name = "Adwaita";
 
   xdg = {
 	enable = true;
@@ -124,6 +123,13 @@ in
 		      };
 		    };
 		};
+		"muse-sounds-manager" = {
+			name = "Muse Sounds Manager";
+			icon = "enjoy-music-player";
+			comment = "Manage Muse sound themes";
+			exec = "muse-sounds-manager";
+			categories = [ "Audio" ];
+		};
 	};
   };
   
@@ -153,6 +159,7 @@ in
     };
   };
 
+  # Ghostty terminal configuration
   programs.ghostty = {
   	enable = true;
   	enableBashIntegration = true;
@@ -160,6 +167,11 @@ in
   	settings = {
   	  theme = "Darkside";
   	};
+  };
+
+  programs.zoxide = {
+  	enable = true;
+  	enableBashIntegration = true;
   };
   
   # Let Home Manager install and manage itself.
