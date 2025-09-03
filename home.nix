@@ -64,6 +64,14 @@ in
     "org/gnome/desktop/wm/preferences" = {
     	button-layout = "close,minimize,maximize:appmenu";
     };
+
+    # Privacy settings
+    "org/gnome/desktop/privacy" = {
+    	recent-files-max-age = 30;
+    	old-files-age = 30;
+    	remove-old-temp-files = true;
+    	remove-old-trash-files = true;
+    };
   };
 
   # The `gtk` module manages GTK themes and icons for your user environment
@@ -101,10 +109,25 @@ in
 			type = "Application";
 			icon = "discord";
 		};
+		"com.mitchellh.ghostty" = {
+		    name = "Ghostty";
+		    comment = "A terminal emulator";
+		    exec = "ghostty";
+		    icon = "terminal";
+		    categories = [ "System" "TerminalEmulator" ];
+		    startupNotify = true;
+		    terminal = false;
+		    actions = {
+		      new-window = {
+		        name = "New Window";
+		        exec = "ghostty";
+		      };
+		    };
+		};
 	};
   };
   
-  # Your shell configuration
+  # Shell configuration
   programs.bash = {
     enable = true;
     shellAliases = {
@@ -120,7 +143,7 @@ in
     };
   };
 
-    # Your git configuration
+  # Git configuration
   programs.git = {
     enable = true;
     userName = "Mathijs";
@@ -128,6 +151,15 @@ in
     extraConfig = {
       init.defaultBranch = "main";
     };
+  };
+
+  programs.ghostty = {
+  	enable = true;
+  	enableBashIntegration = true;
+  	installBatSyntax = true;
+  	settings = {
+  	  theme = "Darkside";
+  	};
   };
   
   # Let Home Manager install and manage itself.

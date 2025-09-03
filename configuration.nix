@@ -105,6 +105,7 @@
 	btop
     eza
     fastfetch
+    ghostty
     git
     libdvdcss
     micro-with-wl-clipboard
@@ -174,6 +175,7 @@
   environment.gnome.excludePackages = (with pkgs; [
     geary # email reader
     gnome-characters
+    gnome-console
     gnome-tour
     totem # video player
   ]);
@@ -191,6 +193,36 @@
     # Clean up old generations by keeping the last 7 days and at least 3 generations.
     clean.extraArgs = "--keep-since 7d --keep 3";
     flake = "/home/mathijs/.dotfiles"; 
+  };
+
+   boot = {
+
+    plymouth = {
+      enable = true;
+      theme = "rings";
+      themePackages = with pkgs; [
+        # By default we would install all themes
+        (adi1090x-plymouth-themes.override {
+          selected_themes = [ "rings" ];
+        })
+      ];
+    };
+
+    # Enable "Silent boot"
+    consoleLogLevel = 3;
+    initrd.verbose = false;
+    kernelParams = [
+      "quiet"
+      "splash"
+      "boot.shell_on_fail"
+      "udev.log_priority=3"
+      "rd.systemd.show_status=auto"
+    ];
+    # Hide the OS choice for bootloaders.
+    # It's still possible to open the bootloader list by pressing any key
+    # It will just not appear on screen unless a key is pressed
+    loader.timeout = 0;
+
   };
   
   # Do not change me unless you know what you are doing!! Check documentation first!!
