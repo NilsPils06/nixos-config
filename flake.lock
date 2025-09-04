@@ -41,6 +41,22 @@
         "type": "github"
       }
     },
+    "my-bash-scripts": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1748440533,
+        "narHash": "sha256-Ap0cCsEYMH9UNkjvxdTghiyCUT29TuC22VKCNUqRjak=",
+        "owner": "CouldBeMathijs",
+        "repo": "bash-scripts",
+        "rev": "042f33e87c1d45a2703028979938f1c4ff4d2f68",
+        "type": "github"
+      },
+      "original": {
+        "owner": "CouldBeMathijs",
+        "repo": "bash-scripts",
+        "type": "github"
+      }
+    },
     "nix-index-database": {
       "inputs": {
         "nixpkgs": [
@@ -80,6 +96,7 @@
       "inputs": {
         "asus-numberpad-driver": "asus-numberpad-driver",
         "home-manager": "home-manager",
+        "my-bash-scripts": "my-bash-scripts",
         "nix-index-database": "nix-index-database",
         "nixpkgs": "nixpkgs"
       }
