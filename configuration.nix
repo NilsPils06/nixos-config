@@ -123,7 +123,9 @@
     trash-cli
     tldr
 	xdg-utils
+	unzip
     wget
+    zip
     zoxide
 
     # Communication
