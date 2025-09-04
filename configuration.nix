@@ -42,6 +42,13 @@
     LC_TIME = "en_IE.UTF-8";
   };
 
+  # Automatic printers over LAN
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+    openFirewall = true;
+  };
+  
   services = {
   	xserver ={
   		enable = true;
