@@ -61,7 +61,10 @@
   			variant = "alt-intl";
   		};
   	};
-  	printing.enable = true;
+  	printing = {
+  		enable = true;
+  		drivers = [ pkgs.epson-escpr ];	
+  	};
   	pulseaudio.enable = false;
   	pipewire = {
   	    enable = true;
@@ -152,8 +155,8 @@
 
     # Documents
     epsonscan2
-	evince
     libreoffice
+    papers
     setzer
     texliveMedium
 
@@ -180,13 +183,11 @@
 	
     # Back-ups
     deja-dup
-
-    # Drivers
-    epson-escpr
   ];
 
   # Disable some applications
   environment.gnome.excludePackages = (with pkgs; [
+	evince
     geary # email reader
     gnome-characters
     gnome-console
