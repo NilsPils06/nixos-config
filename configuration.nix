@@ -121,10 +121,12 @@
     micro-with-wl-clipboard
     nh
     trash-cli
+    tree
     tldr
 	xdg-utils
 	unzip
     wget
+    wl-clipboard
     zip
     zoxide
 
@@ -193,6 +195,7 @@
     geary # email reader
     gnome-characters
     gnome-console
+    gnome-music
     gnome-tour
     totem # video player
     yelp
