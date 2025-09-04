@@ -91,6 +91,10 @@ in
   xdg = {
 	enable = true;
 	desktopEntries = {
+		"cups" = {
+			name = "Cups Printer Manager";
+			noDisplay = true;
+		};
 		"mars" = {
 		    name = "Mars MIPS";
 			categories = [ "Development" "IDE" ];
@@ -110,6 +114,7 @@ in
 		};
 		"com.mitchellh.ghostty" = {
 		    name = "Ghostty";
+		    genericName = "Terminal Emulator";
 		    comment = "A terminal emulator";
 		    exec = "ghostty";
 		    icon = "terminal";

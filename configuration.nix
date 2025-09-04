@@ -161,6 +161,7 @@
     epsonscan2
     libreoffice
     papers
+    pdfarranger
     setzer
     texliveMedium
 
