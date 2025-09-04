@@ -148,6 +148,7 @@
 	evince
     libreoffice
     setzer
+    texliveMedium
 
     # Customization
     gnome-tweaks
