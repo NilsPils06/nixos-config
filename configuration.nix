@@ -63,7 +63,7 @@
   	};
   	printing = {
   		enable = true;
-  		drivers = [ pkgs.epson-escpr ];	
+  		drivers = [ pkgs.epson-escpr pkgs.epson-escpr2 ];
   	};
   	pulseaudio.enable = false;
   	pipewire = {
