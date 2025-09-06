@@ -86,7 +86,7 @@ in
       package = pkgs.kora-icon-theme;
     };
   };
-  # programs.gnome-shell.theme.name = "Adwaita";
+  programs.gnome-shell.theme.name = "Adwaita";
 
   xdg = {
 	enable = true;

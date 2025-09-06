@@ -136,11 +136,17 @@
     vesktop
 
     # Development
+	bottles
+	cmake
     devtoolbox
     jetbrains.clion
     jetbrains.pycharm-professional
+	gcc
     logisim
 	mars-mips
+	ninja
+	python314
+	valgrind
     whatip
 
     # Media
