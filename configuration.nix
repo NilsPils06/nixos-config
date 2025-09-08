@@ -225,6 +225,15 @@
     clean.extraArgs = "--keep-since 7d --keep 3";
     flake = "/home/mathijs/.dotfiles"; 
   };
+
+  xdg.portal = {
+      enable = true;
+      wlr.enable = true;
+      extraPortals = with pkgs; [
+        xdg-desktop-portal
+        xdg-desktop-portal-gtk
+      ];
+    };
   
   # Enable plymouth
   boot = {

@@ -78,13 +78,15 @@ in
   gtk = {
     enable = true;
     theme = {
-      name = "Adw-gtk3-dark";
+      name = "adw-gtk3-dark";
       package = pkgs.adw-gtk3;
     };
     iconTheme = {
       name = "kora";
       package = pkgs.kora-icon-theme;
     };
+    gtk3.extraConfig.gtk-application-prefer-dark-theme = 1;
+    gtk4.extraConfig.gtk-application-prefer-dark-theme = 1;
   };
   programs.gnome-shell.theme.name = "Adwaita";
 
@@ -94,7 +96,16 @@ in
 		enable = true;
 		entries = [ "${config.home.homeDirectory}/.nix-profile/share/applications/vesktop.desktop" ];
 	};
+	configFile = {
+	  #"gtk-4.0/assets".source = "${config.gtk.theme.package}/share/themes/${config.gtk.theme.name}/gtk-4.0/assets";
+	  "gtk-4.0/gtk.css".source = "${config.gtk.theme.package}/share/themes/${config.gtk.theme.name}/gtk-4.0/gtk.css";
+	  "gtk-4.0/gtk-dark.css".source = "${config.gtk.theme.package}/share/themes/${config.gtk.theme.name}/gtk-4.0/gtk-dark.css";
+	};
 	desktopEntries = {
+		"btop" = {
+			name = "btop++";
+			noDisplay = true;
+		};
 		"cups" = {
 			name = "Cups Printer Manager";
 			noDisplay = true;
@@ -154,7 +165,7 @@ in
       "switch-home" = "nh home switch ${flake} && nh clean user --keep-since 3d --keep 5";
       "flake-update" = "nix flake update --flake ${flake}";
 	  "switch-all" = "nh os switch ${flake} && nh home switch ${flake} && nh clean user --keep-since 3d --keep 5";
-	  "topgrade" = "nix flake update --flake ${flake} && nh os switch ${flake} && nh home switch ${flake} && nh clean user --keep-since 3d --keep 5";
+	  # "topgrade" = "nix flake update --flake ${flake} && nh os switch ${flake} && nh home switch ${flake} && nh clean user --keep-since 3d --keep 5";
     };
   };
 
