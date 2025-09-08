@@ -42,14 +42,12 @@
     LC_TIME = "en_IE.UTF-8";
   };
 
-  # Automatic printers over LAN
-  services.avahi = {
-    enable = true;
-    nssmdns4 = true;
-    openFirewall = true;
-  };
-  
   services = {
+	avahi = {
+	    enable = true;
+	    nssmdns4 = true;
+	    openFirewall = true;
+	};
   	xserver ={
   		enable = true;
 		# Enable GNOME
@@ -63,7 +61,7 @@
   	};
   	printing = {
   		enable = true;
-  		drivers = [ pkgs.epson-escpr pkgs.epson-escpr2 ];
+  		drivers = [ pkgs.epson-escpr pkgs.epson-escpr2 pkgs.epson_201207w ];
   	};
   	pulseaudio.enable = false;
   	pipewire = {
@@ -85,8 +83,18 @@
   	      # More Configuration Options
   	    };
   	};
+  	fwupd.enable = true;
   };
   security.rtkit.enable = true;
+
+  # Extra printer stuff
+  hardware.sane = {
+  	enable = true;
+  	extraBackends = [ pkgs.utsushi pkgs.sane-airscan ];
+  	disabledDefaultBackends = [ "escl" ];
+  };
+  services.udev.packages = [ pkgs.utsushi pkgs.sane-airscan ];
+
 
   # Configure console keymap
   console.keyMap = "us";
