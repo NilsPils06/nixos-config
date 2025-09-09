@@ -162,7 +162,7 @@
     celluloid
     drawing
     gimp
-    gramps
+    # gramps
     handbrake
     impression
     makemkv
