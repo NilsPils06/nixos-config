@@ -19,6 +19,10 @@
       url = "github:CouldBeMathijs/bash-scripts";
       flake = false;
     };
+    nixvim = {
+      url = "github:nix-community/nixvim/nixos-25.05";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { self, nixpkgs, home-manager, asus-numberpad-driver, nix-index-database, my-bash-scripts, ... }:

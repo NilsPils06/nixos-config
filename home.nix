@@ -42,7 +42,6 @@ in
   }))
 ];
 
-  # The correct way to enable the dconf service.
   dconf.enable = true;
   dconf.settings = {    
     # Configure enabled GNOME Shell extensions via their UUIDs.
