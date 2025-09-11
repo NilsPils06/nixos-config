@@ -42,6 +42,8 @@
     LC_TIME = "en_IE.UTF-8";
   };
 
+  i18n.extraLocales = [ "en_GB.UTF-8/UTF-8" "nl_BE.UTF-8/UTF-8" ];
+
   services = {
 	avahi = {
 	    enable = true;
