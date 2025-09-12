@@ -125,6 +125,7 @@
 	btop
     eza
     fastfetch
+    file
     ghostty
     git
     libdvdcss
@@ -164,7 +165,6 @@
     celluloid
     drawing
     gimp
-    # gramps
     handbrake
     impression
     makemkv
@@ -175,6 +175,7 @@
 
     # Documents
     epsonscan2
+    # gramps
     libreoffice
     papers
     pdfarranger
