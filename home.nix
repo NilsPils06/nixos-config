@@ -175,9 +175,11 @@ in
   # Shell configuration
   programs.bash = {
     enable = true;
+    initExtra = "fastfetch";
     shellAliases = {
       "z" = "zoxide";
       "cat" = "bat";
+      "clear" = "clear; fastfetch";
       "ls" = "eza";
       "ll" = "eza -l";
       ".." = "cd ..";

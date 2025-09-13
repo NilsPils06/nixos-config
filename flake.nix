@@ -19,55 +19,74 @@
       url = "github:CouldBeMathijs/bash-scripts";
       flake = false;
     };
-    nixvim = {
-      url = "github:nix-community/nixvim/nixos-25.05";
+    nvf = {
+      url = "github:NotAShelf/nvf";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, asus-numberpad-driver, nix-index-database, my-bash-scripts, ... }:
-    let
-      lib = nixpkgs.lib;
-      system = "x86_64-linux";
-      pkgs = import nixpkgs {
-        inherit system;
-        config.allowUnfree = true;
-      };
-      my-bash-scripts-pkg = pkgs.stdenv.mkDerivation {
-        pname = "my-bash-scripts";
-        version = "1.0.0";
-        src = my-bash-scripts;
-        installPhase = ''
-          mkdir -p $out/bin
-        
-          for script in $src/*.sh; do
-            base_name=$(basename "$script" .sh)
-            cp "$script" "$out/bin/$base_name"
-            chmod +x "$out/bin/$base_name"
-          done
-        '';
-      };
-    in {
-      nixosConfigurations = {
-        athena = lib.nixosSystem {
-          inherit system;
-          modules = [
-            asus-numberpad-driver.nixosModules.default
-            ./configuration.nix
-            nix-index-database.nixosModules.nix-index
-            { programs.nix-index-database.comma.enable = true; }
-          ];
-        };
-      };
+  outputs = {
+    self,
+    nixpkgs,
+    home-manager,
+    asus-numberpad-driver,
+    nix-index-database,
+    my-bash-scripts,
+    nvf,
+    ...
+  }:
+  let
+    lib = nixpkgs.lib;
+    system = "x86_64-linux";
+    pkgs = import nixpkgs {
+      inherit system;
+      config.allowUnfree = true;
+    };
+    my-bash-scripts-pkg = pkgs.stdenv.mkDerivation {
+      pname = "my-bash-scripts";
+      version = "1.0.0";
+      src = my-bash-scripts;
+      installPhase = ''
+        mkdir -p $out/bin
+      
+        for script in $src/*.sh; do
+          base_name=$(basename "$script" .sh)
+          cp "$script" "$out/bin/$base_name"
+          chmod +x "$out/bin/$base_name"
+        done
+      '';
+    };
+    my-neovim-pkg = (nvf.lib.neovimConfiguration {
+      pkgs = nixpkgs.legacyPackages."${system}";
+      modules = [ ./nvf-configuration.nix ];
+    }).neovim;
+  in {
+    # Define a default app so `nix run` works correctly
+    defaultApp."${system}" = {
+      type = "app";
+      program = "${my-neovim-pkg}/bin/nvim";
+    };
 
-      homeConfigurations = {
-        mathijs = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-          modules = [
-            ./home.nix
-            { home.packages = [ my-bash-scripts-pkg ]; }
-          ];
-        };
+    nixosConfigurations = {
+      athena = lib.nixosSystem {
+        inherit system;
+        modules = [
+          ./configuration.nix
+          asus-numberpad-driver.nixosModules.default
+          nix-index-database.nixosModules.nix-index
+          { programs.nix-index-database.comma.enable = true; }
+        ];
       };
     };
+
+    homeConfigurations = {
+      mathijs = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        modules = [
+          ./home.nix
+          { home.packages = [ my-bash-scripts-pkg my-neovim-pkg ]; }
+        ];
+      };
+    };
+  };
 }
