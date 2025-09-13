@@ -156,7 +156,7 @@
     logisim
 	mars-mips
 	ninja
-	python314
+	python313
 	valgrind
     whatip
 
