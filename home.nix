@@ -238,7 +238,7 @@ in
                                 }
                                 {
                                         type = "os";
-                                        key = "  ";
+                                        key = "  ";
                                 }
                                 {
                                         type = "kernel";
