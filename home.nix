@@ -90,6 +90,11 @@ in
                         remove-old-temp-files = true;
                         remove-old-trash-files = true;
                 };
+                "org/gnome/desktop/interface" = {
+                        document-font-name = "JetBrainsMono Nerd Font 11";
+                        font-name = "JetBrainsMono Nerd Font 11";
+                        monospace-font-name = "JetBrainsMono Nerd Font 11";
+                };
         };
 
         # The `gtk` module manages GTK themes and icons for your user environment
