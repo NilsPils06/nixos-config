@@ -96,11 +96,11 @@
     "my-bash-scripts": {
       "flake": false,
       "locked": {
-        "lastModified": 1757007003,
-        "narHash": "sha256-83Upn8cmyBlH/qeC7Y2xPtW6lZS+Op5kBeE20Z2n2js=",
+        "lastModified": 1757853632,
+        "narHash": "sha256-WiIW5LSIr61Q/QqpIJKb0w83L6q1FmBbtSv9uxXZuYs=",
         "owner": "CouldBeMathijs",
         "repo": "bash-scripts",
-        "rev": "87f231a60987065605f7e31602fdfe336957ecf6",
+        "rev": "92325d5b546b5e45c1f887cf9b91c370c0d2ea14",
         "type": "github"
       },
       "original": {
@@ -131,11 +131,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1757545623,
-        "narHash": "sha256-mCxPABZ6jRjUQx3bPP4vjA68ETbPLNz9V2pk9tO7pRQ=",
+        "lastModified": 1757810152,
+        "narHash": "sha256-Vp9K5ol6h0J90jG7Rm4RWZsCB3x7v5VPx588TQ1dkfs=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "8cd5ce828d5d1d16feff37340171a98fc3bf6526",
+        "rev": "9a094440e02a699be5c57453a092a8baf569bdad",
         "type": "github"
       },
       "original": {
