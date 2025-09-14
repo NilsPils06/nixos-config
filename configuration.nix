@@ -142,7 +142,6 @@
                 vesktop
 
                 # Development
-                bottles
                 cmake
                 devtoolbox
                 jetbrains.clion
