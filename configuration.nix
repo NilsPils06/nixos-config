@@ -121,6 +121,7 @@
                 fastfetch
                 file
                 ghostty
+                gh
                 git
                 libdvdcss
                 micro-with-wl-clipboard
