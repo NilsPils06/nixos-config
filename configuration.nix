@@ -135,19 +135,19 @@
                 # Development
                 cmake
                 devtoolbox
-                jetbrains.clion
-                jetbrains.pycharm-professional
+                pkgs-unstable.jetbrains.clion
+                pkgs-unstable.jetbrains.pycharm-professional
+                whatip
                 gcc
                 logisim
                 mars-mips
                 ninja
                 python313
                 valgrind
-                whatip
 
                 # Media
                 amberol
-                celluloid
+                clapper
                 gimp
                 handbrake
                 impression
@@ -191,15 +191,18 @@
         ];
         # Disable some applications
         environment.gnome.excludePackages = (with pkgs; [
-                decibels
-                evince
-                geary # email reader
-                gnome-characters
-                gnome-console
-                gnome-music
-                gnome-tour
-                totem # video player
-                yelp
+                decibels # Default audio player
+                evince # Default deprecated document viewer (superceded by papers)
+                epiphany # Default web browser
+                geary # Default mail client
+                gnome-characters # Unicode character list
+                gnome-connections # Remote desktop client
+                gnome-console # Default terminal client
+                gnome-music # Default music player
+                gnome-tour # System tour
+                nixos-render-docs # Nixos docs
+                totem # Default deprecated video player
+                yelp # Gnome help and docs
         ]);
         services.xserver.excludePackages = with pkgs; [
                 xterm
