@@ -3,6 +3,7 @@
 
         inputs = {
                 nixpkgs.url = "nixpkgs/nixos-25.05";
+                nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
                 home-manager = {
                         url = "github:nix-community/home-manager/release-25.05";
                         inputs.nixpkgs.follows = "nixpkgs";
@@ -28,6 +29,7 @@
         outputs = {
                 self,
                 nixpkgs,
+                nixpkgs-unstable,
                 home-manager,
                 asus-numberpad-driver,
                 nix-index-database,
@@ -42,6 +44,7 @@
                                 inherit system;
                                 config.allowUnfree = true;
                         };
+                        pkgs-unstable = nixpkgs-unstable.legacyPackages.${system};
                         my-bash-scripts-pkg = pkgs.stdenv.mkDerivation {
                                 pname = "my-bash-scripts";
                                 version = "1.0.0";
@@ -76,6 +79,9 @@
                                                 nix-index-database.nixosModules.nix-index
                                                 { programs.nix-index-database.comma.enable = true; }
                                         ];
+                                        specialArgs = {
+                                                inherit pkgs-unstable;
+                                        };
                                 };
                         };
 
