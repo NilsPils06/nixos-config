@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, pkgs-unstable, ... }:
 
 let
         mars-mips-icon-file = pkgs.runCommand "mars-mips-icon-file" { } ''
@@ -102,13 +102,13 @@ in
                 enable = true;
                 theme = {
                         name = "Gruvbox-Dark";
-                        package = pkgs.gruvbox-gtk-theme.override {
+                        package = pkgs-unstable.gruvbox-gtk-theme.override {
                                 tweakVariants = [ "macos" "medium" ];
                         };
                 };
                 iconTheme = {
                         name = "Gruvbox-Plus-Dark";
-                        package = pkgs.gruvbox-plus-icons;
+                        package = pkgs-unstable.gruvbox-plus-icons;
                 };
                 gtk3.extraConfig.gtk-application-prefer-dark-theme = 1;
                 gtk4.extraConfig.gtk-application-prefer-dark-theme = 1;

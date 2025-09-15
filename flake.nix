@@ -92,6 +92,9 @@
                                                 ./home.nix
                                                 { home.packages = [ my-bash-scripts-pkg my-neovim-pkg ]; }
                                         ];
+                                        extraSpecialArgs = {
+                                                inherit pkgs-unstable;
+                                        };
                                 };
                         };
                 };
