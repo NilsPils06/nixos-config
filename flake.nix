@@ -44,7 +44,10 @@
                                 inherit system;
                                 config.allowUnfree = true;
                         };
-                        pkgs-unstable = nixpkgs-unstable.legacyPackages.${system};
+                        pkgs-unstable = import nixpkgs-unstable {
+                                inherit system;
+                                config.allowUnfree = true;
+                        };
                         my-bash-scripts-pkg = pkgs.stdenv.mkDerivation {
                                 pname = "my-bash-scripts";
                                 version = "1.0.0";
