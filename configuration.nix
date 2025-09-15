@@ -242,6 +242,7 @@
 
         # Enable plymouth
         boot = {
+                kernelPackages = pkgs.linuxPackages_zen;
                 plymouth = {
                         enable = true;
                         theme = "rings";
