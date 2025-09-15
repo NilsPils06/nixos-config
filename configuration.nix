@@ -4,20 +4,7 @@
 
 { pkgs, pkgs-unstable, ... }:
 
-let 
-        #gruvbox-gtk-edited = pkgs-unstable.gruvbox-gtk-theme.override {
-        #        tweakVariants = [ "macos" "float" ];
-        #};
-in 
 {
-        # imports =
-        #        [ # Include the results of the hardware scan.map
-        #                ./hardware-configuration # and in the NixOS manual (accessible by running ‘nixos-help’).map
-        #        ];
-        # Bootloader
-        boot.loader.systemd-boot.enable = true;
-        boot.loader.efi.canTouchEfiVariables = true;
-
         networking.hostName = "athena"; # Define your hostname
         # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -128,7 +115,7 @@ in
                 gh
                 git
                 libdvdcss
-                micro-with-wl-clipboard
+                # micro-with-wl-clipboard
                 nh
                 trash-cli
                 tree
@@ -171,7 +158,6 @@ in
                 pitivi
 
                 # Documents
-                epsonscan2
                 # gramps
                 libreoffice
                 papers
@@ -202,10 +188,10 @@ in
 
                 # Back-ups
                 deja-dup
-        ]; # ++ [gruvbox-gtk-edited pkgs-unstable.gruvbox-plus-icons];
-
+        ];
         # Disable some applications
         environment.gnome.excludePackages = (with pkgs; [
+                decibels
                 evince
                 geary # email reader
                 gnome-characters
@@ -245,6 +231,7 @@ in
 
         # Enable plymouth
         boot = {
+                
                 kernelPackages = pkgs.linuxPackages_zen;
                 plymouth = {
                         enable = true;
@@ -269,7 +256,12 @@ in
                 # Hide the OS choice for bootloaders.
                 # It's still possible to open the bootloader list by pressing any key
                 # It will just not appear on screen unless a key is pressed
-                loader.timeout = 0;
+                loader = {
+                        systemd-boot.enable = true;
+                        efi.canTouchEfiVariables = true; 
+                        timeout = 0;
+                };
+
         };
 
         # Do not change me unless you know what you are doing!! Check documentation first!!
