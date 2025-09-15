@@ -2,8 +2,13 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ asus-numberpad-driver, inputs, config, pkgs, ... }:
+{ pkgs, pkgs-unstable, ... }:
 
+let 
+        #gruvbox-gtk-edited = pkgs-unstable.gruvbox-gtk-theme.override {
+        #        tweakVariants = [ "macos" "float" ];
+        #};
+in 
 {
         # imports =
         #        [ # Include the results of the hardware scan.map
@@ -102,7 +107,6 @@
                 isNormalUser = true;
                 description = "Mathijs Pittoors";
                 extraGroups = [ "networkmanager" "wheel" ];
-                packages = with pkgs; [];
         };
 
         # Install firefox.
@@ -157,7 +161,6 @@
                 # Media
                 amberol
                 celluloid
-                drawing
                 gimp
                 handbrake
                 impression
@@ -199,7 +202,7 @@
 
                 # Back-ups
                 deja-dup
-        ];
+        ]; # ++ [gruvbox-gtk-edited pkgs-unstable.gruvbox-plus-icons];
 
         # Disable some applications
         environment.gnome.excludePackages = (with pkgs; [

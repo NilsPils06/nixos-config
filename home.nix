@@ -52,7 +52,6 @@ in
                         enabled-extensions = [
                                 "AlphabeticalAppGrid@stuarthayhurst"
                                 "appindicatorsupport@rgcjonas.gmail.com"
-                                "blur-my-shell@aunetx"
                                 "caffeine@patapon.info"
                                 "hotedge@jonathan.jdoda.ca"
                                 "rounded-window-corners@fxgn"
@@ -69,9 +68,9 @@ in
                         enable-hot-edge = true;
                 };
 
-                "org/gnome/shell/extensions/blur-my-shell/panel" = {
-                        override-background-dynamically = true;
-                };
+                # "org/gnome/shell/extensions/blur-my-shell/panel" = {
+                        # override-background-dynamically = true;
+                # };
 
                 "org/gnome/shell/extensions/vitals" = {
                         icon-style = 1; # GNOME-style icons
@@ -102,17 +101,19 @@ in
         gtk = {
                 enable = true;
                 theme = {
-                        name = "adw-gtk3-dark";
-                        package = pkgs.adw-gtk3;
+                        name = "Gruvbox-Dark";
+                        package = pkgs.gruvbox-gtk-theme.override {
+                                tweakVariants = [ "macos" "medium" ];
+                        };
                 };
                 iconTheme = {
-                        name = "kora";
-                        package = pkgs.kora-icon-theme;
+                        name = "Gruvbox-Plus-Dark";
+                        package = pkgs.gruvbox-plus-icons;
                 };
                 gtk3.extraConfig.gtk-application-prefer-dark-theme = 1;
                 gtk4.extraConfig.gtk-application-prefer-dark-theme = 1;
         };
-        programs.gnome-shell.theme.name = "Adwaita";
+        programs.gnome-shell.theme.name = "Gruvbox-Dark";
 
         xdg = {
                 enable = true;
@@ -121,7 +122,7 @@ in
                         entries = [ "${config.home.homeDirectory}/.nix-profile/share/applications/vesktop.desktop" ];
                 };
                 configFile = {
-                        #"gtk-4.0/assets".source = "${config.gtk.theme.package}/share/themes/${config.gtk.theme.name}/gtk-4.0/assets";
+                        "gtk-4.0/assets".source = "${config.gtk.theme.package}/share/themes/${config.gtk.theme.name}/gtk-4.0/assets";
                         "gtk-4.0/gtk.css".source = "${config.gtk.theme.package}/share/themes/${config.gtk.theme.name}/gtk-4.0/gtk.css";
                         "gtk-4.0/gtk-dark.css".source = "${config.gtk.theme.package}/share/themes/${config.gtk.theme.name}/gtk-4.0/gtk-dark.css";
                 };
@@ -302,7 +303,7 @@ in
                 enableBashIntegration = true;
                 installBatSyntax = true;
                 settings = {
-                        theme = "Darkside";
+                        theme = "Gruvbox-Dark";
                 };
         };
 
