@@ -19,7 +19,6 @@ in
         home.stateVersion = "25.05"; # Do not change unless you know what you are doing!
 
         home.packages = [
-                # gruvboxPlusIcons
                 (pkgs.gramps.overrideAttrs (oldAttrs: {
                         src = pkgs.fetchFromGitHub {
                                 owner = "gramps-project";
@@ -141,15 +140,15 @@ in
                                 name = "Cups Printer Manager";
                                 noDisplay = true;
                         };
-                        "mars" = {
-                                name = "Mars MIPS";
-                                categories = [ "Development" "IDE" ];
-                                comment = "IDE for programming in MIPS assembly language intended for educational-level use";
-                                genericName = "MIPS Editor";
-                                exec = "Mars";
-                                type = "Application";
-                                icon = "${mars-mips-icon-file}/mars-mips.png";
-                        };
+                                #"mars" = {
+                                #name = "Mars MIPS";
+                                #categories = [ "Development" "IDE" ];
+                                #comment = "IDE for programming in MIPS assembly language intended for educational-level use";
+                                #genericName = "MIPS Editor";
+                                #exec = "Mars";
+                                #type = "Application";
+                                #icon = "${mars-mips-icon-file}/mars-mips.png";
+                        #};
                         "vesktop" = {
                                 name = "Vesktop";
                                 comment = "A Discord client";
@@ -195,9 +194,9 @@ in
                         "ls" = "eza";
                         "ll" = "eza -l";
                         ".." = "cd ..";
-                        "switch-home" = "home-manager switch --flake ${flake} && nh clean user --keep-since 3d --keep 5";
+                        "switch-home" = "home-manager switch ---print-build-logs --verbose --flake ${flake} && nh clean user --keep-since 3d --keep 5";
                         "flake-update" = "nix flake update --flake ${flake}";
-                        "switch-all" = "nh os switch ${flake} && nh home switch ${flake} && nh clean user --keep-since 3d --keep 5";
+                        "switch-all" = "nh os switch ${flake} && home-manager switch ---print-build-logs --verbose --flake ${flake} && nh clean user --keep-since 3d --keep 5";
                         # "topgrade" = "nix flake update --flake ${flake} && nh os switch ${flake} && nh home switch ${flake} && nh clean user --keep-since 3d --keep 5";
                 };
         };
