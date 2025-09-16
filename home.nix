@@ -1,4 +1,4 @@
-{ config, pkgs, pkgs-unstable, ... }:
+{ config, pkgs, pkgs-unstable, gruvboxPlusIcons, ... }:
 
 let
         mars-mips-icon-file = pkgs.runCommand "mars-mips-icon-file" { } ''
@@ -19,6 +19,7 @@ in
         home.stateVersion = "25.05"; # Do not change unless you know what you are doing!
 
         home.packages = [
+                # gruvboxPlusIcons
                 (pkgs.gramps.overrideAttrs (oldAttrs: {
                         src = pkgs.fetchFromGitHub {
                                 owner = "gramps-project";
@@ -103,17 +104,22 @@ in
                 theme = {
                         name = "Gruvbox-Dark";
                         package = pkgs-unstable.gruvbox-gtk-theme.override {
-                                tweakVariants = [ "macos" "medium" ];
+                                tweakVariants = [ "macos" ];
                         };
                 };
                 iconTheme = {
                         name = "Gruvbox-Plus-Dark";
-                        package = pkgs-unstable.gruvbox-plus-icons;
+                        package = gruvboxPlusIcons;
                 };
                 gtk3.extraConfig.gtk-application-prefer-dark-theme = 1;
                 gtk4.extraConfig.gtk-application-prefer-dark-theme = 1;
         };
-        programs.gnome-shell.theme.name = "Gruvbox-Dark";
+        programs.gnome-shell.theme = {
+                name = "Gruvbox-Dark";
+                package = pkgs-unstable.gruvbox-gtk-theme.override {
+                        tweakVariants = [ "macos" ];
+                };
+        };
 
         xdg = {
                 enable = true;
@@ -189,7 +195,7 @@ in
                         "ls" = "eza";
                         "ll" = "eza -l";
                         ".." = "cd ..";
-                        "switch-home" = "nh home switch ${flake} && nh clean user --keep-since 3d --keep 5";
+                        "switch-home" = "home-manager switch --flake ${flake} && nh clean user --keep-since 3d --keep 5";
                         "flake-update" = "nix flake update --flake ${flake}";
                         "switch-all" = "nh os switch ${flake} && nh home switch ${flake} && nh clean user --keep-since 3d --keep 5";
                         # "topgrade" = "nix flake update --flake ${flake} && nh os switch ${flake} && nh home switch ${flake} && nh clean user --keep-since 3d --keep 5";
@@ -303,7 +309,7 @@ in
                 enableBashIntegration = true;
                 installBatSyntax = true;
                 settings = {
-                        theme = "Gruvbox-Dark";
+                        theme = "GruvboxDarkHard";
                 };
         };
 

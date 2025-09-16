@@ -137,7 +137,6 @@
                 devtoolbox
                 pkgs-unstable.jetbrains.clion
                 pkgs-unstable.jetbrains.pycharm-professional
-                whatip
                 gcc
                 logisim
                 mars-mips
