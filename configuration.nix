@@ -106,84 +106,77 @@
         # $ nix search wget
         environment.systemPackages = with pkgs; [
                 # Command Line tools (CLI)
-                bat
-                btop
-                eza
-                fastfetch
-                file
-                ghostty
-                gh
-                git
-                libdvdcss
-                # micro-with-wl-clipboard
-                nh
-                trash-cli
-                tree
-                tldr
-                xdg-utils
-                unzip
-                wget
-                wl-clipboard
-                zip
-                zoxide
+                bat # Better cat
+                btop # Better top
+                eza # Better ls
+                fastfetch # CLI system info
+                file # File information
+                ghostty # Modern terminal emulator
+                gh # Github CLI-client
+                git # Version management
+                libdvdcss # Decrypt DVDs
+                nh # Nix helper
+                trash-cli # rm on safe mode
+                tree # Treevew of files
+                tldr # When man is overkill
+                xdg-utils # 
+                unzip # Zip but the other way around
+                wget # Getting things from the World Wide Web
+                wl-clipboard # wl-copy my beloved
+                zip # Unzip but the other way around
+                zoxide # cd^2
 
                 # Communication
-                fractal
-                signal-desktop
-                vesktop
+                fractal # Matrix client
+                signal-desktop # Signal messenger
+                vesktop # Discord client
 
                 # Development
-                cmake
-                devtoolbox
-                pkgs-unstable.jetbrains.clion
-                pkgs-unstable.jetbrains.pycharm-professional
-                gcc
-                logisim
-                mars-mips
-                ninja
-                python313
-                valgrind
+                cmake # make++
+                devtoolbox # Some things
+                pkgs-unstable.jetbrains.clion # A working C/C++ IDE as long as I'm a student
+                pkgs-unstable.jetbrains.pycharm-professional # Python IDE
+                gcc # GNU C Compiler
+                logisim # Live laugh Logisim - Swiepie (2024)
+                mars-mips # MIPS Assembly IDE
+                ninja # another compilation thingie
+                python313 # A snake-based programming language
+                valgrind # Squash those memory leaks
 
                 # Media
-                amberol
-                clapper
-                gimp
-                handbrake
-                impression
-                makemkv
-                musescore
-                muse-sounds-manager
-                parabolic
-                pitivi
+                amberol # Music player
+                clapper # Video player
+                gimp # GNU Image Manipulation Program
+                handbrake # Transcode away
+                impression # dd + GUI
+                makemkv # Rip bluerays and DVDs
+                musescore # Writing music scores
+                muse-sounds-manager # Write music scores with better playback
+                parabolic # Less sketchy YouTube downloader
+                pitivi # Basic video editor
 
                 # Documents
                 # gramps
-                libreoffice
-                papers
-                pdfarranger
-                setzer
-                texliveMedium
+                libreoffice # Office Suite
+                papers # Pdf reader, evince++
+                pdfarranger # Basic pdf manipulation
+                setzer # LaTeX, the editor
+                texliveMedium # LaTeX, the language
 
                 # Customization
-                gnome-tweaks
-                dconf-editor
-                home-manager
-
-                # Themes
-                adw-gtk3
-                kora-icon-theme
+                gnome-tweaks # Why isn't this in settings
+                dconf-editor # I get why this isn't in settings
 
                 # Extensions
-                gnomeExtensions.alphabetical-app-grid
-                gnomeExtensions.appindicator
-                gnomeExtensions.blur-my-shell
-                gnomeExtensions.caffeine
-                gnomeExtensions.hot-edge
-                gnomeExtensions.maximize-to-empty-workspace
-                gnomeExtensions.open-desktop-file-location
-                gnomeExtensions.rounded-window-corners-reborn
-                gnomeExtensions.user-themes
-                gnomeExtensions.vitals
+                gnomeExtensions.alphabetical-app-grid # Back to GNOME 3.2x
+                gnomeExtensions.appindicator # Yes, I know I shouldn't
+                gnomeExtensions.caffeine # Stay awake, screen
+                gnomeExtensions.hot-edge # When the top left is to far away
+                gnomeExtensions.maximize-to-empty-workspace # MacOS did something right here
+                gnomeExtensions.open-desktop-file-location # Great debugger
+                gnomeExtensions.rounded-window-corners-reborn # Should be default
+                gnomeExtensions.user-themes # Classic
+                gnomeExtensions.vitals # System monitor in top bar
 
                 # Back-ups
                 deja-dup
@@ -204,21 +197,25 @@
                 yelp # Gnome help and docs
         ]);
         services.xserver.excludePackages = with pkgs; [
-                xterm
+                xterm # Why is it here by default
         ];
 
         # Set nerd-fonts and ms-fonts
-        fonts.packages = with pkgs; [ 
+        fonts.packages = with pkgs; [
+                # Microsoft fonts
                 vista-fonts 
                 corefonts
-        ] ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
+                # Nerd fonts
+                nerd-fonts.jetbrains-mono
+        ]; 
+        # ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
 
         # `nh` module-based configuration for clean-up
         programs.nh = {
                 enable = true;
                 clean.enable = true;
-                # Clean up old generations by keeping the last 7 days and at least 3 generations.
-                clean.extraArgs = "--keep-since 7d --keep 3";
+                # Clean up old generations by keeping the last day and at least 3 generations.
+                clean.extraArgs = "--keep-since 1d --keep 3";
                 flake = "/home/mathijs/.dotfiles"; 
         };
 
@@ -231,9 +228,7 @@
                 ];
         };
 
-        # Enable plymouth
         boot = {
-                
                 kernelPackages = pkgs.linuxPackages_zen;
                 plymouth = {
                         enable = true;
@@ -255,12 +250,12 @@
                         "udev.log_priority=3"
                         "rd.systemd.show_status=auto"
                 ];
-                # Hide the OS choice for bootloaders.
-                # It's still possible to open the bootloader list by pressing any key
-                # It will just not appear on screen unless a key is pressed
-                loader = {
+               loader = {
                         systemd-boot.enable = true;
-                        efi.canTouchEfiVariables = true; 
+                        efi.canTouchEfiVariables = true;
+                        # Hide the OS choice for bootloaders.
+                        # It's still possible to open the bootloader list by pressing any key
+                        # It will just not appear on screen unless a key is pressed
                         timeout = 0;
                 };
 
