@@ -156,10 +156,11 @@
                 pitivi # Basic video editor
 
                 # Documents
-                # gramps
+                # gramps # Geneology
                 libreoffice # Office Suite
                 papers # Pdf reader, evince++
                 pdfarranger # Basic pdf manipulation
+                rnote # Handdrawn note taking
                 setzer # LaTeX, the editor
                 texliveMedium # LaTeX, the language
 
@@ -179,7 +180,11 @@
                 gnomeExtensions.vitals # System monitor in top bar
 
                 # Back-ups
-                deja-dup
+                deja-dup 
+
+                # Games
+                quadrapassel # Tetris in all but name
+                gnome-nibbles # Snake++
         ];
         # Disable some applications
         environment.gnome.excludePackages = (with pkgs; [
@@ -207,8 +212,11 @@
                 corefonts
                 # Nerd fonts
                 nerd-fonts.jetbrains-mono
+                # toki pona
+                nasin-nanpa
+                linja-sike
+                sitelen-seli-kiwen
         ]; 
-        # ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
 
         # `nh` module-based configuration for clean-up
         programs.nh = {
