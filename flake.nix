@@ -39,7 +39,7 @@
         nix-index-database,
         my-bash-scripts,
         nvf,
-        gruvbox-icons, # <--- Added new input here
+        gruvbox-icons,
         ...
         }:
         let
