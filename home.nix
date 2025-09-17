@@ -89,10 +89,17 @@ in
                         remove-old-temp-files = true;
                         remove-old-trash-files = true;
                 };
+
+                # Font settings
                 "org/gnome/desktop/interface" = {
                         document-font-name = "JetBrainsMono Nerd Font 11";
                         font-name = "JetBrainsMono Nerd Font 11";
                         monospace-font-name = "JetBrainsMono Nerd Font 11";
+                };
+
+                # Fractional scaling
+                "org/gnome/mutter" = {
+                        experimental-features = [ "scale-monitor-framebuffer" ];
                 };
         };
 
@@ -194,9 +201,9 @@ in
                         "ls" = "eza";
                         "ll" = "eza -l";
                         ".." = "cd ..";
-                        "switch-home" = "home-manager switch ---print-build-logs --verbose --flake ${flake} && nh clean user --keep-since 3d --keep 5";
+                        "switch-home" = "home-manager switch --print-build-logs --verbose --flake ${flake} && nh clean user --keep-since 3d --keep 5";
                         "flake-update" = "nix flake update --flake ${flake}";
-                        "switch-all" = "nh os switch ${flake} && home-manager switch ---print-build-logs --verbose --flake ${flake} && nh clean user --keep-since 3d --keep 5";
+                        "switch-all" = "nh os switch ${flake} && home-manager switch --print-build-logs --verbose --flake ${flake} && nh clean user --keep-since 3d --keep 5";
                         # "topgrade" = "nix flake update --flake ${flake} && nh os switch ${flake} && nh home switch ${flake} && nh clean user --keep-since 3d --keep 5";
                 };
         };
