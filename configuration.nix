@@ -140,7 +140,7 @@
                 logisim # Live laugh Logisim - Swiepie (2024)
                 mars-mips # MIPS Assembly IDE
                 ninja # another compilation thingie
-                python313 # A snake-based programming language
+                python3 # A snake-based programming language
                 valgrind # Squash those memory leaks
 
                 # Media
