@@ -1,10 +1,10 @@
 { config, pkgs, pkgs-unstable, gruvboxPlusIcons, ... }:
 
 let
-        mars-mips-icon-file = pkgs.runCommand "mars-mips-icon-file" { } ''
-        mkdir -p $out/
-        cp ${./images/mars-mips.png} $out/mars-mips.png
-        '';
+        #mars-mips-icon-file = pkgs.runCommand "mars-mips-icon-file" { } ''
+        #mkdir -p $out/
+        #cp ${./images/mars-mips.png} $out/mars-mips.png
+        #'';
 
         flake = "${config.home.homeDirectory}/.dotfiles";
 in

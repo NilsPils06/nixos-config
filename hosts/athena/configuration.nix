@@ -178,6 +178,7 @@
                 gnomeExtensions.rounded-window-corners-reborn # Should be default
                 gnomeExtensions.user-themes # Classic
                 gnomeExtensions.vitals # System monitor in top bar
+                gnomeExtensions.paperwm # Scrolling window management
 
                 # Back-ups
                 deja-dup 
