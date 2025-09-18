@@ -16,6 +16,7 @@
         networking.networkmanager.enable = true;
 
         # Set your time zone.
+        /*
         time.timeZone = "Europe/Brussels";
 
         # Select internationalisation properties.
@@ -32,6 +33,10 @@
                 LC_TIME = "en_IE.UTF-8";
         };
         i18n.extraLocales = [ "en_GB.UTF-8/UTF-8" "nl_BE.UTF-8/UTF-8" ];
+        */
+        imports = [
+                ./../../nixosModules
+        ];
         services = {
                 avahi = {
                         enable = true;

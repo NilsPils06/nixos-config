@@ -102,7 +102,7 @@
                                 mathijs = home-manager.lib.homeManagerConfiguration {
                                         inherit pkgs;
                                         modules = [
-                                                ./home.nix
+                                                ./hosts/athena/home.nix
                                                 {
                                                         home.packages = [
                                                                 my-bash-scripts-pkg
