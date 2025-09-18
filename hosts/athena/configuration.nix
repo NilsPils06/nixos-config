@@ -12,58 +12,21 @@
         # networking.proxy.default = "http://user:password@proxy:port/";
         # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
+         # Allow unfree packages
+        nixpkgs.config.allowUnfree = true;
+
         # Enable networking
         networking.networkmanager.enable = true;
 
-        # Set your time zone.
-        /*
-        time.timeZone = "Europe/Brussels";
-
-        # Select internationalisation properties.
-        i18n.defaultLocale = "en_IE.UTF-8";
-        i18n.extraLocaleSettings = {
-                LC_ADDRESS = "en_IE.UTF-8";
-                LC_IDENTIFICATION = "en_IE.UTF-8";
-                LC_MEASUREMENT = "en_IE.UTF-8";
-                LC_MONETARY = "en_IE.UTF-8";
-                LC_NAME = "en_IE.UTF-8";
-                LC_NUMERIC = "en_IE.UTF-8";
-                LC_PAPER = "en_IE.UTF-8";
-                LC_TELEPHONE = "en_IE.UTF-8";
-                LC_TIME = "en_IE.UTF-8";
-        };
-        i18n.extraLocales = [ "en_GB.UTF-8/UTF-8" "nl_BE.UTF-8/UTF-8" ];
-        */
         imports = [
                 ./../../nixosModules
         ];
         services = {
-                avahi = {
-                        enable = true;
-                        nssmdns4 = true;
-                        openFirewall = true;
-                };
                 xserver ={
                         enable = true;
                         # Enable GNOME
                         displayManager.gdm.enable = true;
                         desktopManager.gnome.enable = true;
-                        # Set keyboard layout
-                        xkb = {
-                                layout = "us";
-                                variant = "alt-intl";
-                        };
-                };
-                printing = {
-                        enable = true;
-                        drivers = [ pkgs.epson-escpr pkgs.epson-escpr2 pkgs.epson_201207w ];
-                };
-                pulseaudio.enable = false;
-                pipewire = {
-                        enable = true;
-                        alsa.enable = true;
-                        alsa.support32Bit = true;
-                        pulse.enable = true;
                 };
                 envfs.enable = true;
                 asus-numberpad-driver = {
@@ -82,15 +45,6 @@
         };
         security.rtkit.enable = true;
 
-        # Extra printer stuff
-        hardware.sane = {
-                enable = true;
-                extraBackends = [ pkgs.utsushi pkgs.sane-airscan ];
-                disabledDefaultBackends = [ "escl" ];
-        };
-        services.udev.packages = [ pkgs.utsushi pkgs.sane-airscan ];
-
-
         # Configure console keymap
         console.keyMap = "us";
 
@@ -103,9 +57,6 @@
 
         # Install firefox.
         programs.firefox.enable = true;
-
-        # Allow unfree packages
-        nixpkgs.config.allowUnfree = true;
 
         # List packages installed in system profile. To search, run:
         # $ nix search wget
