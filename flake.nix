@@ -87,7 +87,7 @@
                                         modules = [
                                                 # Configurations
                                                 ./hosts/athena/hardware-configuration.nix
-                                                ./hosts/atena/configuration.nix
+                                                ./hosts/athena/configuration.nix
                                                 asus-numberpad-driver.nixosModules.default
                                                 nix-index-database.nixosModules.nix-index
                                                 { programs.nix-index-database.comma.enable = true; }
