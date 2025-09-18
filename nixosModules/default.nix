@@ -1,14 +1,16 @@
 { pkgs, lib, ...}: {
         imports = [
                 ./DE-WM/gnome.nix
+                
+                ./programs/cli-utils.nix
                 ./programs/fonts.nix
-
 
                 ./systems/audio.nix
                 ./systems/locale.nix
                 ./systems/nh.nix
                 ./systems/printing.nix
         ];
+        cli-utils.enable = lib.mkDefault true;
         fonts.enable = lib.mkDefault true;
 
         audio.enable = lib.mkDefault true;

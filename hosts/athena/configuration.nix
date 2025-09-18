@@ -43,22 +43,12 @@
         environment.systemPackages = with pkgs; [
                 # Command Line tools (CLI)
                 bat # Better cat
-                btop # Better top
                 eza # Better ls
                 fastfetch # CLI system info
-                file # File information
-                ghostty # Modern terminal emulator
                 gh # Github CLI-client
-                git # Version management
                 libdvdcss # Decrypt DVDs
                 trash-cli # rm on safe mode
-                tree # Treevew of files
                 tldr # When man is overkill
-                xdg-utils # 
-                unzip # Zip but the other way around
-                wget # Getting things from the World Wide Web
-                wl-clipboard # wl-copy my beloved
-                zip # Unzip but the other way around
                 zoxide # cd^2
 
                 # Communication
@@ -98,10 +88,6 @@
                 rnote # Handdrawn note taking
                 setzer # LaTeX, the editor
                 texliveMedium # LaTeX, the language
-
-                # Customization
-                gnome-tweaks # Why isn't this in settings
-                dconf-editor # I get why this isn't in settings
 
                 # Back-ups
                 deja-dup 
