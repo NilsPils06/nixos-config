@@ -45,9 +45,6 @@
         };
         security.rtkit.enable = true;
 
-        # Configure console keymap
-        console.keyMap = "us";
-
         # Define a user account. Don't forget to set a password with ‘passwd’.
         users.users.mathijs = {
                 isNormalUser = true;
@@ -71,7 +68,6 @@
                 gh # Github CLI-client
                 git # Version management
                 libdvdcss # Decrypt DVDs
-                nh # Nix helper
                 trash-cli # rm on safe mode
                 tree # Treevew of files
                 tldr # When man is overkill
@@ -162,27 +158,7 @@
                 xterm # Why is it here by default
         ];
 
-        # Set nerd-fonts and ms-fonts
-        fonts.packages = with pkgs; [
-                # Microsoft fonts
-                vista-fonts 
-                corefonts
-                # Nerd fonts
-                nerd-fonts.jetbrains-mono
-                # toki pona
-                nasin-nanpa
-                linja-sike
-                sitelen-seli-kiwen
-        ]; 
 
-        # `nh` module-based configuration for clean-up
-        programs.nh = {
-                enable = true;
-                clean.enable = true;
-                # Clean up old generations by keeping the last day and at least 3 generations.
-                clean.extraArgs = "--keep-since 1d --keep 3";
-                flake = "/home/mathijs/.dotfiles"; 
-        };
 
         xdg.portal = {
                 enable = true;
