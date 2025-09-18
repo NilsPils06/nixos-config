@@ -5,6 +5,7 @@
                 ./programs/cli-utils.nix
                 ./programs/fonts.nix
                 ./programs/gnome-apps.nix
+                ./programs/ripping.nix
 
                 ./systems/audio.nix
                 ./systems/locale.nix

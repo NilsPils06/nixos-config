@@ -10,6 +10,7 @@
         # Enable Gnome and all packages around it
         gnome.enable = true;
         gnome-apps.enable = true;
+        ripping.enable = true;
 
         # Allow unfree packages
         nixpkgs.config.allowUnfree = true;
@@ -44,7 +45,6 @@
                 eza # Better ls
                 fastfetch # CLI system info
                 gh # Github CLI-client
-                libdvdcss # Decrypt DVDs
                 trash-cli # rm on safe mode
                 tldr # When man is overkill
                 zoxide # cd^2
@@ -66,8 +66,6 @@
 
                 # Media
                 gimp # GNU Image Manipulation Program
-                handbrake # Transcode away
-                makemkv # Rip bluerays and DVDs
                 musescore # Writing music scores
                 muse-sounds-manager # Write music scores with better playback
 
