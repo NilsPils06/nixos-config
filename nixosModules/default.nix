@@ -1,5 +1,6 @@
 { pkgs, lib, ...}: {
         imports = [
+                ./DE-WM/gnome.nix
                 ./programs/fonts.nix
 
 

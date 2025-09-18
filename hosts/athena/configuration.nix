@@ -11,6 +11,7 @@
         # Configure network proxy if necessary
         # networking.proxy.default = "http://user:password@proxy:port/";
         # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+        gnome.enable = true;
 
          # Allow unfree packages
         nixpkgs.config.allowUnfree = true;
@@ -22,12 +23,6 @@
                 ./../../nixosModules
         ];
         services = {
-                xserver ={
-                        enable = true;
-                        # Enable GNOME
-                        displayManager.gdm.enable = true;
-                        desktopManager.gnome.enable = true;
-                };
                 envfs.enable = true;
                 asus-numberpad-driver = {
                         enable = true;
@@ -120,18 +115,6 @@
                 gnome-tweaks # Why isn't this in settings
                 dconf-editor # I get why this isn't in settings
 
-                # Extensions
-                gnomeExtensions.alphabetical-app-grid # Back to GNOME 3.2x
-                gnomeExtensions.appindicator # Yes, I know I shouldn't
-                gnomeExtensions.caffeine # Stay awake, screen
-                gnomeExtensions.hot-edge # When the top left is to far away
-                gnomeExtensions.maximize-to-empty-workspace # MacOS did something right here
-                gnomeExtensions.open-desktop-file-location # Great debugger
-                gnomeExtensions.rounded-window-corners-reborn # Should be default
-                gnomeExtensions.user-themes # Classic
-                gnomeExtensions.vitals # System monitor in top bar
-                gnomeExtensions.paperwm # Scrolling window management
-
                 # Back-ups
                 deja-dup 
 
@@ -139,35 +122,6 @@
                 quadrapassel # Tetris in all but name
                 gnome-nibbles # Snake++
         ];
-        # Disable some applications
-        environment.gnome.excludePackages = (with pkgs; [
-                decibels # Default audio player
-                evince # Default deprecated document viewer (superceded by papers)
-                epiphany # Default web browser
-                geary # Default mail client
-                gnome-characters # Unicode character list
-                gnome-connections # Remote desktop client
-                gnome-console # Default terminal client
-                gnome-music # Default music player
-                gnome-tour # System tour
-                nixos-render-docs # Nixos docs
-                totem # Default deprecated video player
-                yelp # Gnome help and docs
-        ]);
-        services.xserver.excludePackages = with pkgs; [
-                xterm # Why is it here by default
-        ];
-
-
-
-        xdg.portal = {
-                enable = true;
-                wlr.enable = true;
-                extraPortals = with pkgs; [
-                        xdg-desktop-portal
-                        xdg-desktop-portal-gtk
-                ];
-        };
 
         boot = {
                 kernelPackages = pkgs.linuxPackages_zen;
