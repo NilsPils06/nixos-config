@@ -1,5 +1,6 @@
 { lib, ...}: {
         imports = [
-                ./shell.nix
+                ./cliApps/fastfetch.nix
+                ./cliApps/shell.nix
         ];
 }

@@ -22,7 +22,10 @@
         ];
 
         config = {
+                # Enable shell.nix
                 shell.enable = true;
+                # Enable fastfetch.nix
+                fastfetch.enable = true;
                 home.homeDirectory = "/home/mathijs";
                 home.username = "mathijs";
                 # This value determines the Home Manager release that your configuration is
@@ -201,97 +204,6 @@
                         };
                 };
 
-                # Fastfetch configuration
-                programs.fastfetch = {
-                        enable = true;
-                        settings = {
-                                "$schema" = "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json";
-                                logo = {
-                                        type = "small";
-                                        color = {
-                                                "1" = "#5277C3";
-                                                "2" = "#7EBAE4";
-                                        };
-                                };
-                                display = {
-                                        separator = " · ";
-                                        color = "bright_blue";
-                                };
-                                modules = [
-                                        {
-                                                type = "custom";
-                                                format = "┌─────────── Hardware Information ───────────┐";
-                                        }
-                                        {
-                                                type = "host";
-                                                key = "  󰌢";
-                                        }
-                                        {
-                                                type = "cpu";
-                                                key = "  ";
-                                        }
-                                        {
-                                                type = "gpu";
-                                                detectionMethod = "pci";
-                                                key = "  ";
-                                        }
-                                        {
-                                                type = "display";
-                                                key = "  󱄄";
-                                        }
-                                        {
-                                                type = "memory";
-                                                key = "  ";
-                                        }
-                                        {
-                                                type = "custom";
-                                                format = "├─────────── Software Information ───────────┤";
-                                        }
-                                        {
-                                                type = "os";
-                                                key = "  ";
-                                        }
-                                        {
-                                                type = "kernel";
-                                                key = "  ";
-                                                format = "{1} {2}";
-                                        }
-                                        {
-                                                type = "wm";
-                                                key = "  ";
-                                        }
-                                        {
-                                                type = "shell";
-                                                key = "  ";
-                                        }
-                                        {
-                                                type = "custom";
-                                                format = "|───────────── Uptime / Age ─────────────────|";
-                                        }
-                                        {
-                                                type = "command";
-                                                key = "  OS Age ";
-                                                keyColor = "magenta";
-                                                text = "birth_install=$(stat -c %W /); current=$(date +%s); time_progression=$((current - birth_install)); days_difference=$((time_progression / 86400)); echo $days_difference days";
-                                        }
-                                        {
-                                                type = "uptime";
-                                                key = "  Uptime ";
-                                                keyColor = "magenta";
-                                        }
-                                        {
-                                                type = "custom";
-                                                format = "└────────────────────────────────────────────┘";
-                                        }
-                                        {
-                                                type = "colors";
-                                                paddingLeft = 2;
-                                                symbol = "circle";
-                                        }
-                                ];
-                        };
-                };
-
                 # Git configuration
                 programs.git = {
                         enable = true;
@@ -310,11 +222,6 @@
                         settings = {
                                 theme = "GruvboxDarkHard";
                         };
-                };
-
-                programs.zoxide = {
-                        enable = true;
-                        enableBashIntegration = true;
                 };
 
                 # Let Home Manager install and manage itself.

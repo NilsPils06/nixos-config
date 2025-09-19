@@ -41,13 +41,9 @@
         # $ nix search wget
         environment.systemPackages = with pkgs; [
                 # Command Line tools (CLI)
-                bat # Better cat
-                eza # Better ls
                 fastfetch # CLI system info
                 gh # Github CLI-client
-                trash-cli # rm on safe mode
-                tldr # When man is overkill
-                zoxide # cd^2
+
 
                 # Communication
                 signal-desktop # Signal messenger
