@@ -1,10 +1,10 @@
 { pkgs-unstable, gruvboxPlusIcons, lib, config, options, ... }:
 {
         options = {
-                gnome-extensions.enable = lib.mkEnableOption "enable gnome-extensions";
+                gnome-theming.enable = lib.mkEnableOption "enable gnome-theming";
         };
 
-        config = lib.mkIf config.gnome-extensions.enable {
+        config = lib.mkIf config.gnome-theming.enable {
 
                 dconf.enable = true;
                 dconf.settings = {    

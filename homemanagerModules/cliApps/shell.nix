@@ -36,5 +36,12 @@ in
                         enable = true;
                         enableBashIntegration = true;
                 };
+                xdg = {
+                        enable = true;
+                        desktopEntries."btop" = {
+                                name = "btop++";
+                                noDisplay = true;
+                        };
+                };
         };
 }

@@ -1,4 +1,4 @@
-{ config, pkgs, pkgs-unstable, gruvboxPlusIcons, lib, ... }:
+{ config, pkgs, ... }:
 
 #let
 #mars-mips-icon-file = pkgs.runCommand "mars-mips-icon-file" { } ''
@@ -11,12 +11,6 @@
         # Home Manager needs a bit of information about you and the paths it should
         # manage.
 
-        # Edit this if you change the location of your flake.nix
-        options.flake-path = lib.mkOption {
-                type = lib.types.str;
-                default = "${config.home.homeDirectory}/.dotfiles";
-                description = "Path to the user's flake-path directory.";
-        };
         imports = [
                 ../../homemanagerModules
         ];
@@ -28,7 +22,7 @@
                 fastfetch.enable = true;
                 # Enable gnome customization
                 gnome-extensions.enable = true;
-                gnome-theming = true;
+                gnome-theming.enable = true;
 
                 home.homeDirectory = "/home/mathijs";
                 home.username = "mathijs";
@@ -67,10 +61,6 @@
                         };
                         
                         desktopEntries = {
-                                "btop" = {
-                                        name = "btop++";
-                                        noDisplay = true;
-                                };
                                 "cups" = {
                                         name = "Cups Printer Manager";
                                         noDisplay = true;
@@ -118,15 +108,7 @@
                         };
                 };
 
-                # Git configuration
-                programs.git = {
-                        enable = true;
-                        userName = "Mathijs";
-                        userEmail = "79464596+CouldBeMathijs@users.noreply.github.com";
-                        extraConfig = {
-                                init.defaultBranch = "main";
-                        };
-                };
+
 
                 # Ghostty terminal configuration
                 programs.ghostty = {
