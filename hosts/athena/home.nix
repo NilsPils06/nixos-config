@@ -26,6 +26,10 @@
                 shell.enable = true;
                 # Enable fastfetch.nix
                 fastfetch.enable = true;
+                # Enable gnome customization
+                gnome-extensions.enable = true;
+                gnome-theming = true;
+
                 home.homeDirectory = "/home/mathijs";
                 home.username = "mathijs";
                 # This value determines the Home Manager release that your configuration is
@@ -55,103 +59,13 @@
                         }))
                 ];
 
-                dconf.enable = true;
-                dconf.settings = {    
-                        # Configure enabled GNOME Shell extensions via their UUIDs.
-                        # Command: 
-                        # cat $(nix eval --raw nixpkgs#gnomeExtensions.EXTENSION)/share/gnome-shell/extensions/*/metadata.json
-                        "org/gnome/shell" = {
-                                disable-user-extensions = false;
-                                enabled-extensions = [
-                                        "AlphabeticalAppGrid@stuarthayhurst"
-                                        "Vitals@CoreCoding.com"
-                                        "appindicatorsupport@rgcjonas.gmail.com"
-                                        "caffeine@patapon.info"
-                                        "hotedge@jonathan.jdoda.ca"
-                                        "open-desktop-location@laura.media"
-                                        "paperwm@paperwm.github.com"
-                                        "user-theme@gnome-shell-extensions.gcampax.github.com"
-                                        #"MaximizeToEmptyWorkspace-extension@kaisersite.de"
-                                        #"rounded-window-corners@fxgn"
-                                ];
-                                disable-extension-version-validation = true;
-                        };
-
-                        # Extensions settings
-                        "org/gnome/shell/extensions/hot-edge" = {
-                                enable-hot-edge = true;
-                        };
-
-                        # "org/gnome/shell/extensions/blur-my-shell/panel" = {
-                        # override-background-dynamically = true;
-                        # };
-
-                        "org/gnome/shell/extensions/vitals" = {
-                                icon-style = 1; # GNOME-style icons
-                                position-in-panel = 2; # Right, left of system menu	
-                        };
-
-                        # Change button layout
-                        "org/gnome/desktop/wm/preferences" = {
-                                button-layout = "close,minimize,maximize:appmenu";
-                        };
-
-                        # Privacy settings
-                        "org/gnome/desktop/privacy" = {
-                                recent-files-max-age = 30;
-                                old-files-age = 30;
-                                remove-old-temp-files = true;
-                                remove-old-trash-files = true;
-                        };
-
-                        # Font settings
-                        "org/gnome/desktop/interface" = {
-                                document-font-name = "JetBrainsMono Nerd Font 11";
-                                font-name = "JetBrainsMono Nerd Font 11";
-                                monospace-font-name = "JetBrainsMono Nerd Font 11";
-                        };
-
-                        # Fractional scaling
-                        "org/gnome/mutter" = {
-                                experimental-features = [ "scale-monitor-framebuffer" ];
-                        };
-                };
-
-                # The `gtk` module manages GTK themes and icons for your user environment
-                # and sets up necessary configuration files.
-                gtk = {
-                        enable = true;
-                        theme = {
-                                name = "Gruvbox-Dark";
-                                package = pkgs-unstable.gruvbox-gtk-theme.override {
-                                        tweakVariants = [ "macos" ];
-                                };
-                        };
-                        iconTheme = {
-                                name = "Gruvbox-Plus-Dark";
-                                package = gruvboxPlusIcons;
-                        };
-                        gtk3.extraConfig.gtk-application-prefer-dark-theme = 1;
-                        gtk4.extraConfig.gtk-application-prefer-dark-theme = 1;
-                };
-                programs.gnome-shell.theme = {
-                        name = "Gruvbox-Dark";
-                        package = pkgs-unstable.gruvbox-gtk-theme.override {
-                                tweakVariants = [ "macos" ];
-                        };
-                };
-
                 xdg = {
                         enable = true;
                         autostart = {
                                 enable = true;
                                 entries = [ "${config.home.homeDirectory}/.nix-profile/share/applications/vesktop.desktop" ];
                         };
-                        configFile = {
-                                "gtk-4.0/assets".source = "${config.gtk.theme.package}/share/themes/${config.gtk.theme.name}/gtk-4.0/assets";
-                                "gtk-4.0/gtk.css".source = "${config.gtk.theme.package}/share/themes/${config.gtk.theme.name}/gtk-4.0/gtk.css";
-                                "gtk-4.0/gtk-dark.css".source = "${config.gtk.theme.package}/share/themes/${config.gtk.theme.name}/gtk-4.0/gtk-dark.css";
-                        };
+                        
                         desktopEntries = {
                                 "btop" = {
                                         name = "btop++";

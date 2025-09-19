@@ -1,6 +1,6 @@
-{ pkgs, lib, config, options, ... }:
+{ pkgs, lib, config, ... }:
 let
-        flake = options.flake-path;
+        flake = "${config.home.homeDirectory}/.dotfiles";
 in
         {
         options = {

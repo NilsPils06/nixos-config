@@ -37,23 +37,11 @@
                         ];
                 };
 
+                # Gnome customization applications
                 environment.systemPackages = with pkgs; [
-                        # Gnome customization applications
                         dconf-editor # I get why this isn't in gnome-settings
                         gnome-tweaks # But this should be
-                ] ++ (with pkgs.gnomeExtensions; [
-                                # Gnome Extensions
-                                alphabetical-app-grid # Back to GNOME 3.2x
-                                appindicator # Yes, I know I shouldn't
-                                caffeine # Stay awake, screen
-                                hot-edge # When the top left is to far away
-                                maximize-to-empty-workspace # MacOS did something right here
-                                open-desktop-file-location # Great debugging help
-                                rounded-window-corners-reborn # Should be default
-                                user-themes # Classic
-                                vitals # System monitor in top bar
-                                paperwm # Scrolling window management
-                        ]);
+                ]; 
 
         };
 }
