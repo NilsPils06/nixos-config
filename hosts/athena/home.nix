@@ -23,7 +23,7 @@
                 # Enable gnome customization
                 gnome-extensions.enable = true;
                 gnome-theming.enable = true;
-
+                minecraft.enable = true;
                 home.homeDirectory = "/home/mathijs";
                 home.username = "mathijs";
                 # This value determines the Home Manager release that your configuration is

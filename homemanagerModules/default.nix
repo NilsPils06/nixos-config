@@ -6,6 +6,7 @@
 
                 ./theming/gnome-extensions.nix
                 ./theming/gnome-theming.nix
+                ./programs/minecraft.nix
         ];
         git.enable = lib.mkDefault true;
 

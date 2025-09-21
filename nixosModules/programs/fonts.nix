@@ -1,10 +1,10 @@
-{ pkgs, lib, config, ...}: {
+{ pkgs-unstable, lib, config, ...}: {
         options = {
                 fonts.enable = lib.mkEnableOption "enable fonts.nix";
         };
         config = lib.mkIf config.fonts.enable {
                 # Set nerd-fonts and ms-fonts
-                fonts.packages = with pkgs; [
+                fonts.packages = with pkgs-unstable; [
                         # Microsoft fonts
                         vista-fonts 
                         corefonts
