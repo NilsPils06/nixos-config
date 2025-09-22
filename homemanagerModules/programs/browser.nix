@@ -4,7 +4,7 @@
                 browser.enable = lib.mkEnableOption "Enable zen-browser configuration";
         };
 
-        config = lib.mkIf config.minecraft.enable {
+        config = lib.mkIf config.browser.enable {
                 home.packages = with zen-browser.packages."x86_64-linux"; [ beta ];
                 #programs.zen-browser.enable = true;
         };
