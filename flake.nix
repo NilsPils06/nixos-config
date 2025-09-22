@@ -28,6 +28,10 @@
                         url = "github:SylEleuth/gruvbox-plus-icon-pack/master";
                         flake = false;
                 };
+                zen-browser = {
+                        url = "github:0xc000022070/zen-browser-flake/beta";
+                        inputs.nixpkgs.follows = "nixpkgs";
+                };
         };
 
         outputs = {
@@ -40,6 +44,7 @@
                 my-bash-scripts,
                 nvf,
                 gruvbox-icons,
+                zen-browser,
                 ...
                 }:
                 let
@@ -107,11 +112,12 @@
                                                         home.packages = [
                                                                 my-bash-scripts-pkg
                                                                 my-neovim-pkg
+
                                                         ];
                                                 }
                                         ];
                                         extraSpecialArgs = {
-                                                inherit pkgs-unstable gruvboxPlusIcons; 
+                                                inherit pkgs-unstable gruvboxPlusIcons zen-browser; 
                                         };
                                 };
                         };
