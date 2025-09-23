@@ -3,13 +3,13 @@
                 ./cliApps/fastfetch.nix
                 ./cliApps/git.nix
                 ./cliApps/shell.nix
-
-                ./theming/gnome-extensions.nix
-                ./theming/gnome-theming.nix
-                ./programs/minecraft.nix
                 ./programs/browser.nix
                 ./programs/jetbrains.nix
+                ./programs/latex.nix
+                ./programs/minecraft.nix
+                ./theming/gnome-extensions.nix
+                ./theming/gnome-theming.nix
         ];
-        git.enable = lib.mkDefault true;
         browser.enable = lib.mkDefault true;
+        git.enable = lib.mkDefault true;
 }

@@ -16,15 +16,22 @@
         ];
 
         config = {
-                # Enable shell.nix
+                # Enable shell configuration
                 shell.enable = true;
-                # Enable fastfetch.nix
+                
+                # Enable fastfetct configuration
                 fastfetch.enable = true;
+                
                 # Enable gnome customization
                 gnome-extensions.enable = true;
                 gnome-theming.enable = true;
-                minecraft.enable = true;
+
+                # Enable Jetbrains IDE's
                 jetbrains.enable = true;
+
+                # Enable LaTeX
+                latex.enable = true;
+
                 home.homeDirectory = "/home/mathijs";
                 home.username = "mathijs";
                 # This value determines the Home Manager release that your configuration is

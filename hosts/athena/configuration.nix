@@ -34,31 +34,19 @@
                 extraGroups = [ "networkmanager" "wheel" ];
         };
 
-        # Install firefox.
-        programs.firefox.enable = true;
-
         # List packages installed in system profile. To search, run:
         # $ nix search wget
         environment.systemPackages = with pkgs; [
                 # Command Line tools (CLI)
-                fastfetch # CLI system info
                 gh # Github CLI-client
-
 
                 # Communication
                 signal-desktop # Signal messenger
                 vesktop # Discord client
 
                 # Development
-                #cmake # make++
-                #pkgs-unstable.jetbrains.clion # A working C/C++ IDE as long as I'm a student
-                #pkgs-unstable.jetbrains.pycharm-professional # Python IDE
-                #gcc # GNU C Compiler
                 logisim # Live laugh Logisim - Swiepie (2024)
                 mars-mips # MIPS Assembly IDE
-                #ninja # another compilation thingie
-                #python3 # A snake-based programming language
-                #valgrind # Squash those memory leaks
 
                 # Media
                 gimp # GNU Image Manipulation Program
@@ -68,8 +56,6 @@
                 # Documents
                 # gramps # Geneology
                 libreoffice # Office Suite
-                setzer # LaTeX, the editor
-                texliveMedium # LaTeX, the language
 
                 # Back-ups
                 deja-dup 
