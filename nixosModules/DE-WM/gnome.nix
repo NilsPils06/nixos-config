@@ -28,6 +28,7 @@
                         totem # Default deprecated video player
                         yelp # Gnome help and docs
                 ]);
+                xdg.icons.enable = true;
                 xdg.portal = {
                         enable = true;
                         wlr.enable = true;
@@ -41,6 +42,7 @@
                 environment.systemPackages = with pkgs; [
                         dconf-editor # I get why this isn't in gnome-settings
                         gnome-tweaks # But this should be
+                        desktop-file-utils
                 ]; 
 
         };
