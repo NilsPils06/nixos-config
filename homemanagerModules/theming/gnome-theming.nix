@@ -5,13 +5,12 @@
         };
 
         config = lib.mkIf config.gnome-theming.enable {
-
+                xdg.enable = true;
                 dconf.enable = true;
                 dconf.settings = {    
                         # Configure enabled GNOME Shell extensions via their UUIDs.
                         # Command: 
                         # cat $(nix eval --raw nixpkgs#gnomeExtensions.EXTENSION)/share/gnome-shell/extensions/*/metadata.json
-
 
                         # Change button layout
                         "org/gnome/desktop/wm/preferences" = {
