@@ -7,7 +7,7 @@
         config = lib.mkIf config.git.enable {
                 # Git configuration
                 programs.git = {
-                        enable = true;
+                        enable = false;
                         settings = {
                                 user = {
                                         name = "NilsPils06";
