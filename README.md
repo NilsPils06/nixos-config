@@ -13,3 +13,6 @@ Hosts:
  - Dionysus: Lenovo Legion - Gaming laptop
      - KDE Plasma
      - Steam + Heroic
+ - Scylla: Lenovo thinkpad T14s
+     - Gnome
+     - Development
