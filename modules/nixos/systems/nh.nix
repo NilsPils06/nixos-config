@@ -9,7 +9,7 @@
                         clean.enable = true;
                         # Clean up old generations by keeping the last day and at least 3 generations.
                         clean.extraArgs = "--keep-since 1d --keep 3";
-                        flake = "/home/mathijs/.dotfiles"; 
+                        flake = "/home/nils/.dotfiles"; 
                 };
         };
 }
