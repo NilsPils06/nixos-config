@@ -13,9 +13,9 @@
                         # cat $(nix eval --raw nixpkgs#gnomeExtensions.EXTENSION)/share/gnome-shell/extensions/*/metadata.json
 
                         # Change button layout
-                        "org/gnome/desktop/wm/preferences" = {
-                                button-layout = "close,minimize,maximize:appmenu";
-                        };
+                        #"org/gnome/desktop/wm/preferences" = {
+                        #        button-layout = "close,minimize,maximize:appmenu";
+                        #};
 
                         # Privacy settings
                         "org/gnome/desktop/privacy" = {

@@ -129,6 +129,19 @@
                                                 inherit pkgs-stable;
                                         };
                                 };
+                                
+                                 scylla = lib.nixosSystem {
+                                        inherit system;
+                                        modules = [
+                                                ./hosts/scylla/hardware-configuration.nix
+                                                ./hosts/scylla/configuration.nix
+                                                nix-index-database.nixosModules.nix-index
+                                                { programs.nix-index-database.comma.enable = true; }
+                                        ];
+                                        specialArgs = {
+                                                inherit pkgs-stable;
+                                        };
+                                };
                         };
 
                         homeConfigurations = {
@@ -136,6 +149,22 @@
                                         inherit pkgs;
                                         modules = [
                                                 ./hosts/athena/home.nix
+                                                {
+                                                        home.packages = [
+                                                                my-bash-scripts-pkg
+                                                                my-neovim-pkg
+                                                        ];
+                                                }
+                                                stylix.homeModules.stylix
+                                        ];
+                                        extraSpecialArgs = {
+                                                inherit pkgs-stable gruvboxPlusIcons zen-browser;
+                                        };
+                                };
+                                "nils@scylla" = home-manager.lib.homeManagerConfiguration {
+                                        inherit pkgs;
+                                        modules = [
+                                                ./hosts/scylla/home.nix
                                                 {
                                                         home.packages = [
                                                                 my-bash-scripts-pkg

@@ -6,8 +6,7 @@
 
         config = lib.mkIf config.browser.enable {
                 home.packages = [ 
-                        zen-browser.packages."x86_64-linux".beta
-                        pkgs.tor-browser
+                        pkgs.firefox
                 ];
                 xdg = {
                         enable = true;

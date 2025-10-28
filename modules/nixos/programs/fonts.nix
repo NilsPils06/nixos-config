@@ -6,14 +6,10 @@
                 # Set nerd-fonts and ms-fonts
                 fonts.packages = with pkgs; [
                         # Microsoft fonts
-                        vista-fonts 
-                        corefonts
+                        #vista-fonts 
+                        #corefonts
                         # Nerd fonts
                         nerd-fonts.jetbrains-mono
-                        # toki pona
-                        nasin-nanpa
-                        linja-sike
-                        sitelen-seli-kiwen
                 ];
         };
 }

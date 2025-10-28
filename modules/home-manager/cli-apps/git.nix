@@ -10,8 +10,8 @@
                         enable = true;
                         settings = {
                                 user = {
-                                        name = "Mathijs";
-                                        email = "79464596+CouldBeMathijs@users.noreply.github.com";
+                                        name = "NilsPils06";
+                                        email = "135322818+NilsPils06@users.noreply.github.com";
                                 };
                                 init.defaultBranch = "main";
                         };

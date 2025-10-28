@@ -12,11 +12,11 @@
                         hot-edge # When the top left is to far away
                         #maximize-to-empty-workspace # MacOS did something right here
                         open-desktop-file-location # Great debugging help
-                        paperwm # Scrolling window management
+                        # paperwm # Scrolling window management
                         #rounded-window-corners-reborn # Should be default
                         user-themes # Classic
                         vitals # System monitor in top bar
-                        gbinaryclock
+                        # gbinaryclock
                 ];
                 dconf = {
                         enable = true;
@@ -30,11 +30,11 @@
                                                 hot-edge.extensionUuid # When the top left is to far away
                                                 #maximize-to-empty-workspace.extensionUuid # MacOS did something right here
                                                 open-desktop-file-location.extensionUuid # Great debugging help
-                                                paperwm.extensionUuid # Scrolling window management
+                                                # paperwm.extensionUuid # Scrolling window management
                                                 #rounded-window-corners-reborn.extensionUuid # Should be default
                                                 user-themes.extensionUuid # Classic
                                                 vitals.extensionUuid # System monitor in top bar
-                                                gbinaryclock.extensionUuid
+                                                # gbinaryclock.extensionUuid
                                         ];
                                         disable-extension-version-validation = true;
                                 };
