@@ -16,3 +16,6 @@ Hosts:
  - Scylla: Lenovo thinkpad T14s
      - Gnome
      - Development
+ - Kotoamatsukami: Desktop
+     - Gnome
+     - Development, gaming and entertainment
