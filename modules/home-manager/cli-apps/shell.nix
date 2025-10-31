@@ -35,6 +35,7 @@ in
                         enable = true;
                         enableBashIntegration = true;
                 };
+                programs.kitty.enable = true;
                 xdg = {
                         enable = true;
                         desktopEntries."btop" = {

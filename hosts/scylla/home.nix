@@ -1,11 +1,5 @@
 { config, pkgs, ... }:
 
-#let
-#mars-mips-icon-file = pkgs.runCommand "mars-mips-icon-file" { } ''
-#mkdir -p $out/
-#cp ${./images/mars-mips.png} $out/mars-mips.png
-#'';
-
 #in
 {
         # Home Manager needs a bit of information about you and the paths it should
@@ -29,17 +23,11 @@
                 # Enable Jetbrains IDE's
                 jetbrains.enable = true;
 
-                # Enable logisim and mars-mips
-                csa-utils.enable = false;
-
                 # Enable LaTeX
                 latex.enable = false;
                 fun-cli.enable = true;
 
-                # Enable musescore
-                composing.enable = false;
                 discord.enable = true;
-                gramps.enable = false;
                 minecraft.enable = false;
 
                 home.homeDirectory = "/home/nils";
@@ -61,11 +49,6 @@
                 xdg = {
                         enable = true;
                         desktopEntries = {
-                                "cups" = {
-                                        name = "Cups Printer Manager";
-                                        noDisplay = true;
-                                };
-                                
                                 "com.mitchellh.ghostty" = {
                                         name = "Ghostty";
                                         genericName = "Terminal Emulator";

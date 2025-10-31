@@ -7,6 +7,7 @@
                         btop # System monitor 
                         file # File information
                         ghostty # You never want to end up without terminal emulator
+                        kitty
                         git # Version control for the modern age
                         killall # Kill all instances of a program
                         pbpctrl # Control Pixel Buds Pro from the cli
@@ -18,4 +19,5 @@
                         zip # Make it not unzipped
                 ];
         };
+        programs.kitty.enable = true;
 }
