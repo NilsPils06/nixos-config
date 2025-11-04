@@ -1,4 +1,4 @@
-{ pkgs, lib, config, ... }:
+{ pkgs, lib, config, stylix, ... }:
 let
         flake = "${config.home.homeDirectory}/.dotfiles";
 in
@@ -35,7 +35,10 @@ in
                         enable = true;
                         enableBashIntegration = true;
                 };
-                programs.kitty.enable = true;
+                programs.kitty = {
+                	enable = true;
+                };
+                stylix.targets.kitty.enable = true;
                 xdg = {
                         enable = true;
                         desktopEntries."btop" = {

@@ -8,8 +8,6 @@
         imports = [
                 ../../modules/home-manager
         ];
-
-        config = {
                 # Enable shell configuration
                 shell.enable = true;
                 
@@ -18,7 +16,9 @@
                 
                 # Enable gnome customization
                 gnome-extensions.enable = true;
-                gnome-theming.enable = true;
+                #gnome-theming.enable = true;
+                gnome-stylix.enable = true;
+                stylix.enable = true;
 
                 # Enable Jetbrains IDE's
                 jetbrains.enable = true;
@@ -48,37 +48,8 @@
 
                 xdg = {
                         enable = true;
-                        desktopEntries = {
-                                "com.mitchellh.ghostty" = {
-                                        name = "Ghostty";
-                                        genericName = "Terminal Emulator";
-                                        comment = "A terminal emulator";
-                                        exec = "ghostty";
-                                        icon = "terminal";
-                                        categories = [ "System" "TerminalEmulator" ];
-                                        startupNotify = true;
-                                        terminal = false;
-                                        actions = {
-                                                new-window = {
-                                                        name = "New Window";
-                                                        exec = "ghostty";
-                                                };
-                                        };
-                                };
-                        };
-                };
-
-                # Ghostty terminal configuration
-                programs.ghostty = {
-                        enable = true;
-                        enableBashIntegration = true;
-                        installBatSyntax = true;
-                        settings = {
-                                theme = "Gruvbox Dark Hard";
-                        };
                 };
 
                 # Let Home Manager install and manage itself.
                 programs.home-manager.enable = true;
-        };
 }

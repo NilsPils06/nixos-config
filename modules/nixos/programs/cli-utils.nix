@@ -6,7 +6,6 @@
                 environment.systemPackages = with pkgs; [ 
                         btop # System monitor 
                         file # File information
-                        ghostty # You never want to end up without terminal emulator
                         kitty
                         git # Version control for the modern age
                         killall # Kill all instances of a program
@@ -17,7 +16,6 @@
                         wl-clipboard # wl-clip all the way
                         xdg-utils # Some needed utils like open
                         zip # Make it not unzipped
-                ];
+          ];
         };
-        programs.kitty.enable = true;
 }

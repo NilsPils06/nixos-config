@@ -6,10 +6,6 @@
                         url = "github:nix-community/home-manager/master";
                         inputs.nixpkgs.follows = "nixpkgs";
                 };
-                gruvbox-icons = {
-                        url = "github:SylEleuth/gruvbox-plus-icon-pack/master";
-                        flake = false;
-                };
                 nixpkgs = {
                         url = "github:NixOS/nixpkgs/nixos-unstable";
                 };
@@ -20,19 +16,18 @@
                         url = "github:nix-community/nix-index-database";
                         inputs.nixpkgs.follows = "nixpkgs";
                 };
-                nvf = {
-                        url = "github:NotAShelf/nvf/ea3ee477fa1814352b30d114f31bf4895eed053e";
+                stylix = {
+                        url = "github:nix-community/stylix/master";
                         inputs.nixpkgs.follows = "nixpkgs";
                 };
         };
 
         outputs = {
-                gruvbox-icons,
                 home-manager,
                 nix-index-database,
                 nixpkgs,
                 nixpkgs-stable,
-                nvf,
+                stylix,
                 ...
                 }:
                 let
@@ -49,31 +44,15 @@
                                 config.allowUnfree = true;
                         };
 
-                        # Neovim config using NVF
-                        my-neovim-pkg = (nvf.lib.neovimConfiguration {
-                                pkgs = nixpkgs.legacyPackages."${system}";
-                                modules = [ ./nvf-configuration.nix ];
-                        }).neovim;
-
-                        # Gruvbox icon pack derivation
-                        gruvboxPlusIcons = pkgs.callPackage ./packages/gruvbox-plus-icons.nix {
-                                inherit gruvbox-icons system;
-                        };
-
                 in {
-                        # Default app for `nix run .`
-                        defaultApp."${system}" = {
-                                type = "app";
-                                program = "${my-neovim-pkg}/bin/nvim";
-                        };
-
                         nixosConfigurations = {
-                                
                                  scylla = lib.nixosSystem {
                                         inherit system;
                                         modules = [
+                                        	stylix.nixosModules.stylix
                                                 ./hosts/scylla/hardware-configuration.nix
                                                 ./hosts/scylla/configuration.nix
+  
                                                 nix-index-database.nixosModules.nix-index
                                                 { programs.nix-index-database.comma.enable = true; }
                                         ];
@@ -86,6 +65,7 @@
                                         modules = [
                                                 ./hosts/kotoamatsukami/hardware-configuration.nix
                                                 ./hosts/kotoamatsukami/configuration.nix
+  
                                                 nix-index-database.nixosModules.nix-index
                                                 { programs.nix-index-database.comma.enable = true; }
                                         ];
@@ -94,7 +74,6 @@
                                         };
                                 };
                         };
-
                         homeConfigurations = {
                                 "nils@scylla" = home-manager.lib.homeManagerConfiguration {
                                         inherit pkgs;
@@ -102,12 +81,12 @@
                                                 ./hosts/scylla/home.nix
                                                 {
                                                         home.packages = [
-                                                                my-neovim-pkg
                                                         ];
                                                 }
+                                                stylix.homeModules.stylix
                                         ];
                                         extraSpecialArgs = {
-                                                inherit pkgs-stable gruvboxPlusIcons;
+                                                inherit pkgs-stable;
                                         };
                                 };
                                 "nils@kotoamatsukami" = home-manager.lib.homeManagerConfiguration {
@@ -116,12 +95,11 @@
                                                 ./hosts/kotoamatsukami/home.nix
                                                 {
                                                         home.packages = [
-                                                                my-neovim-pkg
                                                         ];
                                                 }
                                         ];
                                         extraSpecialArgs = {
-                                                inherit pkgs-stable gruvboxPlusIcons;
+                                                inherit pkgs-stable;
                                         };
                                 };
                         };
