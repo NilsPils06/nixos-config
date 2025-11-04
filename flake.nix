@@ -63,6 +63,7 @@
                                 kotoamatsukami = lib.nixosSystem {
                                         inherit system;
                                         modules = [
+                                        	stylix.nixosModules.stylix
                                                 ./hosts/kotoamatsukami/hardware-configuration.nix
                                                 ./hosts/kotoamatsukami/configuration.nix
   
@@ -97,6 +98,7 @@
                                                         home.packages = [
                                                         ];
                                                 }
+                                                stylix.homeModules.stylix
                                         ];
                                         extraSpecialArgs = {
                                                 inherit pkgs-stable;
