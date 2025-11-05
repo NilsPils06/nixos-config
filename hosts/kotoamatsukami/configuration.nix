@@ -31,9 +31,11 @@
                 ./../../modules/nixos
         ];
         services = {
+        	flatpak.enable = true;
                 envfs.enable = true;
                 fwupd.enable = true;
         };
+        xdg.portal.enable = true;
         security.rtkit.enable = true;
 
         # Define a user account. Don't forget to set a password with ‘passwd’.
