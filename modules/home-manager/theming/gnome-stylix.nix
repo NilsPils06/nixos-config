@@ -12,7 +12,7 @@
                 stylix.enable = true;
 
                 # 3. Configure the Stylix Color Scheme (Base16 Gruvbox Dark Hard)
-                stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
+                stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-night-storm.yaml";
 
                 # 4. Enable Stylix targets for GNOME/GTK
                 stylix.targets = {
@@ -81,11 +81,11 @@
             	# 8. Icon Theme (Gruvbox Plus)
 		stylix.icons = {
 		      enable = true;
-		      package = pkgs.gruvbox-plus-icons;
+		      package = pkgs.nordzy-icon-theme;
 		      
 		      # These are the exact theme names from the package
-		      light = "Gruvbox-Plus-Light";
-		      dark = "Gruvbox-Plus-Dark";
+		      light = "Nordzy";
+		      dark = "Nordzy";
 		 };
 
 		 # Make sure polarity is set to dark to match your Gruvbox theme
