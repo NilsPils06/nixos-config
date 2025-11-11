@@ -4,7 +4,6 @@
                 
                 ./programs/cli-utils.nix
                 ./programs/fonts.nix
-                ./programs/gaming.nix
                 ./programs/gnome-apps.nix
 
                 ./systems/audio.nix

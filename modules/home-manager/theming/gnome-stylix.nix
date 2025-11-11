@@ -55,7 +55,7 @@
                 dconf.settings = {
                         # Change button layout
                         "org/gnome/desktop/wm/preferences" = {
-                                button-layout = "close,minimize,maximize:appmenu";
+                                button-layout = "appmenu:minimize,maximize,close";
                         };
 
                         # Privacy settings
