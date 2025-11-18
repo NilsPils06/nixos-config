@@ -11,15 +11,21 @@
     clion = {
       enable = lib.mkEnableOption "Enable CLion";
     };
+    
+    datagrip = {
+      enable = lib.mkEnableOption "Enable Datagrip";
+    };
   };
 
   config = {
     # If the top-level jetbrains.enable is set, enable the individual options
     jetbrains.pycharm.enable = lib.mkIf config.jetbrains.enable true;
     jetbrains.clion.enable = lib.mkIf config.jetbrains.enable true;
+    jetbrains.datagrip.enable = lib.mkIf config.jetbrains.enable true;
 
     home.packages = lib.optional config.jetbrains.pycharm.enable pkgs.jetbrains.pycharm-professional
-                 ++ lib.optional config.jetbrains.clion.enable (pkgs.jetbrains.plugins.addPlugins pkgs.jetbrains.clion ["github-copilot"]);
+    ++ lib.optional config.jetbrains.datagrip.enable pkgs.jetbrains.datagrip
+                 ++ lib.optional config.jetbrains.clion.enable (pkgs.jetbrains.plugins.addPlugins pkgs.jetbrains.clion []);
   };
 }
 
