@@ -1,4 +1,10 @@
 { pkgs, lib, config, options, ... }:
+let 
+	fastfetch-folder = pkgs.runCommand "fastfetch-folder" { } ''
+        mkdir -p $out/
+        cp -r ${../../../img/fastfetch} $out/fastfetch
+        '';
+in
 {
         options = {
                 fastfetch.enable = lib.mkEnableOption "Enable fastfetch configuration";
@@ -12,12 +18,13 @@
                         settings = {
                                 "$schema" = "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json";
                                 logo = {
-                                        type = "small";
-                                        color = {
-                                                "1" = "#5277C3";
-                                                "2" = "#7EBAE4";
-                                        };
-                                };
+                                	type = "kitty";
+					source = "${fastfetch-folder}/fastfetch/*.png";
+					height = 18;
+					padding = {
+					   top = 3;	
+					};
+				};
                                 display = {
                                         separator = " · ";
                                         color = "bright_blue";
