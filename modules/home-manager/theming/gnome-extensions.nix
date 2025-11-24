@@ -17,7 +17,6 @@
                         user-themes # Classic
                         vitals # System monitor in top bar
                         # gbinaryclock
-                        forge # Tiling manager
                 ];
                 dconf = {
                         enable = true;
@@ -36,7 +35,6 @@
                                                 user-themes.extensionUuid # Classic
                                                 vitals.extensionUuid # System monitor in top bar
                                                 # gbinaryclock.extensionUuid
-                                                forge.extensionUuid # Tiling manager
                                         ];
                                         disable-extension-version-validation = true;
                                 };
