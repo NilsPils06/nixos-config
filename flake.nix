@@ -6,6 +6,10 @@
                         url = "github:nix-community/home-manager/master";
                         inputs.nixpkgs.follows = "nixpkgs";
                 };
+                illogical-flake = {
+      			url = "github:soymou/illogical-flake";
+     			inputs.nixpkgs.follows = "nixpkgs";
+    		};
                 nixpkgs = {
                         url = "github:NixOS/nixpkgs/nixos-unstable";
                 };
@@ -24,6 +28,7 @@
 
         outputs = {
                 home-manager,
+                illogical-flake,
                 nix-index-database,
                 nixpkgs,
                 nixpkgs-stable,
@@ -80,11 +85,11 @@
                                         inherit pkgs;
                                         modules = [
                                                 ./hosts/scylla/home.nix
-                                                {
-                                                        home.packages = [
-                                                        ];
-                                                }
                                                 stylix.homeModules.stylix
+                                        	illogical-flake.homeManagerModules.default
+        					{
+          						programs.illogical-impulse.enable = true;
+        					}
                                         ];
                                         extraSpecialArgs = {
                                                 inherit pkgs-stable;

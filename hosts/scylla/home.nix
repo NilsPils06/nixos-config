@@ -45,6 +45,16 @@
                         # signal-desktop
                         vesktop # A discord client
                 ];
+		programs.illogical-impulse = {
+    			enable = true;
+
+    			# Customize shell tools (all enabled by default)
+   			dotfiles = {
+      				fish.enable = true;     # Fish shell with custom config
+      				kitty.enable = true;    # Kitty terminal emulator
+      				starship.enable = true; # Starship prompt
+    			};
+  		};
 
                 xdg = {
                         enable = true;

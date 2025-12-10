@@ -10,6 +10,19 @@
         # Enable Gnome and all packages around it
         gnome.enable = true;
         gnome-apps.enable = true;
+        
+        # Enable Hyprland
+	programs.hyprland.enable = true;
+
+	# Required services
+	services.geoclue2.enable = true;  # For QtPositioning
+	# services.networkmanager.enable = true;  # For network management
+
+	# System fonts (optional but recommended)
+	fonts.packages = with pkgs; [
+  		rubik
+		material-symbols
+	];
 
         nixpkgs.overlays = [ (final: prev: {
                 inherit (prev.lixPackageSets.stable)
