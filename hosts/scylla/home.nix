@@ -23,10 +23,6 @@
                 # Enable Jetbrains IDE's
                 jetbrains.enable = true;
 
-                # Enable LaTeX
-                latex.enable = false;
-                fun-cli.enable = true;
-
                 discord.enable = true;
                 minecraft.enable = false;
 

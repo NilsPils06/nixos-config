@@ -54,7 +54,7 @@
 
                 # Documents
                 # gramps # Geneology
-                libreoffice # Office Suite
+                # libreoffice # Office Suite
 
                 # Back-ups
                 deja-dup 
