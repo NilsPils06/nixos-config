@@ -7,6 +7,7 @@
                         btop # System monitor 
                         file # File information
                         kitty
+                        waveterm
                         git # Version control for the modern age
                         killall # Kill all instances of a program
                         pbpctrl # Control Pixel Buds Pro from the cli
