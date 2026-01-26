@@ -1,13 +1,19 @@
-{ pkgs, lib, config, options, ... }:
 {
-        options = {
-                browser.enable = lib.mkEnableOption "Enable firefox configuration";
-        };
+  pkgs,
+  lib,
+  config,
+  options,
+  ...
+}:
+{
+  options = {
+    browser.enable = lib.mkEnableOption "Enable firefox configuration";
+  };
 
-        config = lib.mkIf config.browser.enable {
-                home.packages = [ 
-                        pkgs.firefox
-                ];
-        };
+  config = lib.mkIf config.browser.enable {
+    home.packages = [
+      pkgs.firefox
+    ];
+  };
 
 }

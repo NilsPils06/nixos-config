@@ -1,21 +1,24 @@
-{ lib, ...}: {
-        imports = [
-                ./DE-WM/gnome.nix
-                
-                ./programs/cli-utils.nix
-                ./programs/fonts.nix
-                ./programs/gnome-apps.nix
+{ lib, ... }:
+{
+  imports = [
+    ./DE-WM/gnome.nix
+    ./DE-WM/niri.nix
 
-                ./systems/audio.nix
-                ./systems/locale.nix
-                ./systems/nh.nix
-                ./systems/plymouth.nix
-        ];
-        cli-utils.enable = lib.mkDefault true;
-        fonts.enable = lib.mkDefault true;
+    ./programs/cli-utils.nix
+    ./programs/fonts.nix
+    ./programs/gnome-apps.nix
+    ./programs/noctalia.nix
 
-        audio.enable = lib.mkDefault true;
-        locale.enable = lib.mkDefault true;
-        nh.enable = lib.mkDefault true;
-        plymouth.enable = lib.mkDefault true;
+    ./systems/audio.nix
+    ./systems/locale.nix
+    ./systems/nh.nix
+    ./systems/plymouth.nix
+  ];
+  cli-utils.enable = lib.mkDefault true;
+  fonts.enable = lib.mkDefault true;
+
+  audio.enable = lib.mkDefault true;
+  locale.enable = lib.mkDefault true;
+  nh.enable = lib.mkDefault true;
+  plymouth.enable = lib.mkDefault true;
 }

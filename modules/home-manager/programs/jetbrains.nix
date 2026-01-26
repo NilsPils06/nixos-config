@@ -1,4 +1,9 @@
-{ pkgs, lib, config, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 
 {
   options.jetbrains = {
@@ -11,7 +16,7 @@
     clion = {
       enable = lib.mkEnableOption "Enable CLion";
     };
-    
+
     datagrip = {
       enable = lib.mkEnableOption "Enable Datagrip";
     };
@@ -23,9 +28,9 @@
     jetbrains.clion.enable = lib.mkIf config.jetbrains.enable true;
     jetbrains.datagrip.enable = lib.mkIf config.jetbrains.enable true;
 
-    home.packages = lib.optional config.jetbrains.pycharm.enable pkgs.jetbrains.pycharm
-    ++ lib.optional config.jetbrains.datagrip.enable pkgs.jetbrains.datagrip
-                 ++ lib.optional config.jetbrains.clion.enable pkgs.jetbrains.clion;
+    home.packages =
+      lib.optional config.jetbrains.pycharm.enable pkgs.jetbrains.pycharm
+      ++ lib.optional config.jetbrains.datagrip.enable pkgs.jetbrains.datagrip
+      ++ lib.optional config.jetbrains.clion.enable pkgs.jetbrains.clion;
   };
 }
-

@@ -1,28 +1,34 @@
-{ pkgs, lib, config, options, ... }:
 {
-        options = {
-                discord.enable = lib.mkEnableOption "Enable discord configuration";
-        };
+  pkgs,
+  lib,
+  config,
+  options,
+  ...
+}:
+{
+  options = {
+    discord.enable = lib.mkEnableOption "Enable discord configuration";
+  };
 
-        config = lib.mkIf config.discord.enable {
-                home.packages = with pkgs; [
-                        vesktop # My discord client of choice
-                ];
-                xdg = {
-                        enable = true;
-                        desktopEntries."vesktop" = {
-                                name = "Vesktop";
-                                comment = "A Discord client";
-                                genericName = "Discord Client";
-                                exec = "vesktop";
-                                type = "Application";
-                                icon = "discord";
-                        };
-                        autostart = {
-                                enable = true;
-                                entries = [ "${config.home.homeDirectory}/.nix-profile/share/applications/vesktop.desktop" ];
-                        };
-                };
+  config = lib.mkIf config.discord.enable {
+    home.packages = with pkgs; [
+      vesktop # My discord client of choice
+    ];
+    xdg = {
+      enable = true;
+      desktopEntries."vesktop" = {
+        name = "Vesktop";
+        comment = "A Discord client";
+        genericName = "Discord Client";
+        exec = "vesktop";
+        type = "Application";
+        icon = "discord";
+      };
+      autostart = {
+        enable = true;
+        entries = [ "${config.home.homeDirectory}/.nix-profile/share/applications/vesktop.desktop" ];
+      };
+    };
 
-        };
+  };
 }
