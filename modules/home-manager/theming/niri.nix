@@ -45,9 +45,9 @@ in
         "Mod+WheelScrollDown".cooldown-ms = 150;
         "Mod+WheelScrollUp".action.focus-workspace-up = [];
         "Mod+WheelScrollUp".cooldown-ms = 150;
-        "Mod+Shift+WheelScrollUp".action.focus-column-right = [];
+        "Mod+Shift+WheelScrollUp".action.focus-column-left = [];
         "Mod+Shift+WheelScrollUp".cooldown-ms = 150;
-        "Mod+Shift+WheelScrollDown".action.focus-column-left = [];
+        "Mod+Shift+WheelScrollDown".action.focus-column-right = [];
         "Mod+Shift+WheelScrollDown".cooldown-ms = 150;
         "Mod+Up".action.focus-workspace-up = [];
         "Mod+Down".action.focus-workspace-down = [];
