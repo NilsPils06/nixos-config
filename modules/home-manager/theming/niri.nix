@@ -24,7 +24,6 @@ in
   config = lib.mkIf config.niri-config.enable {
   
     home.packages = with pkgs; [
-	fuzzel
     ];
     # imports = [ niri.homeModules.niri ];
 
