@@ -20,7 +20,7 @@
     gnome-extensions.enable = true;
     gnome-stylix.enable = true;
     stylix.enable = true;
-    
+
     niri-config.enable = true;
     noctalia.enable = true;
 
