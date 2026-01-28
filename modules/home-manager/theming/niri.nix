@@ -24,7 +24,7 @@ in
   config = lib.mkIf config.niri-config.enable {
   
     home.packages = with pkgs; [
-      fuzzel
+	fuzzel
     ];
     # imports = [ niri.homeModules.niri ];
 
@@ -49,6 +49,10 @@ in
         "Mod+Shift+WheelScrollUp".cooldown-ms = 150;
         "Mod+Shift+WheelScrollDown".action.focus-column-left = [];
         "Mod+Shift+WheelScrollDown".cooldown-ms = 150;
+        "Mod+Up".action.focus-workspace-up = [];
+        "Mod+Down".action.focus-workspace-down = [];
+        "Mod+Right".action.focus-column-right = [];
+        "Mod+Left".action.focus-column-left = [];
         "Mod+1".action.focus-workspace = 1;
         "Mod+2".action.focus-workspace = 2;
         "Mod+3".action.focus-workspace = 3;
@@ -64,7 +68,6 @@ in
       # Startup applications
       spawn-at-startup = [
         { command = [ "noctalia-shell" ]; }
-        { command = [ "fuzzel" ]; }
       ];
     };
   };
