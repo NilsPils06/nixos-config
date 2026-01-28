@@ -22,6 +22,7 @@ in
   };
 
   config = lib.mkIf config.niri-config.enable {
+  
     home.packages = with pkgs; [
       fuzzel
     ];
@@ -44,8 +45,10 @@ in
         "Mod+WheelScrollDown".cooldown-ms = 150;
         "Mod+WheelScrollUp".action.focus-workspace-up = [];
         "Mod+WheelScrollUp".cooldown-ms = 150;
-        "Mod+Right".action.focus-column-right = [];
-        "Mod+Left".action.focus-column-left = [];
+        "Mod+Shift+WheelScrollUp".action.focus-column-right = [];
+        "Mod+Shift+WheelScrollUp".cooldown-ms = 150;
+        "Mod+Shift+WheelScrollDown".action.focus-column-left = [];
+        "Mod+Shift+WheelScrollDown".cooldown-ms = 150;
         "Mod+1".action.focus-workspace = 1;
         "Mod+2".action.focus-workspace = 2;
         "Mod+3".action.focus-workspace = 3;

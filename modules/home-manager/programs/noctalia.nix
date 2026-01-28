@@ -12,6 +12,7 @@
   };
 
   config = lib.mkIf config.noctalia.enable {
+  stylix.targets.noctalia-shell.enable = true;
 
     # configure options
     programs.noctalia-shell = {

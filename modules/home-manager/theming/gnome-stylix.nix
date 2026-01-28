@@ -25,6 +25,7 @@
       gtk.enable = true;
       gnome.enable = true;
       kitty.enable = true;
+      niri.enable = true;
     };
 
     # 5. Configure Fonts (Uniform JetBrainsMono Nerd Font)

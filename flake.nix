@@ -114,6 +114,7 @@
             }
             noctalia.homeModules.default
             niri.homeModules.niri
+            niri.homeModules.stylix
             stylix.homeModules.stylix
           ];
           extraSpecialArgs = {
