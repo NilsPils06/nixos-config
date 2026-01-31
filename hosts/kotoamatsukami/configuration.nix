@@ -8,7 +8,7 @@
   networking.hostName = "kotoamatsukami";
 
   # Enable Gnome and all packages around it
-  gnome.enable = true;
+  gnome.enable = false;
   gnome-apps.enable = true;
 
   niri.enable = true;
