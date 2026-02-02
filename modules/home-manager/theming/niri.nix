@@ -24,6 +24,7 @@ in
   config = lib.mkIf config.niri-config.enable {
   
     home.packages = with pkgs; [
+	xwayland-satellite
     ];
     # imports = [ niri.homeModules.niri ];
 
