@@ -61,6 +61,8 @@
         scylla = lib.nixosSystem {
           inherit system;
           modules = [
+          noctalia.nixosModules.default
+            niri.nixosModules.niri
             stylix.nixosModules.stylix
             ./hosts/scylla/hardware-configuration.nix
             ./hosts/scylla/configuration.nix
@@ -69,7 +71,7 @@
             { programs.nix-index-database.comma.enable = true; }
           ];
           specialArgs = {
-            inherit pkgs-stable;
+            inherit pkgs-stable noctalia niri;
           };
         };
         kotoamatsukami = lib.nixosSystem {
@@ -99,9 +101,12 @@
               ];
             }
             stylix.homeModules.stylix
+            noctalia.homeModules.default
+            niri.homeModules.niri
+            niri.homeModules.stylix
           ];
           extraSpecialArgs = {
-            inherit pkgs-stable;
+            inherit pkgs-stable noctalia niri;
           };
         };
         "nils@kotoamatsukami" = home-manager.lib.homeManagerConfiguration {
