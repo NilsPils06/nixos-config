@@ -20,6 +20,8 @@
   wayland.enable = true;
 };
 
+	services.gvfs.enable = true;
+
 	services.xserver = {
 		enable = true;
 		excludePackages = with pkgs; [
