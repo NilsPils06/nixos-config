@@ -64,7 +64,9 @@ in
 	mouse.accel-profile = "flat";
 	workspace-auto-back-and-forth = true;
       };
-
+	outputs = {
+		e-DP1.scale = 1.0;
+	};
       # Startup applications
       spawn-at-startup = [
         { command = [ "noctalia-shell" ]; }
