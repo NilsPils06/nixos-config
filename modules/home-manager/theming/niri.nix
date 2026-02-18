@@ -65,7 +65,7 @@ in
 	workspace-auto-back-and-forth = true;
       };
 	outputs = {
-		e-DP1.scale = 1.0;
+		eDP-1.scale = 1.0;
 	};
       # Startup applications
       spawn-at-startup = [
