@@ -20,6 +20,9 @@
   gnome-stylix.enable = true;
   stylix.enable = true;
 
+niri-config.enable = true;
+noctalia.enable = true;
+
   # Enable Jetbrains IDE's
   jetbrains.enable = true;
 

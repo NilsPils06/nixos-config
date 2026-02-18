@@ -8,8 +8,11 @@
   networking.hostName = "scylla";
 
   # Enable Gnome and all packages around it
-  gnome.enable = true;
+  gnome.enable = false;
   gnome-apps.enable = true;
+  
+  niri.enable = true;
+  noctalia.enable = true;
 
   nixpkgs.overlays = [
     (final: prev: {
@@ -65,7 +68,7 @@
   ];
 
   boot = {
-    kernelPackages = pkgs.linuxPackages_latest;
+    # kernelPackages = pkgs.linuxPackages_latest;
     loader = {
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
@@ -80,6 +83,8 @@
     "nix-command"
     "flakes"
   ];
+
+  services.upower.enable = true;
   services.postgresql = {
     enable = true;
     ensureDatabases = [ "mydatabase" ];
