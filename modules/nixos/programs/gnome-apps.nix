@@ -10,7 +10,7 @@
   };
   config = lib.mkIf config.gnome-apps.enable {
     environment.systemPackages = with pkgs; [
-      devtoolbox # Just some nicities
+     # devtoolbox # Just some nicities
       impression # dd but Gnome
       parabolic # Media downloader
       papers # Pdf reader

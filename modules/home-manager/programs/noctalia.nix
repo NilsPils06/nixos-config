@@ -59,13 +59,12 @@
             ];
           };
         };
-        colorSchemes.predefinedScheme = "Monochrome";
         general = {
           avatarImage = "/home/drfoobar/.face";
           radiusRatio = 0.2;
         };
         location = {
-          monthBeforeDay = true;
+          monthBeforeDay = false;
           name = "Brussels, Belgium";
         };
 	notifications = {

@@ -67,6 +67,9 @@ in
 	outputs = {
 		eDP-1.scale = 1.0;
 	};
+	layout = {
+		border.enable = false;
+	};
       # Startup applications
       spawn-at-startup = [
         { command = [ "noctalia-shell" ]; }
