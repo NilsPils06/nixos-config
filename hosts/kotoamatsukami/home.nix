@@ -16,9 +16,7 @@
     # Enable fastfetct configuration
     fastfetch.enable = true;
 
-    # Enable gnome customization
-    gnome-extensions.enable = true;
-    gnome-stylix.enable = true;
+    stylix-conf.enable = true;
     stylix.enable = true;
 
     niri-config.enable = true;

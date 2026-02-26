@@ -9,8 +9,7 @@
     ./programs/jetbrains.nix
     ./programs/minecraft.nix
     ./programs/noctalia.nix
-    ./theming/gnome-extensions.nix
-    ./theming/gnome-stylix.nix
+    ./theming/stylix.nix
     ./theming/niri.nix
   ];
   browser.enable = lib.mkDefault true;

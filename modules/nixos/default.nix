@@ -1,12 +1,10 @@
 { lib, ... }:
 {
   imports = [
-    ./DE-WM/gnome.nix
     ./DE-WM/niri.nix
 
     ./programs/cli-utils.nix
     ./programs/fonts.nix
-    ./programs/gnome-apps.nix
     ./programs/noctalia.nix
 
     ./systems/audio.nix

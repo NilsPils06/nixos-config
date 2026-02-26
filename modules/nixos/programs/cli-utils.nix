@@ -23,6 +23,7 @@
       wl-clipboard # wl-clip all the way
       xdg-utils # Some needed utils like open
       zip # Make it not unzipped
+      nnn
     ];
   };
 }

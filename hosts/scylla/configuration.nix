@@ -6,10 +6,6 @@
 
 {
   networking.hostName = "scylla";
-
-  # Enable Gnome and all packages around it
-  gnome.enable = false;
-  gnome-apps.enable = true;
   
   niri.enable = true;
   noctalia.enable = true;

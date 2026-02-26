@@ -9,10 +9,10 @@
 {
   options = {
     # Custom option to enable this module
-    gnome-stylix.enable = lib.mkEnableOption "enable stylix with custom gnome dconf settings";
+    stylix-conf.enable = lib.mkEnableOption "enable stylix with custom gnome dconf settings";
   };
 
-  config = lib.mkIf config.gnome-stylix.enable {
+  config = lib.mkIf config.stylix-conf.enable {
 
     # 2. Enable Stylix core features
     stylix.enable = true;
@@ -58,26 +58,6 @@
 
     # 6. Dconf Settings (Non-theming settings retained)
     xdg.enable = true;
-    dconf.enable = true;
-    dconf.settings = {
-      # Change button layout
-      "org/gnome/desktop/wm/preferences" = {
-        button-layout = "appmenu:minimize,maximize,close";
-      };
-
-      # Privacy settings
-      "org/gnome/desktop/privacy" = {
-        recent-files-max-age = 30;
-        old-files-age = 30;
-        remove-old-temp-files = true;
-        remove-old-trash-files = true;
-      };
-
-      # Fractional scaling
-      "org/gnome/mutter" = {
-        experimental-features = [ "scale-monitor-framebuffer" ];
-      };
-    };
 
     # 7. Cursor (Managed by Home Manager/Stylix via this option)
     stylix.cursor = {

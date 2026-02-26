@@ -41,7 +41,8 @@
 
 	environment.systemPackages = with pkgs; [
 		nautilus
-		vscodium
+		media-downloader
+  	vscodium
 	];
 
     programs.niri = {
