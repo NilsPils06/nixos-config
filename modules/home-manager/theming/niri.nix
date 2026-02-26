@@ -28,7 +28,7 @@ in
     ];
     # imports = [ niri.homeModules.niri ];
 
-    nixpkgs.overlays = [ niri.overlays.niri ];
+    # nixpkgs.overlays = [ niri.overlays.niri ];
     programs.niri.settings = {
       # Basic keybindings
       binds = {

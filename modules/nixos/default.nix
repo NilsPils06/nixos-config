@@ -11,6 +11,7 @@
     ./systems/locale.nix
     ./systems/nh.nix
     ./systems/plymouth.nix
+    ./systems/common.nix
   ];
   cli-utils.enable = lib.mkDefault true;
   fonts.enable = lib.mkDefault true;
