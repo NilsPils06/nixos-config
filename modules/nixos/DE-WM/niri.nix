@@ -12,18 +12,14 @@
 
   config = lib.mkIf config.niri.enable {
     nixpkgs.overlays = [ niri.overlays.niri ];
-    
-    services.displayManager.sddm = {
-  enable = true;
-
-  # Enables experimental Wayland support
-  wayland.enable = true;
-};
 
 	services.gvfs.enable = true;
 
 	services.xserver = {
 		enable = true;
+    displayManager.lightdm.enable = true;
+  #displayManager.lightdm.greeters.gtk.enable = true;
+  #displayManager.lightdm.greeters.slick.enable = true;
 		excludePackages = with pkgs; [
 			xterm
 		];
