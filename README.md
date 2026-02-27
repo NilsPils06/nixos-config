@@ -49,7 +49,7 @@ flake.nix                        # Root – mkHost helper removes duplication
    ```
 
 ## Hosts
- - Scylla: Lenovo thinkpad T14s
+ - Scylla: Lenovo ThinkPad T14s
      - Gnome
      - Development
  - Kotoamatsukami: Desktop
