@@ -54,84 +54,51 @@
         inherit system;
         config.allowUnfree = true;
       };
+
+      # Helper function to create a host configuration.
+      # Each host only needs to provide its hostname; all shared
+      # module wiring (flake modules, home-manager integration) is
+      # defined once here.
+      mkHost = hostname: lib.nixosSystem {
+        inherit system;
+        modules = [
+          ./hosts/${hostname}/hardware-configuration.nix
+          ./hosts/${hostname}/configuration.nix
+
+          # System-wide flake modules
+          noctalia.nixosModules.default
+          niri.nixosModules.niri
+          stylix.nixosModules.stylix
+          nix-index-database.nixosModules.nix-index
+          { programs.nix-index-database.comma.enable = true; }
+
+          # Home Manager integration
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+
+            home-manager.extraSpecialArgs = { inherit pkgs-stable noctalia niri stylix; };
+
+            home-manager.users.nils = {
+              imports = [
+                ./hosts/${hostname}/home.nix
+
+                stylix.homeModules.stylix
+                noctalia.homeModules.default
+              ];
+            };
+          }
+        ];
+        specialArgs = {
+          inherit pkgs-stable noctalia niri;
+        };
+      };
     in
     {
       nixosConfigurations = {
-        scylla = lib.nixosSystem {
-          inherit system;
-          modules = [
-            ./hosts/scylla/hardware-configuration.nix
-            ./hosts/scylla/configuration.nix
-
-            # Systeem-brede modules van de flakes
-            noctalia.nixosModules.default
-            niri.nixosModules.niri
-            stylix.nixosModules.stylix
-            nix-index-database.nixosModules.nix-index
-            { programs.nix-index-database.comma.enable = true; }
-
-            # Home Manager integratie
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              
-              # Doorgeven van de benodigde extra argumenten aan Home Manager
-              home-manager.extraSpecialArgs = { inherit pkgs-stable noctalia niri stylix; };
-              
-              # Gebruikersconfiguratie en de specifieke Home Manager flake-modules
-              home-manager.users.nils = {
-                imports = [
-                  ./hosts/scylla/home.nix
-
-                  stylix.homeModules.stylix
-                  noctalia.homeModules.default
-                ];
-              };
-            }
-          ];
-          specialArgs = {
-            inherit pkgs-stable noctalia niri;
-          };
-        };
-
-        kotoamatsukami = lib.nixosSystem {
-          inherit system;
-          modules = [
-            ./hosts/kotoamatsukami/hardware-configuration.nix
-            ./hosts/kotoamatsukami/configuration.nix
-
-            # Systeem-brede modules van de flakes
-            noctalia.nixosModules.default
-            niri.nixosModules.niri
-            stylix.nixosModules.stylix
-            nix-index-database.nixosModules.nix-index
-            { programs.nix-index-database.comma.enable = true; }
-
-            # Home Manager integratie
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              
-              # Doorgeven van de benodigde extra argumenten aan Home Manager
-              home-manager.extraSpecialArgs = { inherit pkgs-stable noctalia niri stylix; };
-              
-              # Gebruikersconfiguratie en de specifieke Home Manager flake-modules
-              home-manager.users.nils = {
-                imports = [
-                  ./hosts/kotoamatsukami/home.nix
-
-                  stylix.homeModules.stylix
-                  noctalia.homeModules.default
-                ];
-              };
-            }
-          ];
-          specialArgs = {
-            inherit pkgs-stable noctalia niri;
-          };
-        };
+        scylla = mkHost "scylla";
+        kotoamatsukami = mkHost "kotoamatsukami";
       };
     };
 }
