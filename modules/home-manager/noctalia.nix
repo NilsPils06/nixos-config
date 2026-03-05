@@ -47,7 +47,7 @@
           };
         };
         general = {
-          avatarImage = "/home/drfoobar/.face";
+          avatarImage = "/home/nils/.face";
           radiusRatio = 0.2;
         };
         location = {

@@ -1,7 +1,7 @@
 { ... }:
 {
   flake.modules.nixos.locale =
-    { lib, ... }:
+    { ... }:
     {
       time.timeZone = "Europe/Brussels";
       i18n.defaultLocale = "en_IE.UTF-8";
