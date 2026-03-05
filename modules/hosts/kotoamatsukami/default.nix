@@ -11,6 +11,7 @@ let
     niri
     noctalia
     plymouth
+    stylix
   ];
   hmModules = with self.modules.homeManager; [
     shell
@@ -18,7 +19,6 @@ let
     git
     browser
     discord
-    jetbrains
     minecraft
     niri
     noctalia

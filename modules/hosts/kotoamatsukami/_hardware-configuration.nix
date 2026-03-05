@@ -5,11 +5,11 @@
   config,
   lib,
   pkgs,
-  modulesPath,
+  modulesPath ? null,
   ...
 }:
 
-{
+if modulesPath == null then { } else {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
   ];

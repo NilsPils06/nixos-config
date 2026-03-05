@@ -1,6 +1,6 @@
-{ self, ... }:
+{ self, inputs, ... }:
 let
-  pkgs-stable = import self.inputs.nixpkgs-stable {
+  pkgs-stable = import inputs.nixpkgs-stable {
     system = "x86_64-linux";
     config.allowUnfree = true;
   };
@@ -13,11 +13,11 @@ in
         modules ? [ ],
         hmModules ? [ ],
       }:
-      self.inputs.nixpkgs.lib.nixosSystem {
+      inputs.nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules =
           [
-            ../hosts/${hostname}/hardware-configuration.nix
+            ../hosts/${hostname}/_hardware-configuration.nix
             self.modules.nixos.${hostname}
             {
               networking.hostName = hostname;
@@ -27,14 +27,14 @@ in
                 useUserPackages = true;
                 extraSpecialArgs = {
                   inherit pkgs-stable;
-                  inherit (self.inputs) noctalia niri stylix;
+                  inherit (inputs) noctalia niri stylix;
                 };
                 users.nils = {
                   imports =
                     [
                       self.modules.homeManager.${hostname}
-                      self.inputs.stylix.homeModules.stylix
-                      self.inputs.noctalia.homeModules.default
+                      # inputs.stylix.homeModules.stylix
+                      inputs.noctalia.homeModules.default
                     ]
                     ++ hmModules;
                 };
@@ -42,17 +42,17 @@ in
             }
 
             # Flake-provided NixOS modules
-            self.inputs.noctalia.nixosModules.default
-            self.inputs.niri.nixosModules.niri
-            self.inputs.stylix.nixosModules.stylix
-            self.inputs.nix-index-database.nixosModules.nix-index
+            inputs.noctalia.nixosModules.default
+            inputs.niri.nixosModules.niri
+            inputs.stylix.nixosModules.stylix
+            inputs.nix-index-database.nixosModules.nix-index
             { programs.nix-index-database.comma.enable = true; }
-            self.inputs.home-manager.nixosModules.home-manager
+            inputs.home-manager.nixosModules.home-manager
           ]
           ++ modules;
         specialArgs = {
           inherit pkgs-stable;
-          inherit (self.inputs) noctalia niri;
+          inherit (inputs) noctalia niri;
         };
       };
   };
