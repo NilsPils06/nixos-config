@@ -1,0 +1,39 @@
+{ ... }:
+{
+  flake.modules.nixos.niri =
+    { pkgs, niri, ... }:
+    {
+      nixpkgs.overlays = [ niri.overlays.niri ];
+
+      services.gvfs.enable = true;
+
+      services.xserver = {
+        enable = true;
+        displayManager.lightdm.enable = true;
+        excludePackages = with pkgs; [
+          xterm
+        ];
+      };
+
+      xdg.icons.enable = true;
+      xdg.portal = {
+        enable = true;
+        wlr.enable = true;
+        extraPortals = with pkgs; [
+          xdg-desktop-portal
+          xdg-desktop-portal-gtk
+        ];
+      };
+
+      environment.systemPackages = with pkgs; [
+        nautilus
+        media-downloader
+        vscodium
+      ];
+
+      programs.niri = {
+        enable = true;
+        package = pkgs.niri-stable;
+      };
+    };
+}

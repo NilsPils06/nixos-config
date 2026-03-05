@@ -1,16 +1,19 @@
 {
-  description = "The main flake";
+  description = "NixOS configuration using the dendritic pattern";
+
+  outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } (inputs.import-tree ./modules);
 
   inputs = {
+    flake-parts = {
+      url = "github:hercules-ci/flake-parts";
+      inputs.nixpkgs-lib.follows = "nixpkgs";
+    };
+    import-tree.url = "github:vic/import-tree";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/release-25.05";
     home-manager = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-    nixpkgs = {
-      url = "github:NixOS/nixpkgs/nixos-unstable";
-    };
-    nixpkgs-stable = {
-      url = "github:NixOS/nixpkgs/release-25.05";
     };
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
@@ -29,109 +32,4 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-
-  outputs =
-    {
-      home-manager,
-      nix-index-database,
-      nixpkgs,
-      nixpkgs-stable,
-      stylix,
-      noctalia,
-      niri,
-      ...
-    }:
-    let
-      system = "x86_64-linux";
-      lib = nixpkgs.lib;
-
-      pkgs = import nixpkgs {
-        inherit system;
-        config.allowUnfree = true;
-      };
-
-      pkgs-stable = import nixpkgs-stable {
-        inherit system;
-        config.allowUnfree = true;
-      };
-    in
-    {
-      nixosConfigurations = {
-        scylla = lib.nixosSystem {
-          inherit system;
-          modules = [
-            ./hosts/scylla/hardware-configuration.nix
-            ./hosts/scylla/configuration.nix
-
-            # Systeem-brede modules van de flakes
-            noctalia.nixosModules.default
-            niri.nixosModules.niri
-            stylix.nixosModules.stylix
-            nix-index-database.nixosModules.nix-index
-            { programs.nix-index-database.comma.enable = true; }
-
-            # Home Manager integratie
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              
-              # Doorgeven van de benodigde extra argumenten aan Home Manager
-              home-manager.extraSpecialArgs = { inherit pkgs-stable noctalia niri stylix; };
-              
-              # Gebruikersconfiguratie en de specifieke Home Manager flake-modules
-              home-manager.users.nils = {
-                imports = [
-                  ./hosts/scylla/home.nix
-
-                  stylix.homeModules.stylix
-                  noctalia.homeModules.default
-                ];
-              };
-            }
-          ];
-          specialArgs = {
-            inherit pkgs-stable noctalia niri;
-          };
-        };
-
-        kotoamatsukami = lib.nixosSystem {
-          inherit system;
-          modules = [
-            ./hosts/kotoamatsukami/hardware-configuration.nix
-            ./hosts/kotoamatsukami/configuration.nix
-
-            # Systeem-brede modules van de flakes
-            noctalia.nixosModules.default
-            niri.nixosModules.niri
-            stylix.nixosModules.stylix
-            nix-index-database.nixosModules.nix-index
-            { programs.nix-index-database.comma.enable = true; }
-
-            # Home Manager integratie
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              
-              # Doorgeven van de benodigde extra argumenten aan Home Manager
-              home-manager.extraSpecialArgs = { inherit pkgs-stable noctalia niri stylix; };
-              
-              # Gebruikersconfiguratie en de specifieke Home Manager flake-modules
-              home-manager.users.nils = {
-                imports = [
-                  ./hosts/kotoamatsukami/home.nix
-
-                  stylix.homeModules.stylix
-                  noctalia.homeModules.default
-                ];
-              };
-            }
-          ];
-          specialArgs = {
-            inherit pkgs-stable noctalia niri;
-          };
-        };
-      };
-    };
 }

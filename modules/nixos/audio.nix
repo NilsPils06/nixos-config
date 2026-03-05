@@ -1,9 +1,6 @@
-{ lib, config, ... }:
+{ ... }:
 {
-  options = {
-    audio.enable = lib.mkEnableOption "enable audio.nix";
-  };
-  config = lib.mkIf config.audio.enable {
+  flake.modules.nixos.audio = {
     services = {
       pulseaudio.enable = false;
       pipewire = {
