@@ -22,6 +22,6 @@
         sizes.desktop = 11;
       };
 
-      stylix.targets.lightdm.enable = true;
+      stylix.targets.regreet.enable = true;
     };
 }

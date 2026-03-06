@@ -9,10 +9,15 @@
 
       services.xserver = {
         enable = true;
-        displayManager.lightdm.enable = true;
         excludePackages = with pkgs; [
           xterm
         ];
+      };
+
+      services.avahi = {
+        enable = true;
+        nssmdns4 = true;
+        openFirewall = true;
       };
 
       xdg.icons.enable = true;
@@ -25,10 +30,24 @@
         ];
       };
 
+      programs.regreet.enable = true;
+      services.greetd = {
+        enable = true;
+      };
+
+      programs.thunar = {
+        enable = true;
+        plugins = with pkgs; [
+          thunar-archive-plugin
+          thunar-volman
+        ];
+      };
+
       environment.systemPackages = with pkgs; [
-        nautilus
+        file-roller
         media-downloader
         vscodium
+        imv
       ];
 
       programs.niri = {

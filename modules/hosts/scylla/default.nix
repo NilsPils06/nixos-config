@@ -22,6 +22,7 @@ let
     niri
     noctalia
     stylix
+    zed
   ];
 in
 {

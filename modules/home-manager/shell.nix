@@ -13,9 +13,17 @@
         tldr # When man is overkill
         zoxide # cd^2
       ];
-      programs.bash = {
+      programs.bash.enable = false;
+      programs.zsh = {
         enable = true;
-        initExtra = "fastfetch";
+        enableCompletion = true;
+        dotDir = "${config.xdg.configHome}/zsh";
+
+        autosuggestion.enable = true;
+        syntaxHighlighting.enable = true;
+
+        initContent = "fastfetch";
+
         shellAliases = {
           ".." = "cd ..";
           "cat" = "bat";
@@ -23,16 +31,17 @@
           "ll" = "eza -l";
           "ls" = "eza";
           "open" = "xdg-open";
-          "switch-all" =
-            "nh os switch ${flake} && home-manager switch --print-build-logs --verbose --flake ${flake} && nh clean user --keep-since 3d --keep 5";
-          "switch-home" =
-            "home-manager switch --print-build-logs --verbose --flake ${flake} && nh clean user --keep-since 3d --keep 5";
           "z" = "zoxide";
+          "switch" = "git add .; nh os switch";
         };
       };
       programs.zoxide = {
         enable = true;
-        enableBashIntegration = true;
+        enableZshIntegration = true;
+      };
+      programs.starship = {
+        enable = true;
+        enableZshIntegration = true;
       };
       programs.kitty = {
         enable = true;
