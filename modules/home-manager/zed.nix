@@ -26,21 +26,21 @@
           "languages" = {
             "Nix" = {
               "language_servers" = [ "nil" ];
-              "format_on_save" = "on";
+              "format_on_save" = "off";
             };
             "Python" = {
               "language_servers" = [ "pyright" ];
-              "format_on_save" = "on";
+              "format_on_save" = "off";
             };
             "C" = {
               "language_servers" = [ "clangd" ];
-              "format_on_save" = "on";
+              "format_on_save" = "off";
             };
             "C++" = {
               "language_servers" = [ "clangd" ];
-              "format_on_save" = "on";
+              "format_on_save" = "off";
             };
-        };
+          };
         };
       };
     };
