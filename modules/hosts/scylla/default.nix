@@ -69,7 +69,6 @@ in
             obs-studio # Record your screen
             audacity # Audio recording and editing
             shotcut # Video editing
-            vesktop # A Discord client
           ];
 
           xdg.enable = true;
