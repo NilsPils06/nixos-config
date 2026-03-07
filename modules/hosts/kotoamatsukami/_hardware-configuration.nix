@@ -5,11 +5,11 @@
   config,
   lib,
   pkgs,
-  modulesPath ? null,
+  modulesPath,
   ...
 }:
 
-if modulesPath == null then { } else {
+{
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
@@ -19,7 +19,6 @@ if modulesPath == null then { } else {
     "xhci_pci"
     "ahci"
     "usbhid"
-    "usb_storage"
     "sd_mod"
   ];
   boot.initrd.kernelModules = [ ];
@@ -31,6 +30,12 @@ if modulesPath == null then { } else {
     fsType = "ext4";
   };
 
+  fileSystems."/bin" = {
+    device = "/usr/bin";
+    fsType = "none";
+    options = [ "bind" ];
+  };
+
   fileSystems."/boot" = {
     device = "/dev/disk/by-uuid/307D-9DAF";
     fsType = "vfat";
@@ -40,17 +45,19 @@ if modulesPath == null then { } else {
     ];
   };
 
+  fileSystems."/media/sda" = {
+    device = "/dev/disk/by-uuid/e5257826-918c-4b94-a9b1-4fb0048a9685";
+    fsType = "ext4";
+  };
+
+  fileSystems."/media/sdb" = {
+    device = "/dev/disk/by-uuid/3c6d7424-0d41-4dbc-881d-6cb227b28cd6";
+    fsType = "ext4";
+  };
+
   swapDevices = [
     { device = "/dev/disk/by-uuid/454a45ed-04df-442a-9bd6-c59d535b4a12"; }
   ];
-
-  # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
-  # (the default) this is the recommended approach. When using systemd-networkd it's
-  # still possible to use this option, but it's recommended to use it in conjunction
-  # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
-  networking.useDHCP = lib.mkDefault true;
-  # networking.interfaces.enp10s0.useDHCP = lib.mkDefault true;
-  # networking.interfaces.wlp9s0.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
