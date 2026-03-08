@@ -23,6 +23,7 @@ let
     noctalia
     stylix
     zed
+    direnv
   ];
 in
 {
