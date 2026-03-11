@@ -47,6 +47,7 @@
         file-roller
         media-downloader
         imv
+        mpv
       ];
 
       programs.niri = {

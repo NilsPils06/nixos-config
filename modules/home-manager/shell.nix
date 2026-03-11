@@ -31,7 +31,6 @@
           "ll" = "eza -l";
           "ls" = "eza";
           "open" = "xdg-open";
-          "z" = "zoxide";
           "switch" = "git add .; nh os switch";
         };
       };
