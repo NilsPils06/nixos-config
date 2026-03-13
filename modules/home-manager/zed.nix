@@ -8,6 +8,7 @@
         nil
         pyright
         clang-tools
+        rstudio
       ];
 
       programs.zed-editor = {
@@ -19,6 +20,7 @@
           "html"
           "c++"
           "python"
+          "R"
         ];
         userSettings = {
           hour_format = "hour24";

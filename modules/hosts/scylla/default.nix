@@ -34,6 +34,7 @@ in
       nixos.${hostname} =
         { pkgs, ... }:
         {
+          boot.kernelPackages = pkgs.linuxPackages;
           services = {
             envfs.enable = true;
             fwupd.enable = true;
