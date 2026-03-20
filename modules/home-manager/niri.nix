@@ -23,8 +23,11 @@
           "Mod+Return".action.spawn = "kitty";
           "Mod+D".action.spawn = noctalia "launcher toggle";
           "Mod+B".action.spawn = "firefox";
+          "Mod+F".action.spawn = "thunar";
           "Mod+Q".action.close-window = [ ];
           "Mod+L".action.spawn = noctalia "lockScreen lock";
+          "Mod+Print".action.screenshot-screen = { show-pointer = false; };
+          "Mod+S".action.screenshot-screen = { show-pointer = false; };
           "XF86AudioLowerVolume".action.spawn = noctalia "volume decrease";
           "XF86AudioRaiseVolume".action.spawn = noctalia "volume increase";
           "XF86AudioMute".action.spawn = noctalia "volume muteOutput";
