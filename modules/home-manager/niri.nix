@@ -48,6 +48,11 @@
           "Mod+3".action.focus-workspace = 3;
           "Mod+4".action.focus-workspace = 4;
           "Mod+5".action.focus-workspace = 5;
+          "Mod+Minus".action.set-column-width = "-10%";
+          "Mod+Equal".action.set-column-width = "+10%";
+          "Mod+Shift+Minus".action.set-window-height = "-10%";
+          "Mod+Shift+Equal".action.set-window-height = "+10%";
+          "Mod+Shift+F".action.expand-column-to-available-width = [ ];
         };
         input = {
           keyboard.xkb.layout = "us";
