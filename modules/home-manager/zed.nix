@@ -25,6 +25,33 @@
         userSettings = {
           hour_format = "hour24";
           vim_mode = false;
+
+          file_scan_exclusions = [
+            # Algemeen / Git
+            "**/.git"
+
+            # Web / Node
+            "**/node_modules"
+            "**/.next"
+            "**/dist"
+
+            # Python
+            "**/.venv"
+            "**/venv"
+            "**/env"
+            "**/__pycache__"
+            "**/.pytest_cache"
+            "**/.mypy_cache"
+            "**/.ruff_cache"
+            "**/*.egg-info"
+
+            # C/C++ en gecompileerde output
+            "**/build"
+            "**/out"
+            "**/bin"
+            "**/.cache"
+          ];
+
           "languages" = {
             "Nix" = {
               "language_servers" = [ "nil" ];
