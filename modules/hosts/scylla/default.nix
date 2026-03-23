@@ -41,7 +41,7 @@ in
             upower.enable = true;
             postgresql = {
               enable = true;
-              ensureDatabases = [ "mydatabase" ];
+              ensureDatabases = [ "mydatabase, matchup, matchup_test" ];
               enableTCPIP = true;
               authentication = pkgs.lib.mkOverride 10 ''
                 local all      all     trust
