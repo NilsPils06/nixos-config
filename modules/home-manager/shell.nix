@@ -32,6 +32,7 @@
           "ls" = "eza";
           "open" = "xdg-open";
           "switch" = "git add .; nh os switch";
+          "rstudio" = "QT_QPA_PLATFORM=xcb rstudio";
         };
       };
       programs.zoxide = {

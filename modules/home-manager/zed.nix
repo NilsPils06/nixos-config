@@ -8,7 +8,7 @@
         nil
         pyright
         clang-tools
-        # rstudio
+        rstudio
       ];
 
       programs.zed-editor = {

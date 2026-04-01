@@ -15,6 +15,9 @@
       ];
       nix.package = pkgs.lixPackageSets.stable.lix;
       nixpkgs.config.allowUnfree = true;
+      nixpkgs.config.permittedInsecurePackages = [
+        "electron-38.8.4"
+      ];
 
       networking.networkmanager.enable = true;
       security.rtkit.enable = true;
