@@ -3,7 +3,7 @@
   flake.modules.homeManager.stylix =
     { pkgs, config, ... }:
     {
-      # De basis-instellingen (thema, wallpaper) zijn weggelaten, 
+      # De basis-instellingen (thema, wallpaper) zijn weggelaten,
       # want die neemt hij nu automatisch over van je NixOS configuratie!
 
       stylix.image = pkgs.lib.mkForce ../../img/stylix/wallpaper.jpg;
@@ -27,5 +27,7 @@
         light = "Nordzy";
         dark = "Nordzy";
       };
+
+      gtk.gtk4.theme = config.gtk.theme;
     };
 }
