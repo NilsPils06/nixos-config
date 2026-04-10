@@ -4,6 +4,28 @@
     { config, pkgs, ... }:
     let
       flake = "${config.home.homeDirectory}/.dotfiles";
+
+      ytm-dl = pkgs.writeShellApplication {
+        name = "ytm-dl";
+        runtimeInputs = with pkgs; [ yt-dlp ffmpeg ];
+        text = ''
+          if [ -z "$1" ]; then
+            echo "Fout: Geen URL opgegeven."
+            echo "Gebruik: ytm-dl <youtube-music-url>"
+            exit 1
+          fi
+
+          # yt-dlp commando met jouw specifieke eisen
+          yt-dlp \
+            --extract-audio \
+            --audio-format mp3 \
+            --audio-quality 0 \
+            --embed-metadata \
+            --embed-thumbnail \
+            --output "%(title)s.%(ext)s" \
+            "$1"
+        '';
+      };
     in
     {
       home.packages = with pkgs; [
@@ -12,6 +34,7 @@
         trash-cli # rm on safe mode
         tldr # When man is overkill
         zoxide # cd^2
+        ytm-dl
       ];
       programs.bash.enable = false;
       programs.zsh = {

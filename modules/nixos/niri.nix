@@ -51,7 +51,6 @@
 
       environment.systemPackages = with pkgs; [
         file-roller
-        media-downloader
         imv
         mpv
       ];

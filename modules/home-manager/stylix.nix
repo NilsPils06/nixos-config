@@ -13,6 +13,7 @@
         gnome.enable = true;
         kitty.enable = true;
         niri.enable = true;
+        zed.enable = true;
       };
 
       stylix.cursor = {
