@@ -13,21 +13,19 @@ My system is built around modern Wayland technologies with a strong focus on a s
   * **Terminal:** Kitty.
   * **Shell:** Zsh with Starship prompt, Zoxide, and extended CLI tools (Bat, Eza, Fastfetch, Btop).
   * **Editor:** Zed (with support for Nix, Python, C/C++, Rust, and more).
-  * **Theming:** Fully and globally managed by [Stylix](https://github.com/danth/stylix), using the **Tokyo Night Storm** theme. System-wide fonts are *JetBrainsMono Nerd Font* and *Noto Color Emoji*.
+  * **Theming:** Fully and globally managed by [Stylix](https://github.com/danth/stylix), using the **Tokyo Night Storm** theme (often overridden by wallpaper). System-wide fonts are *JetBrainsMono Nerd Font* and *Noto Color Emoji*.
   * **Applications:** Firefox, Vesktop (Discord), Thunar, OBS Studio, Audacity, Steam, and VirtualBox.
 
 ## 🖥️ Hosts
 
 This flake currently manages two systems:
 
-1.  **Scylla** (Lenovo ThinkPad T14s)
+1.  **Scylla** (Lenovo ThinkPad T14s Gen 1)
       * *Purpose:* Development and work on the go.
       * *Specifics:* Includes VirtualBox settings and UPower power management.
 2.  **Kotoamatsukami** (Desktop)
       * *Purpose:* Development, gaming, and entertainment.
       * *Specifics:* Includes Steam (with open ports for Remote Play and Dedicated Servers).
-
-Both systems share a powerful base, including a local PostgreSQL database setup (`matchup` and `matchup_test`).
 
 ## 📂 Directory Structure
 
@@ -73,7 +71,7 @@ My workflow is heavily keyboard-driven. Here are the default Niri keybindings (`
 | `Mod + F` | Open File Manager (Thunar) |
 | `Mod + Q` | Close current window |
 | `Mod + L` | Lock screen (Noctalia Lock) |
-| `Mod + Print` | Take a screenshot |
+| `Mod + S` | Take a screenshot |
 | `Mod + Arrows / Scroll` | Navigate between workspaces and columns |
 | `Mod + 1 to 5` | Go to specific workspace |
 
@@ -84,7 +82,7 @@ Note: The configuration expects to be placed in `~/.dotfiles` by default.
 1.  **Clone the repository:**
 
     ```bash
-    git clone <your-repo-url> ~/.dotfiles
+    git clone https://github.com/NilsPils06/nixos-config ~/.dotfiles
     cd ~/.dotfiles
     ```
 
