@@ -3,9 +3,6 @@
   flake.modules.homeManager.stylix =
     { pkgs, config, ... }:
     {
-      # De basis-instellingen (thema, wallpaper) zijn weggelaten,
-      # want die neemt hij nu automatisch over van je NixOS configuratie!
-
       stylix.image = pkgs.lib.mkForce ../../img/stylix/wallpaper.jpg;
 
       stylix.targets = {
@@ -14,6 +11,7 @@
         kitty.enable = true;
         niri.enable = true;
         zed.enable = true;
+        firefox.profileNames = [ "default" ];
       };
 
       stylix.cursor = {

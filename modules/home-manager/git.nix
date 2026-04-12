@@ -4,18 +4,18 @@
     { pkgs, ... }:
     {
       programs.git = {
-        enable = false;
+        enable = true;
         settings = {
-          user = {
-            name = "NilsPils06";
-            email = "135322818+NilsPils06@users.noreply.github.com";
-          };
+          user.name = "NilsPils06";
+          user.email = "135322818+NilsPils06@users.noreply.github.com";
           init.defaultBranch = "main";
+          credential.helper = "${pkgs.gh}/bin/gh auth git-credential";
         };
       };
-      home.packages = with pkgs; [
-        gh # Github client
-        git # Duh
-      ];
+
+      programs.gh = {
+        enable = true;
+        gitCredentialHelper.enable = true;
+      };
     };
 }

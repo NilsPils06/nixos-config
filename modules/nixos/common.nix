@@ -22,7 +22,6 @@
       networking.networkmanager.enable = true;
       security.rtkit.enable = true;
       programs.dconf.enable = true;
-      programs.yazi.enable = true;
       programs.zsh.enable = true;
 
       users.users.nils = {

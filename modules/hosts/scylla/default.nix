@@ -81,11 +81,6 @@ in
           home.homeDirectory = "/home/nils";
           home.username = "nils";
           home.stateVersion = "25.05";
-          home.packages = with pkgs; [
-            obs-studio # Record your screen
-            audacity # Audio recording and editing
-            shotcut # Video editing
-          ];
 
           xdg.enable = true;
           programs.home-manager.enable = true;

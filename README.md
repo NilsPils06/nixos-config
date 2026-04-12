@@ -14,7 +14,7 @@ My system is built around modern Wayland technologies with a strong focus on a s
   * **Shell:** Zsh with Starship prompt, Zoxide, and extended CLI tools (Bat, Eza, Fastfetch, Btop).
   * **Editor:** Zed (with support for Nix, Python, C/C++, Rust, and more).
   * **Theming:** Fully and globally managed by [Stylix](https://github.com/danth/stylix), using the **Tokyo Night Storm** theme (often overridden by wallpaper). System-wide fonts are *JetBrainsMono Nerd Font* and *Noto Color Emoji*.
-  * **Applications:** Firefox, Vesktop (Discord), Thunar, OBS Studio, Audacity, Steam, and VirtualBox.
+  * **Applications:** Firefox, Vesktop (Discord), Thunar, Steam, and VirtualBox.
 
 ## 🖥️ Hosts
 
