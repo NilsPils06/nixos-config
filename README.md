@@ -26,6 +26,9 @@ This flake currently manages two systems:
 2.  **Kotoamatsukami** (Desktop)
       * *Purpose:* Development, gaming, and entertainment.
       * *Specifics:* Includes Steam (with open ports for Remote Play and Dedicated Servers).
+3.  **Tsukuyomi** (Lenovo Thinkpad T14s Gen 6)
+      * *Purpose:* Development and work on the go.
+      * *Specifics:* Includes VirtualBox settings and UPower power management.
 
 ## 📂 Directory Structure
 
