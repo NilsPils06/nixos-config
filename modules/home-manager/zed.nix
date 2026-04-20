@@ -34,7 +34,7 @@
           assistant = {
             default_model = {
               provider = "ollama";
-              model = "qwen2.5-coder:14b";
+              model = "qwen3.5:9b";
             };
             version = "2";
           };
@@ -44,8 +44,13 @@
               api_url = "http://localhost:11434";
               available_models = [
                 {
-                  name = "qwen2.5-coder:14b";
-                  display_name = "Qwen 2.5 Coder (14B)";
+                  name = "qwen3.5:9b";
+                  display_name = "Qwen 3.5 (9B)";
+                  max_tokens = 8192;
+                }
+                {
+                  name = "qwen3.5:35b-a3b-moe";
+                  display_name = "Qwen 3.5 MoE (35B)";
                   max_tokens = 8192;
                 }
                 {

@@ -12,7 +12,8 @@
         };
 
         loadModels = [
-          "qwen2.5-coder:14b"
+          "qwen3.5:9b"
+          "qwen3.5:35b-a3b-moe"
           "codestral"
         ];
       };
@@ -21,6 +22,9 @@
         ollama-rocm
       ];
 
-      users.users.nils.extraGroups = [ "video" "render" ];
+      users.users.nils.extraGroups = [
+        "video"
+        "render"
+      ];
     };
 }
