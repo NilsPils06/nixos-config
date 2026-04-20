@@ -49,14 +49,14 @@
                   max_tokens = 8192;
                 }
                 {
-                  name = "qwen3.5:35b-a3b-moe";
-                  display_name = "Qwen 3.5 MoE (35B)";
-                  max_tokens = 8192;
+                  name = "gemma4:26b";
+                  display_name = "Gemma 4 MoE (26B)";
+                  max_tokens = 4096;
                 }
                 {
-                  name = "codestral";
-                  display_name = "Codestral (22B)";
-                  max_tokens = 8192;
+                  name = "gemma4:e4b";
+                  display_name = "Gemma 4 Edge (4B)";
+                  max_tokens = 2048;
                 }
               ];
             };

@@ -15,6 +15,8 @@
           "qwen3.5:9b"
           "qwen3.5:35b-a3b-moe"
           "codestral"
+          "gemma4:26b"
+          "gemma4:e4b"
         ];
       };
 
