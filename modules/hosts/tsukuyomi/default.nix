@@ -12,6 +12,7 @@ let
     noctalia
     plymouth
     stylix
+    ollama
   ];
   hmModules = with self.modules.homeManager; [
     shell
