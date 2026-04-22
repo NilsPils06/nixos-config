@@ -1,14 +1,14 @@
 { ... }:
 {
   flake.modules.homeManager.zed =
-    { pkgs, ... }:
+    { pkgs, pkgs-stable, ... }:
     {
       home.packages = with pkgs; [
         zed-editor
         nil
         pyright
         clang-tools
-        rstudio
+        pkgs-stable.rstudio
       ];
 
       programs.zed-editor = {
@@ -51,12 +51,17 @@
                 {
                   name = "gemma4:26b";
                   display_name = "Gemma 4 MoE (26B)";
-                  max_tokens = 4096;
+                  max_tokens = 8192;
                 }
                 {
                   name = "gemma4:e4b";
                   display_name = "Gemma 4 Edge (4B)";
-                  max_tokens = 2048;
+                  max_tokens = 8192;
+                }
+                {
+                  name = "qwen2.5-coder:7b";
+                  display_name = "Qwen 2.5 Coder (7B)";
+                  max_tokens = 8192;
                 }
               ];
             };

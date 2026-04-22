@@ -12,6 +12,7 @@ let
     noctalia
     plymouth
     stylix
+    ollama
   ];
   hmModules = with self.modules.homeManager; [
     shell
@@ -73,6 +74,19 @@ in
           xdg.portal.enable = true;
 
           boot.kernelPackages = pkgs.linuxPackages_latest;
+
+          hardware.graphics = {
+            enable = true;
+            enable32Bit = true;
+          };
+
+          environment.sessionVariables = {
+            LIBVA_DRIVER_NAME = "radeonsi";
+          };
+
+          environment.systemPackages = with pkgs; [
+            libva-utils
+          ];
 
           programs.steam = {
             enable = true;

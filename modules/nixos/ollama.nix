@@ -13,8 +13,7 @@
 
         loadModels = [
           "qwen3.5:9b"
-          "qwen3.5:35b-a3b-moe"
-          "codestral"
+          "qwen2.5-coder:7b"
           "gemma4:26b"
           "gemma4:e4b"
         ];
