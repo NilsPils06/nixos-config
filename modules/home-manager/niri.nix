@@ -39,6 +39,8 @@
           "XF86AudioLowerVolume".action.spawn = noctalia "volume decrease";
           "XF86AudioRaiseVolume".action.spawn = noctalia "volume increase";
           "XF86AudioMute".action.spawn = noctalia "volume muteOutput";
+          "XF86MonBrightnessUp".action.spawn = noctalia "brightness increase";
+          "XF86MonBrightnessDown".action.spawn = noctalia "brightness decrease";
           "Mod+WheelScrollDown".action.focus-workspace-down = [ ];
           "Mod+WheelScrollDown".cooldown-ms = 150;
           "Mod+WheelScrollUp".action.focus-workspace-up = [ ];
