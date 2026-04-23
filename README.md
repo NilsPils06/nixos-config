@@ -18,7 +18,7 @@ My system is built around modern Wayland technologies with a strong focus on a s
 
 ## 🖥️ Hosts
 
-This flake currently manages two systems:
+This flake currently manages three systems:
 
 1.  **Scylla** (Lenovo ThinkPad T14s Gen 1)
       * *Purpose:* Development and work on the go.
