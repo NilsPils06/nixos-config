@@ -15,7 +15,6 @@
 
       home.packages = with pkgs; [
         gh
-        github-copilot-cli
       ];
     };
 }
