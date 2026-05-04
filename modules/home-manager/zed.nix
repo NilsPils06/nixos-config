@@ -26,47 +26,6 @@
           hour_format = "hour24";
           vim_mode = false;
 
-          show_edit_predictions = false; # Geen ghost-code meer
-          features = {
-            inline_completion_provider = "none";
-          };
-
-          assistant = {
-            default_model = {
-              provider = "ollama";
-              model = "qwen3.5:9b";
-            };
-            version = "2";
-          };
-
-          language_models = {
-            ollama = {
-              api_url = "http://localhost:11434";
-              available_models = [
-                {
-                  name = "qwen3.5:9b";
-                  display_name = "Qwen 3.5 (9B)";
-                  max_tokens = 8192;
-                }
-                {
-                  name = "gemma4:26b";
-                  display_name = "Gemma 4 MoE (26B)";
-                  max_tokens = 8192;
-                }
-                {
-                  name = "gemma4:e4b";
-                  display_name = "Gemma 4 Edge (4B)";
-                  max_tokens = 8192;
-                }
-                {
-                  name = "qwen2.5-coder:7b";
-                  display_name = "Qwen 2.5 Coder (7B)";
-                  max_tokens = 8192;
-                }
-              ];
-            };
-          };
-
           file_scan_exclusions = [
             # Algemeen / Git
             "**/.git"
