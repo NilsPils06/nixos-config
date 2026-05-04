@@ -35,6 +35,7 @@
         tldr # When man is overkill
         zoxide # cd^2
         ytm-dl
+        opencode
       ];
       programs.bash.enable = false;
       programs.zsh = {
@@ -56,6 +57,7 @@
           "open" = "xdg-open";
           "switch" = "git add .; nh os switch";
           "rstudio" = "QT_QPA_PLATFORM=xcb rstudio";
+          "opencode" = "ollama launch opencode";
         };
       };
       programs.zoxide = {
