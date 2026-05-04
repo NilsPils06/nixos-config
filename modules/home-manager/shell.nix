@@ -3,8 +3,6 @@
   flake.modules.homeManager.shell =
     { config, pkgs, ... }:
     let
-      flake = "${config.home.homeDirectory}/.dotfiles";
-
       ytm-dl = pkgs.writeShellApplication {
         name = "ytm-dl";
         runtimeInputs = with pkgs; [ yt-dlp ffmpeg ];
@@ -55,7 +53,6 @@
           "ls" = "eza";
           "open" = "xdg-open";
           "switch" = "git add .; nh os switch";
-          "rstudio" = "QT_QPA_PLATFORM=xcb rstudio";
         };
       };
       programs.zoxide = {
