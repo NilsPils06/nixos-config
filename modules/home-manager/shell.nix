@@ -41,10 +41,9 @@
         tldr # When man is overkill
         zoxide # cd^2
         ytm-dl
-        opencode
         gemini-cli
         wl-screenrec
-        kdePackages.kdenlive
+        kdePackages.kdenlive # TODO make separate file
       ];
       programs.bash.enable = false;
       programs.zsh = {
@@ -65,7 +64,6 @@
           "ls" = "eza";
           "open" = "xdg-open";
           "switch" = "git add .; nh os switch";
-          "opencode" = "ollama launch opencode";
         };
       };
       programs.zoxide = {
