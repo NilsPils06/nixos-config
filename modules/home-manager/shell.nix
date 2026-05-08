@@ -24,6 +24,14 @@
             "$1"
         '';
       };
+      gemini-cli = pkgs.writeShellApplication {
+          name = "gemini";
+          runtimeInputs = with pkgs; [ nodejs ]; # Zorgt dat npx/node beschikbaar is
+          text = ''
+            # Start de gemini-cli via npx zonder globale installatie
+            npx -y @google/gemini-cli "$@"
+          '';
+        };
     in
     {
       home.packages = with pkgs; [
@@ -34,6 +42,9 @@
         zoxide # cd^2
         ytm-dl
         opencode
+        gemini-cli
+        wl-screenrec
+        kdePackages.kdenlive
       ];
       programs.bash.enable = false;
       programs.zsh = {
