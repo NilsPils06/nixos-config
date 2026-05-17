@@ -31,7 +31,7 @@
                   default = [ "gtk" ];
                 };
                 niri = {
-                  default = [ "gtk" ];
+                  default = [ "gnome" "gtk" ];
                 };
               };
             };
