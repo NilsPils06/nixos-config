@@ -14,11 +14,20 @@
         })
       ];
       nix.package = pkgs.lixPackageSets.stable.lix;
+      nix.settings = {
+        experimental-features = [
+          "nix-command"
+          "flakes"
+        ];
+        auto-optimise-store = true;
+      };
+
       nixpkgs.config.allowUnfree = true;
       nixpkgs.config.permittedInsecurePackages = [
         "electron-38.8.4"
       ];
 
+      services.udev.packages = [ pkgs.brightnessctl ];
       networking.networkmanager.enable = true;
       security.rtkit.enable = true;
       programs.dconf.enable = true;
@@ -30,6 +39,8 @@
         extraGroups = [
           "networkmanager"
           "wheel"
+          "video"
+          "render"
         ];
         shell = pkgs.zsh;
       };
@@ -45,10 +56,5 @@
       };
 
       system.stateVersion = "25.05";
-
-      nix.settings.experimental-features = [
-        "nix-command"
-        "flakes"
-      ];
     };
 }

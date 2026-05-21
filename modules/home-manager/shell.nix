@@ -42,8 +42,6 @@
         zoxide # cd^2
         ytm-dl
         gemini-cli
-        wl-screenrec
-        kdePackages.kdenlive # TODO make separate file
       ];
       programs.bash.enable = false;
       programs.zsh = {

@@ -20,13 +20,10 @@ My system is built around modern Wayland technologies with a strong focus on a s
 
 This flake currently manages three systems:
 
-1.  **Scylla** (Lenovo ThinkPad T14s Gen 1)
-      * *Purpose:* Development and work on the go.
-      * *Specifics:* Includes VirtualBox settings and UPower power management.
-2.  **Kotoamatsukami** (Desktop)
+1.  **Kotoamatsukami** (Desktop)
       * *Purpose:* Development, gaming, and entertainment.
       * *Specifics:* Includes Steam (with open ports for Remote Play and Dedicated Servers).
-3.  **Tsukuyomi** (Lenovo Thinkpad T14s Gen 6)
+2.  **Tsukuyomi** (Lenovo Thinkpad T14s Gen 6)
       * *Purpose:* Development and work on the go.
       * *Specifics:* Includes VirtualBox settings and UPower power management.
 
@@ -42,7 +39,7 @@ modules/
     lib.nix                         # Custom helper functions like 'mkNixosHost'
     systems.nix                     # Architecture settings (x86_64-linux) and formatter
   hosts/
-    scylla/                         # Host-specific definition (Laptop)
+    tsukuyomi/                         # Host-specific definition (Laptop)
       default.nix                   # Combines the desired NixOS and Home Manager modules
       _hardware-configuration.nix
     kotoamatsukami/                 # Host-specific definition (Desktop)

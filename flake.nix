@@ -27,8 +27,8 @@
       url = "github:sodiboo/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    noctalia = {
-      url = "github:noctalia-dev/noctalia-shell";
+    caelestia-shell = {
+      url = "github:AyushKr2003/niri-caelestia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

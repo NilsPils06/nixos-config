@@ -9,7 +9,7 @@ let
     locale
     nh
     niri
-    noctalia
+    sddm
     plymouth
     stylix
     ollama
@@ -22,7 +22,7 @@ let
     discord
     minecraft
     niri
-    noctalia
+    caelestia
     stylix
     zed
     direnv

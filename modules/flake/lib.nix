@@ -29,20 +29,22 @@ in
               useUserPackages = true;
               extraSpecialArgs = {
                 inherit pkgs-stable;
-                inherit (inputs) noctalia niri stylix;
+                inherit (inputs)
+                  niri
+                  stylix
+                  caelestia-shell
+                  ;
               };
               users.nils = {
                 imports = [
                   self.modules.homeManager.${hostname}
                   # inputs.stylix.homeModules.stylix
-                  inputs.noctalia.homeModules.default
                 ]
                 ++ hmModules;
               };
             };
           }
 
-          inputs.noctalia.nixosModules.default
           inputs.niri.nixosModules.niri
           inputs.stylix.nixosModules.stylix
           inputs.nix-index-database.nixosModules.nix-index
@@ -52,7 +54,7 @@ in
         ++ modules;
         specialArgs = {
           inherit pkgs-stable;
-          inherit (inputs) noctalia niri;
+          inherit (inputs) niri;
         };
       };
   };

@@ -1,20 +1,18 @@
-{ ... }:
+{ inputs, ... }:
 {
   flake.modules.homeManager.niri =
     { pkgs, ... }:
     let
-      noctalia =
-        cmd:
-        [
-          "noctalia-shell"
-          "ipc"
-          "call"
-        ]
-        ++ (pkgs.lib.splitString " " cmd);
+      caelestia = "${inputs.caelestia-shell.packages.${pkgs.stdenv.hostPlatform.system}.with-cli}/bin/caelestia-shell";
     in
     {
       home.packages = with pkgs; [
         xwayland-satellite
+        fuzzel
+        brightnessctl
+        wireplumber
+        matugen
+        awww
       ];
 
       programs.niri.settings = {
@@ -24,23 +22,24 @@
 
         binds = {
           "Mod+Tab".action.toggle-overview = [ ];
-          "Mod+Return".action.spawn = "kitty";
-          "Mod+D".action.spawn = noctalia "launcher toggle";
-          "Mod+B".action.spawn = "firefox";
-          "Mod+F".action.spawn = "thunar";
+          "Mod+Return".action.spawn = [ "kitty" ];
+          "Mod+D".action.spawn = [ "${caelestia}" "ipc" "call" "drawers" "toggle" "launcher" ];
+          "Mod+S".action.spawn = [ "${caelestia}" "ipc" "call" "drawers" "toggle" "dashboard" ];
+          "Mod+B".action.spawn = [ "firefox" ];
+          "Mod+F".action.spawn = [ "thunar" ];
           "Mod+Q".action.close-window = [ ];
-          "Mod+L".action.spawn = noctalia "lockScreen lock";
+          "Mod+Shift+E".action.spawn = [ "${caelestia}" "ipc" "call" "drawers" "toggle" "session" ];
           "Mod+Print".action.screenshot-screen = {
             show-pointer = false;
           };
-          "Mod+S".action.screenshot-screen = {
+          "Mod+Shift+S".action.screenshot-screen = {
             show-pointer = false;
           };
-          "XF86AudioLowerVolume".action.spawn = noctalia "volume decrease";
-          "XF86AudioRaiseVolume".action.spawn = noctalia "volume increase";
-          "XF86AudioMute".action.spawn = noctalia "volume muteOutput";
-          "XF86MonBrightnessUp".action.spawn = noctalia "brightness increase";
-          "XF86MonBrightnessDown".action.spawn = noctalia "brightness decrease";
+          "XF86AudioLowerVolume".action.spawn = [ "${pkgs.wireplumber}/bin/wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "5%-" ];
+          "XF86AudioRaiseVolume".action.spawn = [ "${pkgs.wireplumber}/bin/wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "5%+" ];
+          "XF86AudioMute".action.spawn = [ "${pkgs.wireplumber}/bin/wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle" ];
+          "XF86MonBrightnessUp".action.spawn = [ "${pkgs.brightnessctl}/bin/brightnessctl" "set" "5%+" ];
+          "XF86MonBrightnessDown".action.spawn = [ "${pkgs.brightnessctl}/bin/brightnessctl" "set" "5%-" ];
           "Mod+WheelScrollDown".action.focus-workspace-down = [ ];
           "Mod+WheelScrollDown".cooldown-ms = 150;
           "Mod+WheelScrollUp".action.focus-workspace-up = [ ];
@@ -73,7 +72,8 @@
           eDP-1.scale = 1.0;
         };
         spawn-at-startup = [
-          { command = [ "noctalia-shell" ]; }
+          { command = [ "${pkgs.awww}/bin/awww-daemon" ]; }
+          { command = [ "${caelestia}" ]; }
         ];
       };
     };

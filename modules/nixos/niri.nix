@@ -36,11 +36,6 @@
               };
             };
 
-      programs.regreet.enable = true;
-      services.greetd = {
-        enable = true;
-      };
-
       programs.thunar = {
         enable = true;
         plugins = with pkgs; [

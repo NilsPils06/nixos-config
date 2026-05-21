@@ -4,7 +4,7 @@
     { pkgs, config, ... }:
     {
       stylix.enable = true;
-      stylix.image = ../../img/stylix/lightdm.jpg;
+      stylix.image = ../../img/stylix/wallpaper.jpg;
       stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-night-storm.yaml";
       stylix.polarity = "dark";
 
@@ -22,6 +22,7 @@
         sizes.desktop = 11;
       };
 
-      stylix.targets.regreet.enable = true;
+      stylix.targets.console.enable = true;
+      stylix.targets.regreet.enable = false;
     };
 }
