@@ -21,6 +21,7 @@
           "c++"
           "python"
           "R"
+          "wakatime"
         ];
         userSettings = {
           hour_format = "hour24";
