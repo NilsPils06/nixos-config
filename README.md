@@ -6,26 +6,31 @@ Originally based on the [nixos-config by CouldBeMathijs](https://github.com/Coul
 
 ## 🌟 Features & Stack
 
-My system is built around modern Wayland technologies with a strong focus on a seamless, dark aesthetic.
+My system is built around modern Wayland technologies with a focus on speed, aesthetics, and productivity.
 
-  * **Window Manager:** [Niri](https://www.google.com/search?q=https://github.com/YaLTeR/niri) (Scrollable-tiling Wayland compositor).
-  * **Desktop Shell/Bar:** [Noctalia](https://github.com/noctalia-dev/noctalia-shell).
+  * **Package Manager:** [Lix](https://lix.systems/) (A faster, more modern Nix fork).
+  * **Window Manager:** [Niri](https://github.com/YaLTeR/niri) (Scrollable-tiling Wayland compositor).
+  * **Desktop Shell/Bar:** [Caelestia](https://github.com/caelestia-dots/shell) (Highly customizable shell for Niri).
+  * **Login Manager:** SDDM with the *Japanese Aesthetic* astronaut theme.
+  * **Boot:** Plymouth for a flicker-free, themed boot experience.
   * **Terminal:** Kitty.
-  * **Shell:** Zsh with Starship prompt, Zoxide, and extended CLI tools (Bat, Eza, Fastfetch, Btop).
+  * **Shell:** Zsh with Starship prompt, Zoxide, and extended CLI tools (Bat, Eza, Fastfetch, Btop, Direnv).
   * **Editor:** Zed (with support for Nix, Python, C/C++, Rust, and more).
-  * **Theming:** Fully and globally managed by [Stylix](https://github.com/danth/stylix), using the **Tokyo Night Storm** theme (often overridden by wallpaper). System-wide fonts are *JetBrainsMono Nerd Font* and *Noto Color Emoji*.
-  * **Applications:** Firefox, Vesktop (Discord), Thunar, Steam, and VirtualBox.
+  * **Theming:** Fully and globally managed by [Stylix](https://github.com/danth/stylix).
+  * **AI:** Ollama enabled system-wide for local LLMs.
+  * **Database:** PostgreSQL pre-configured for development.
+  * **Applications:** Firefox, Vesktop (Discord), Thunar, Steam, Minecraft, and Kdenlive.
 
 ## 🖥️ Hosts
 
-This flake currently manages three systems:
+This flake currently manages two systems:
 
 1.  **Kotoamatsukami** (Desktop)
       * *Purpose:* Development, gaming, and entertainment.
-      * *Specifics:* Includes Steam (with open ports for Remote Play and Dedicated Servers).
+      * *Specifics:* Includes Steam (with open ports for Remote Play), Ollama, and PostgreSQL.
 2.  **Tsukuyomi** (Lenovo Thinkpad T14s Gen 6)
       * *Purpose:* Development and work on the go.
-      * *Specifics:* Includes VirtualBox settings and UPower power management.
+      * *Specifics:* Includes VirtualBox settings, UPower power management, Ollama, and PostgreSQL.
 
 ## 📂 Directory Structure
 
@@ -39,23 +44,28 @@ modules/
     lib.nix                         # Custom helper functions like 'mkNixosHost'
     systems.nix                     # Architecture settings (x86_64-linux) and formatter
   hosts/
-    tsukuyomi/                         # Host-specific definition (Laptop)
-      default.nix                   # Combines the desired NixOS and Home Manager modules
+    tsukuyomi/                      # Laptop host definition
+      default.nix                   # Combines NixOS and Home Manager modules
       _hardware-configuration.nix
-    kotoamatsukami/                 # Host-specific definition (Desktop)
+    kotoamatsukami/                 # Desktop host definition
       default.nix                   
       _hardware-configuration.nix
   nixos/                            # System-wide (NixOS) modules
-    common.nix                      # Bootloader, networking, users, Nix settings
+    common.nix                      # Lix, bootloader, networking, users, Nix settings
     audio.nix                       # PipeWire audio configuration
     cli-utils.nix                   # Basic CLI tools (git, btop, wget, etc.)
-    niri.nix                        # Niri system installation and Greetd/Regreet login
+    niri.nix                        # Niri system installation
+    sddm.nix                        # SDDM login manager with Astronaut theme
+    plymouth.nix                    # Boot splash screen
+    ollama.nix                      # Local LLM service
+    nh.nix                          # Nix Helper (nh) configuration
     ...
   home-manager/                     # User-specific (Home Manager) modules
-    niri.nix                        # Niri keybindings, window rules, and startup applications
-    noctalia.nix                    # Configuration of the top bar and widgets
+    niri.nix                        # Niri keybindings and window rules
+    caelestia.nix                   # Caelestia shell configuration
     shell.nix                       # Zsh, aliases, and terminal tools
-    zed.nix                         # Zed editor configuration and language servers
+    zed.nix                         # Zed editor configuration
+    fastfetch.nix                   # Custom fastfetch layout
     ...
 ```
 
@@ -66,14 +76,16 @@ My workflow is heavily keyboard-driven. Here are the default Niri keybindings (`
 | Keybinding | Action |
 | :--- | :--- |
 | `Mod + Return` | Open Terminal (Kitty) |
-| `Mod + D` | Open App Launcher (Noctalia) |
+| `Mod + D` | Open App Launcher (Caelestia) |
+| `Mod + S` | Toggle Dashboard (Caelestia) |
+| `Mod + Tab` | Toggle Overview |
 | `Mod + B` | Open Browser (Firefox) |
 | `Mod + F` | Open File Manager (Thunar) |
 | `Mod + Q` | Close current window |
-| `Mod + L` | Lock screen (Noctalia Lock) |
-| `Mod + S` | Take a screenshot |
-| `Mod + Arrows / Scroll` | Navigate between workspaces and columns |
+| `Mod + Shift + E` | Open Session Menu |
+| `Mod + Arrows` | Navigate between workspaces and columns |
 | `Mod + 1 to 5` | Go to specific workspace |
+| `Mod + Print` | Take a screenshot |
 
 ## 🚀 Installation & Usage
 
@@ -87,17 +99,17 @@ Note: The configuration expects to be placed in `~/.dotfiles` by default.
     ```
 
 2.  **Generate hardware configuration:**
-    Copy your actual hardware configuration to the correct host folder. (For example, for Scylla):
+    Copy your actual hardware configuration to the correct host folder. (For example, for `kotoamatsukami`):
 
     ```bash
-    cp /etc/nixos/hardware-configuration.nix ~/.dotfiles/modules/hosts/scylla/_hardware-configuration.nix
+    cp /etc/nixos/hardware-configuration.nix ~/.dotfiles/modules/hosts/kotoamatsukami/_hardware-configuration.nix
     ```
 
 3.  **Apply the configuration:**
-    The configuration utilizes `nh` (Nix Helper). You can simply use the following custom alias command in the terminal:
+    The configuration utilizes `nh` (Nix Helper). You can simply use the following command:
 
     ```bash
-    switch
+    nh os switch .
     ```
 
-    *This alias automatically adds new files to git (`git add .`) and runs `nh os switch`.*
+    *If you have the `switch` alias configured (as seen in `shell.nix`), you can just run `switch`.*

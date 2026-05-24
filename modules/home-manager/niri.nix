@@ -1,10 +1,7 @@
-{ inputs, ... }:
+{ ... }:
 {
   flake.modules.homeManager.niri =
     { pkgs, ... }:
-    let
-      caelestia = "${inputs.caelestia-shell.packages.${pkgs.stdenv.hostPlatform.system}.with-cli}/bin/caelestia-shell";
-    in
     {
       home.packages = with pkgs; [
         xwayland-satellite
@@ -23,12 +20,12 @@
         binds = {
           "Mod+Tab".action.toggle-overview = [ ];
           "Mod+Return".action.spawn = [ "kitty" ];
-          "Mod+D".action.spawn = [ "${caelestia}" "ipc" "call" "drawers" "toggle" "launcher" ];
-          "Mod+S".action.spawn = [ "${caelestia}" "ipc" "call" "drawers" "toggle" "dashboard" ];
+          "Mod+D".action.spawn = [ "caelestia-shell" "ipc" "call" "drawers" "toggle" "launcher" ];
+          "Mod+S".action.spawn = [ "caelestia-shell" "ipc" "call" "drawers" "toggle" "dashboard" ];
           "Mod+B".action.spawn = [ "firefox" ];
           "Mod+F".action.spawn = [ "thunar" ];
           "Mod+Q".action.close-window = [ ];
-          "Mod+Shift+E".action.spawn = [ "${caelestia}" "ipc" "call" "drawers" "toggle" "session" ];
+          "Mod+Shift+E".action.spawn = [ "caelestia-shell" "ipc" "call" "drawers" "toggle" "session" ];
           "Mod+Print".action.screenshot-screen = {
             show-pointer = false;
           };
@@ -73,7 +70,6 @@
         };
         spawn-at-startup = [
           { command = [ "${pkgs.awww}/bin/awww-daemon" ]; }
-          { command = [ "${caelestia}" ]; }
         ];
       };
     };
