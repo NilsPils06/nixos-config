@@ -1,4 +1,4 @@
-{ ... }:
+{ inputs, ... }:
 {
   flake.modules.homeManager.niri =
     { pkgs, ... }:
@@ -23,8 +23,8 @@
         binds = {
           "Mod+Tab".action.toggle-overview = [ ];
           "Mod+Return".action.spawn = [ "kitty" ];
-          "Mod+D".action.spawn = [ "caelestia-shell" "ipc" "call" "drawers" "toggle" "launcher" ];
-          "Mod+S".action.spawn = [ "caelestia-shell" "ipc" "call" "drawers" "toggle" "dashboard" ];
+          "Mod+D".action.spawn = [ "${caelestia}" "ipc" "call" "drawers" "toggle" "launcher" ];
+          "Mod+S".action.spawn = [ "${caelestia}" "ipc" "call" "drawers" "toggle" "dashboard" ];
           "Mod+B".action.spawn = [ "firefox" ];
           "Mod+F".action.spawn = [ "thunar" ];
           "Mod+Q".action.close-window = [ ];
@@ -74,6 +74,8 @@
         };
         spawn-at-startup = [
           { command = [ "${pkgs.awww}/bin/awww-daemon" ]; }
+          { command = [ "caelestia-shell" ]; }
+          { command = [ "${pkgs.xwayland-satellite}/bin/xwayland-satellite" ]; }
         ];
       };
     };
