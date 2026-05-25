@@ -3,6 +3,8 @@
   flake.modules.homeManager.stylix =
     { pkgs, config, ... }:
     {
+      stylix.image = pkgs.lib.mkForce ../../img/stylix/wallpaper.jpg;
+
       stylix.targets = {
         gtk.enable = true;
         gnome.enable = true;

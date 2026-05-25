@@ -6,9 +6,6 @@
       fonts.packages = with pkgs; [
         # Nerd fonts
         nerd-fonts.jetbrains-mono
-
-        # CJK Fonts
-        noto-fonts-cjk-sans
       ];
     };
 }
