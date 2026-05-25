@@ -27,7 +27,7 @@
       url = "github:sodiboo/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    caelestia-shell = {
+    niri-caelestia-shell = {
       url = "github:AyushKr2003/niri-caelestia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
     };

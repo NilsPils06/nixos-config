@@ -32,7 +32,7 @@ in
                 inherit (inputs)
                   niri
                   stylix
-                  caelestia-shell
+                  niri-caelestia-shell
                   ;
               };
               users.nils = {

@@ -3,7 +3,7 @@
   flake.modules.homeManager.niri =
     { pkgs, ... }:
     let
-      caelestia = "${inputs.caelestia-shell.packages.${pkgs.stdenv.hostPlatform.system}.with-cli}/bin/caelestia-shell";
+      caelestia = "${inputs.niri-caelestia-shell.packages.${pkgs.stdenv.hostPlatform.system}.with-cli}/bin/caelestia-shell";
     in
     {
       home.packages = with pkgs; [
@@ -29,6 +29,7 @@
           "Mod+F".action.spawn = [ "thunar" ];
           "Mod+Q".action.close-window = [ ];
           "Mod+Shift+E".action.spawn = [ "${caelestia}" "ipc" "call" "drawers" "toggle" "session" ];
+          "Mod+N".action.spawn = [ "${caelestia}" "ipc" "call" "drawers" "toggle" "sidebar" ];
           "Mod+Print".action.screenshot-screen = {
             show-pointer = false;
           };
@@ -73,7 +74,8 @@
         };
         spawn-at-startup = [
           { command = [ "${pkgs.awww}/bin/awww-daemon" ]; }
-          { command = [ "${caelestia}" ]; }
+          { command = [ "caelestia-shell" ]; }
+          { command = [ "${pkgs.xwayland-satellite}/bin/xwayland-satellite" ]; }
         ];
       };
     };
