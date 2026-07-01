@@ -26,7 +26,5 @@
         light = "Nordzy";
         dark = "Nordzy";
       };
-
-      gtk.gtk4.theme = config.gtk.theme;
     };
 }
