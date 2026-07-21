@@ -24,15 +24,18 @@ in
           {
             networking.hostName = hostname;
 
+            nixpkgs.config.permittedInsecurePackages = [
+              "pnpm-10.29.2"
+            ];
+
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
               extraSpecialArgs = {
                 inherit pkgs-stable;
                 inherit (inputs)
-                  niri
                   stylix
-                  niri-caelestia-shell
+                  caelestia-shell
                   ;
               };
               users.nils = {
@@ -45,7 +48,6 @@ in
             };
           }
 
-          inputs.niri.nixosModules.niri
           inputs.stylix.nixosModules.stylix
           inputs.nix-index-database.nixosModules.nix-index
           { programs.nix-index-database.comma.enable = true; }
@@ -54,7 +56,6 @@ in
         ++ modules;
         specialArgs = {
           inherit pkgs-stable;
-          inherit (inputs) niri;
         };
       };
   };

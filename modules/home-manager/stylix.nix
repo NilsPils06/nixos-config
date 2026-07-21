@@ -9,7 +9,7 @@
         gtk.enable = true;
         gnome.enable = true;
         kitty.enable = true;
-        niri.enable = true;
+        hyprland.enable = true;
         zed.enable = true;
         firefox.profileNames = [ "default" ];
       };
