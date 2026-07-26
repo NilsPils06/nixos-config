@@ -8,7 +8,7 @@ let
     fonts
     locale
     nh
-    niri
+    hyprland
     sddm
     plymouth
     stylix
@@ -20,8 +20,7 @@ let
     git
     browser
     discord
-    niri
-    caelestia
+    hyprland
     stylix
     zed
     direnv

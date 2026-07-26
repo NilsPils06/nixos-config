@@ -1,4 +1,4 @@
-{ self, inputs, ... }:
+{ inputs, ... }:
 {
   imports = with inputs; [
     flake-parts.flakeModules.modules

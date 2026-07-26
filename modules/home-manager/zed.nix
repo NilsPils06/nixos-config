@@ -21,7 +21,6 @@
           "c++"
           "python"
           "R"
-          "wakatime"
         ];
         userSettings = {
           hour_format = "hour24";
@@ -64,11 +63,11 @@
             };
             "C" = {
               "language_servers" = [ "clangd" ];
-              "format_on_save" = "off";
+              "format_on_save" = "on";
             };
             "C++" = {
               "language_servers" = [ "clangd" ];
-              "format_on_save" = "off";
+              "format_on_save" = "on";
             };
           };
         };

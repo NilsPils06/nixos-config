@@ -1,10 +1,8 @@
 { ... }:
 {
-  flake.modules.nixos.niri =
-    { pkgs, niri, ... }:
+  flake.modules.nixos.hyprland =
+    { pkgs, ... }:
     {
-      nixpkgs.overlays = [ niri.overlays.niri ];
-
       services.gvfs.enable = true;
 
       services.xserver = {
@@ -26,13 +24,11 @@
               extraPortals = with pkgs; [
                 xdg-desktop-portal-gtk
                 xdg-desktop-portal-gnome
+                xdg-desktop-portal-hyprland
               ];
               config = {
                 common = {
-                  default = [ "gtk" ];
-                };
-                niri = {
-                  default = [ "gnome" "gtk" ];
+                  default = [ "hyprland" ];
                 };
               };
             };
@@ -51,9 +47,10 @@
         mpv
       ];
 
-      programs.niri = {
+      programs.hyprland = {
         enable = true;
-        package = pkgs.niri-stable;
       };
+
+      environment.sessionVariables.NIXOS_OZONE_WL = "1";
     };
 }

@@ -8,7 +8,7 @@ let
     fonts
     locale
     nh
-    niri
+    hyprland
     sddm
     plymouth
     stylix
@@ -21,8 +21,7 @@ let
     browser
     discord
     minecraft
-    niri
-    caelestia
+    hyprland
     stylix
     zed
     direnv
