@@ -36,6 +36,7 @@ in
                 inherit (inputs)
                   stylix
                   caelestia-shell
+                  aagl
                   ;
               };
               users.nils = {
@@ -52,6 +53,7 @@ in
           inputs.nix-index-database.nixosModules.nix-index
           { programs.nix-index-database.comma.enable = true; }
           inputs.home-manager.nixosModules.home-manager
+          inputs.aagl.nixosModules.default
         ]
         ++ modules;
         specialArgs = {
