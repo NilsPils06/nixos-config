@@ -99,7 +99,6 @@ in
           };
 
           programs.honkers-railway-launcher.enable = true;
-          programs.wavey-launcher.enable = true;
         };
 
       homeManager.${hostname} =
