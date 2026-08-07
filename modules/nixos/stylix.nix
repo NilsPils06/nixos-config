@@ -4,7 +4,6 @@
     { pkgs, config, ... }:
     {
       stylix.enable = true;
-      stylix.image = ../../img/stylix/wallpaper.jpg;
       stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-night-storm.yaml";
       stylix.polarity = "dark";
 
