@@ -1,14 +1,13 @@
 { ... }:
 {
   flake.modules.homeManager.zed =
-    { pkgs, pkgs-stable, ... }:
+    { pkgs, ... }:
     {
       home.packages = with pkgs; [
         zed-editor
         nil
         pyright
         clang-tools
-        pkgs-stable.rstudio
       ];
 
       programs.zed-editor = {

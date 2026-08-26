@@ -12,7 +12,7 @@ let
     sddm
     plymouth
     stylix
-    ollama
+    #ollama
   ];
   hmModules = with self.modules.homeManager; [
     shell
@@ -20,7 +20,7 @@ let
     git
     browser
     discord
-    minecraft
+    #minecraft
     hyprland
     stylix
     zed

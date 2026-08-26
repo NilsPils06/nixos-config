@@ -3,9 +3,6 @@ let
   pkgs-stable = import inputs.nixpkgs-stable {
     system = "x86_64-linux";
     config.allowUnfree = true;
-    config.permittedInsecurePackages = [
-      "electron-36.9.5"
-    ];
   };
 in
 {
@@ -23,10 +20,6 @@ in
           self.modules.nixos.${hostname}
           {
             networking.hostName = hostname;
-
-            nixpkgs.config.permittedInsecurePackages = [
-              "pnpm-10.29.2"
-            ];
 
             home-manager = {
               useGlobalPkgs = true;
