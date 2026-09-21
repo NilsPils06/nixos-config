@@ -3,7 +3,7 @@
   flake.modules.homeManager.noctalia = {
     stylix.targets.noctalia-shell.enable = true;
 
-    programs.noctalia-shell = {
+    programs.noctalia = {
       enable = true;
       settings = {
         bar = {
