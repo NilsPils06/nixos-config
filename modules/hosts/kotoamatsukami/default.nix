@@ -20,7 +20,7 @@ let
     git
     browser
     discord
-    #minecraft
+    minecraft
     hyprland
     stylix
     zed
@@ -36,6 +36,7 @@ in
         { pkgs, ... }:
         {
           services = {
+            flatpak.enable = true;
             envfs.enable = true;
             fwupd.enable = true;
 
