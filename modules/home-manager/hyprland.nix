@@ -27,6 +27,24 @@
           target = "graphical-session.target";
         };
         settings = {
+          bar.statusIcons = [
+            {
+              id = "audio";
+              enabled = true;
+            }
+            {
+              id = "network";
+              enabled = true;
+            }
+            {
+              id = "bluetooth";
+              enabled = true;
+            }
+            {
+              id = "battery";
+              enabled = true;
+            }
+          ];
           border = {
             thickness = 0;
             rounding = 10;
