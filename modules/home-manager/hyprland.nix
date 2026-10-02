@@ -52,9 +52,14 @@
         settings = {
           "$mod" = "SUPER";
 
+          monitor = "eDP-1, 1920x1200@60, 0x0, 1";
+
           input = {
             accel_profile = "flat";
             sensitivity = 0;
+            touchpad = {
+                  natural_scroll = true;
+            };
           };
 
           bind = [
