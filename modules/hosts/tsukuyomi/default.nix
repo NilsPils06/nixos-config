@@ -12,7 +12,7 @@ let
     sddm
     plymouth
     stylix
-    ollama
+    # ollama
   ];
   hmModules = with self.modules.homeManager; [
     shell
@@ -36,6 +36,7 @@ in
         {
           boot.kernelPackages = pkgs.linuxPackages;
           services = {
+            flatpak.enable = true;
             envfs.enable = true;
             fwupd.enable = true;
             upower.enable = true;
@@ -70,9 +71,9 @@ in
             };
           };
 
-          virtualisation.virtualbox.host.enable = true;
-          virtualisation.virtualbox.host.enableExtensionPack = true;
-          users.extraGroups.vboxusers.members = [ "nils" ];
+          # virtualisation.virtualbox.host.enable = true;
+          # virtualisation.virtualbox.host.enableExtensionPack = true;
+          # users.extraGroups.vboxusers.members = [ "nils" ];
         };
 
       homeManager.${hostname} =
