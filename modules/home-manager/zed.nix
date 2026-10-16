@@ -10,6 +10,10 @@
         clang-tools
       ];
 
+      programs.antigravity-cli = {
+           enable = true;
+         };
+
       programs.zed-editor = {
         enable = true;
         extensions = [
@@ -24,6 +28,11 @@
         userSettings = {
           hour_format = "hour24";
           vim_mode = false;
+          agent = {
+            server = {
+              command = "agy_acp_server.par";
+            };
+          };
 
           file_scan_exclusions = [
             # Algemeen / Git
