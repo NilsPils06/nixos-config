@@ -5,7 +5,7 @@
     {
       services.displayManager.sddm = {
         enable = true;
-        wayland.enable = true;
+        wayland.enable = false;
         theme = "sddm-astronaut-theme";
         extraPackages = with pkgs.kdePackages; [
           qtmultimedia
