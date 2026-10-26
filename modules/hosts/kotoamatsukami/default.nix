@@ -71,8 +71,6 @@ in
             };
           };
 
-          xdg.portal.enable = true;
-
           boot.kernelPackages = pkgs.linuxPackages;
 
           hardware.graphics = {
