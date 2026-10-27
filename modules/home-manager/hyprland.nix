@@ -15,19 +15,6 @@
 
       programs.kitty.enable = true;
 
-      programs.rofi = {
-        enable = true;
-        settings = {
-          modi = "window,drun,run";
-          show-icons = true;
-          display-window = "Windows";
-          window-format = "{w} · {c} · {t}";
-          kb-row-down = "Down,Control+n,Alt+Tab";
-          kb-row-up = "Up,Control+p,Alt+ISO_Left_Tab";
-          kb-accept-entry = "Return,KP_Enter";
-        };
-      };
-
       systemd.user.services.ambxst = {
         Unit = {
           Description = "Ambxst Desktop Shell";
@@ -91,8 +78,10 @@
             "$mod, Right, workspace, +1"
             "$mod, Left, workspace, -1"
             "$mod, TAB, cyclenext,"
-            "ALT, TAB, exec, rofi -show window"
-            "ALT SHIFT, TAB, exec, rofi -show window"
+            "ALT, TAB, cyclenext,"
+            "ALT, TAB, bringactivetotop,"
+            "ALT SHIFT, TAB, cyclenext, prev"
+            "ALT SHIFT, TAB, bringactivetotop,"
           ]
           ++ (
             # workspaces
