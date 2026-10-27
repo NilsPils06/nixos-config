@@ -1,74 +1,38 @@
 { inputs, ... }:
 {
   flake.modules.homeManager.hyprland =
-    { pkgs, ... }:
+    { pkgs, lib, ... }:
     {
-      imports = [ inputs.caelestia-shell.homeManagerModules.default ];
-
       home.packages = with pkgs; [
+        inputs.ambxst.packages.${pkgs.system}.default
         xwayland-satellite
         fuzzel
         brightnessctl
         wireplumber
         matugen
         awww
-        kdePackages.qtwebengine
-        kdePackages.qtwebchannel
-        kdePackages.qtwebview
       ];
 
       programs.kitty.enable = true;
 
-      programs.caelestia = {
-        enable = true;
-        cli.enable = true;
-        systemd = {
-          enable = true;
-          target = "graphical-session.target";
-        };
-        settings = {
-          bar.statusIcons = [
-            {
-              id = "audio";
-              enabled = true;
-            }
-            {
-              id = "network";
-              enabled = true;
-            }
-            {
-              id = "bluetooth";
-              enabled = true;
-            }
-            {
-              id = "battery";
-              enabled = true;
-            }
-          ];
-          border = {
-            thickness = 0;
-            rounding = 10;
-          };
-          general = {
-            apps = {
-              terminal = "kitty";
-              explorer = "thunar";
-            };
-          };
-          background.enabled = true;
-          services = {
-            useTwelveHourClock = false;
-            useFahrenheit = false;
-            smartScheme = true;
-          };
-        };
-      };
+      home.activation.ensureAmbxstHyprlandConf = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+        $DRY_RUN_CMD mkdir -p $HOME/.local/share/ambxst
+        $DRY_RUN_CMD touch $HOME/.local/share/ambxst/hyprland.conf
+      '';
 
       wayland.windowManager.hyprland = {
         enable = true;
         configType = "hyprlang";
         settings = {
           "$mod" = "SUPER";
+
+          exec-once = [
+            "ambxst"
+          ];
+
+          source = [
+            "~/.local/share/ambxst/hyprland.conf"
+          ];
 
           monitor = "eDP-1, 1920x1200@60, 0x0, 1";
 
@@ -85,12 +49,12 @@
             "$mod, Return, exec, kitty"
             "$mod, Q, killactive,"
             "$mod SHIFT, F, fullscreen,"
-            "$mod, D, exec, caelestia shell drawers toggle launcher"
-            "$mod, S, exec, caelestia shell drawers toggle dashboard"
+            "$mod, D, exec, ambxst run launcher"
+            "$mod, S, exec, ambxst run dashboard"
             "$mod, B, exec, firefox"
             "$mod, F, exec, thunar"
             "$mod, X, togglefloating, active"
-            "$mod SHIFT, E, exec, caelestia shell drawers toggle session"
+            "$mod SHIFT, E, exec, ambxst run powermenu"
             ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
             "$mod, Right, workspace, +1"
             "$mod, Left, workspace, -1"

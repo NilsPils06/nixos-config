@@ -11,7 +11,7 @@ My system is built around modern Wayland technologies with a strong focus on a s
 * **Package Manager:** [Lix](https://lix.systems/) (A faster, more modern Nix fork) managed via overlays.
 * **Nix Helper:** [nh](https://github.com/viperML/nh) with automatic daily cleanup (`--keep-since 1d --keep 3`).
 * **Window Manager:** [Hyprland](https://hyprland.org/) (Dynamic tiling Wayland compositor with XWayland satellite and portals).
-* **Desktop Shell/Bar:** [Caelestia Shell](https://github.com/caelestia-dots/shell) (Modular desktop shell with status icons, launcher, dashboard, and session drawers).
+* **Desktop Shell/Bar:** [Ambxst](https://github.com/Axenide/Ambxst) (An Axtremely customizable desktop shell for Wayland compositors).
 * **Login Manager:** SDDM with the *sddm-astronaut-theme* (Wayland enabled).
 * **Boot:** Plymouth for a silent, flicker-free themed boot experience and systemd-boot.
 * **Terminal:** Kitty.
@@ -67,7 +67,7 @@ modules/
     discord.nix                     # Vesktop Discord client configuration and autostart
     fastfetch.nix                   # Fastfetch configuration with custom Goku logo
     git.nix                         # Git credentials and GitHub CLI integration
-    hyprland.nix                    # Hyprland keybindings, rules, and Caelestia Shell
+    hyprland.nix                    # Hyprland keybindings, rules, and Ambxst Shell
     kdenlive.nix                    # Video editing and screen recording tools
     minecraft.nix                   # Prism Launcher for Minecraft
     shell.nix                       # Zsh, Starship, Kitty, Zoxide, aliases, and ytm-dl script
@@ -84,9 +84,9 @@ My workflow is heavily keyboard-driven. Here are the primary Hyprland keybinding
 | `Mod + Return` | Open Terminal (Kitty) |
 | `Mod + Q` | Close active window (`killactive`) |
 | `Mod + Shift + F` | Toggle fullscreen |
-| `Mod + D` | Open App Launcher (Caelestia drawer) |
-| `Mod + S` | Toggle Dashboard (Caelestia drawer) |
-| `Mod + Shift + E` | Open Session / Power Menu (Caelestia drawer) |
+| `Mod + D` | Open App Launcher (Ambxst) |
+| `Mod + S` | Toggle Dashboard (Ambxst) |
+| `Mod + Shift + E` | Open Power Menu (Ambxst) |
 | `Mod + B` | Open Browser (Firefox) |
 | `Mod + F` | Open File Manager (Thunar) |
 | `Mod + X` | Toggle floating mode for active window |

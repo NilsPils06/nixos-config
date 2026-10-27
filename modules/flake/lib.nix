@@ -28,7 +28,7 @@ in
                 inherit pkgs-stable;
                 inherit (inputs)
                   stylix
-                  caelestia-shell
+                  ambxst
                   aagl
                   ;
               };
@@ -47,6 +47,7 @@ in
           { programs.nix-index-database.comma.enable = true; }
           inputs.home-manager.nixosModules.home-manager
           inputs.aagl.nixosModules.default
+          inputs.ambxst.nixosModules.default
         ]
         ++ modules;
         specialArgs = {
