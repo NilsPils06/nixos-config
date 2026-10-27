@@ -91,6 +91,7 @@ My workflow is heavily keyboard-driven. Here are the primary Hyprland keybinding
 | `Mod + F` | Open File Manager (Thunar) |
 | `Mod + X` | Toggle floating mode for active window |
 | `Mod + Tab` | Cycle to next window (`cyclenext`) |
+| `Alt + Tab` | Window Switcher / Task Switcher (Rofi) |
 | `Mod + Left / Right` | Switch to previous / next workspace |
 | `Mod + 1 to 9` | Switch to workspace 1–9 |
 | `Mod + Shift + 1 to 9` | Move active window to workspace 1–9 |

@@ -15,6 +15,34 @@
 
       programs.kitty.enable = true;
 
+      programs.rofi = {
+        enable = true;
+        settings = {
+          modi = "window,drun,run";
+          show-icons = true;
+          display-window = "Windows";
+          window-format = "{w} · {c} · {t}";
+          kb-row-down = "Down,Control+n,Alt+Tab";
+          kb-row-up = "Up,Control+p,Alt+ISO_Left_Tab";
+          kb-accept-entry = "Return,KP_Enter";
+        };
+      };
+
+      systemd.user.services.ambxst = {
+        Unit = {
+          Description = "Ambxst Desktop Shell";
+          PartOf = [ "graphical-session.target" ];
+          After = [ "graphical-session.target" ];
+        };
+        Service = {
+          ExecStart = "${inputs.ambxst.packages.${pkgs.system}.default}/bin/ambxst";
+          Restart = "on-failure";
+        };
+        Install = {
+          WantedBy = [ "graphical-session.target" ];
+        };
+      };
+
       home.activation.ensureAmbxstHyprlandConf = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
         $DRY_RUN_CMD mkdir -p $HOME/.local/share/ambxst
         $DRY_RUN_CMD touch $HOME/.local/share/ambxst/hyprland.conf
@@ -26,15 +54,16 @@
         settings = {
           "$mod" = "SUPER";
 
-          exec-once = [
-            "ambxst"
-          ];
-
           source = [
             "~/.local/share/ambxst/hyprland.conf"
           ];
 
           monitor = "eDP-1, 1920x1200@60, 0x0, 1";
+
+          binds = {
+            workspace_back_and_forth = true;
+            allow_workspace_cycles = true;
+          };
 
           input = {
             accel_profile = "flat";
@@ -59,6 +88,8 @@
             "$mod, Right, workspace, +1"
             "$mod, Left, workspace, -1"
             "$mod, TAB, cyclenext,"
+            "ALT, TAB, exec, rofi -show window"
+            "ALT SHIFT, TAB, exec, rofi -show window"
           ]
           ++ (
             # workspaces
