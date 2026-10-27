@@ -43,9 +43,12 @@
         };
       };
 
-      home.activation.ensureAmbxstHyprlandConf = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-        $DRY_RUN_CMD mkdir -p $HOME/.local/share/ambxst
+      home.activation.ensureAmbxstConfig = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+        $DRY_RUN_CMD mkdir -p $HOME/.local/share/ambxst $HOME/.config/ambxst
         $DRY_RUN_CMD touch $HOME/.local/share/ambxst/hyprland.conf
+        if [ -f "$HOME/.config/ambxst/binds.json" ]; then
+          ${pkgs.jq}/bin/jq '.custom = []' "$HOME/.config/ambxst/binds.json" > "$HOME/.config/ambxst/binds.json.tmp" && mv "$HOME/.config/ambxst/binds.json.tmp" "$HOME/.config/ambxst/binds.json"
+        fi
       '';
 
       wayland.windowManager.hyprland = {
